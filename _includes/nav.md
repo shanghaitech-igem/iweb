@@ -2,7 +2,7 @@
 
 ---
 
-* [Final Project](https://cs50.harvard.edu/x/2024/project/)
+* [Final Project](/project)
 
 ---
 
