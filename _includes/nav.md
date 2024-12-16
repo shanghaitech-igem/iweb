@@ -9,10 +9,8 @@
 
 ### Acknowledgement
 
-<p>
-<div class="small" style="color:#fff">
-Special thanks to Harvard University’s CS50 and Prof. David J. Malan
-</div>
+<p class="small">
+Special thanks to Harvard University’s CS50 and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>, who open sourced everything of CS50.
 </p>
 
 <ul class="fa-ul">
