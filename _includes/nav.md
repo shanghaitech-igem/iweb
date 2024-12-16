@@ -9,6 +9,12 @@
 
 ### Acknowledgement
 
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
 <p class="small">
 Special thanks to Harvard University’s CS50 and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>, who open sourced everything of CS50.
 </p>
