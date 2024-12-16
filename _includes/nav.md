@@ -1,4 +1,3 @@
-
 * [Step 0](/steps/0) Network
 
 ---
@@ -23,7 +22,7 @@ Special thanks to Harvard University’s CS50 and Prof. David J. Malan
   <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
   <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
   <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
-<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">etc....</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
 </ul>
 
 ---
