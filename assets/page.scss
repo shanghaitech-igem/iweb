@@ -1,0 +1,29 @@
+---
+# This is Jekyll front matter
+---
+
+// prettier-ignore-start
+$vscode-validate: null; // This is for passing the validation of the vscode scss feature.
+// prettier-ignore-end
+
+$link-color: #45b06c;
+$link-color-dark: #7bcc98;
+
+@import "page";
+
+aside {
+  color: #ffffff85;
+
+  h1,
+  h2,
+  h3 {
+    color: #fff;
+  }
+
+  ul {
+    li {
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+}
