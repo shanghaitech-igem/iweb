@@ -6,5 +6,6 @@ ShanghaiTech's iGEM 2025
 
 [Lin-Zheng TANG](https://zivmax.top)  
 [tanglzh2022@\<ShanghaiTech\>](mailto:tanglzh2022@shanghaitech.edu.cn)
+[igemshanghaitech@163.com](mailto:igemshanghaitech@163.com)
 
 ---
