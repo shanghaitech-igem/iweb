@@ -1,4 +1,6 @@
-* [Step 0](/steps/0) Network
+
+* [Step 0](/steps/0) Linux
+* [Step 1](/steps/1) Network
 
 ---
 
