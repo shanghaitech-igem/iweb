@@ -1,7 +1,8 @@
-
 cs50:
   favicon: assets/igem-favicon.svg
   title: iWEB 2025
   description: iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.
   locale: zh-CN
   tz: Asia/Shanghai
+  
+baseurl: ""
