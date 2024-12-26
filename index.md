@@ -4,7 +4,7 @@ title: Welcome
 
 # Welcome
 
-It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Introduction to Web Development for new iGEMers. This course is dedicated for those iGEMER who wants to do wiki related works with a little basics of programming. 
+It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Introduction to Web Development for new iGEMers. This course is dedicated for those iGEMers who wants to do wiki related works with a little basics of programming. 
 
 # Reference of this course
 
@@ -15,7 +15,7 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 * [CS50 Web: Week 1 Git](https://cs50.harvard.edu/web/2020/weeks/1/)
 
 * [CS50 Web: Week 5 JavaScript](https://cs50.harvard.edu/web/2020/weeks/5/)
-
+ 
 * [React's Official Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 
 * [Gatsby's Official Tutorial](https://www.gatsbyjs.com/)
