@@ -6,7 +6,7 @@ title: Welcome
 
 It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Introduction to Web Development for new iGEMers. This course is dedicated for those iGEMers who wants to do wiki related works with a little basics of programming. 
 
-# Reference of this course
+# References of this Course
 
 * [CS50x: Week 8 HTML, CSS, JavaScript](https://cs50.harvard.edu/x/2024/weeks/8/)
 
