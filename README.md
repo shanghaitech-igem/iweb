@@ -1,39 +1,31 @@
-# Clone the Repo
+# iWEB Pages Setup
+
+## Quick Start
 ```sh
+# Clone and enter repository
 git clone https://github.com/shanghaitech-igem/iweb.git
-```
-
-```sh
 cd iweb
-```
 
-# Install Dependencies
-```sh
+# Install Ruby and dependencies
+sudo apt install ruby-full
+gem install bundler
 bundle config set --local path 'vendor/bundle'
-```
-
-```sh
 bundle install
-```
 
-# Run a Local Server
-```sh
+# Start development server
 bundle exec jekyll serve
 ```
 
-# Deploy to the `pages` branch
+## Deployment
 
-## Install `pnpm`
+Install required tools:
 ```sh
+# Install pnpm package manager
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-```
 
-## Install `gh-pages`
-```sh
+# Install gh-pages deployment tool 
 pnpm install -g gh-pages
-```
 
-## Run Deploy Script
-```sh
+# Deploy to GitHub Pages
 pnpm run deploy
 ```
