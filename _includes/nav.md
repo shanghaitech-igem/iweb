@@ -18,7 +18,7 @@ Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech
 --- -->
 
 <p class="small">
-Special thanks to Harvard University’s CS50 and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>, who open sourced everything of CS50.
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
 </p>
 
 <ul class="fa-ul">
