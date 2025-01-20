@@ -3,4 +3,4 @@ vendor/
 .jekyll-cache/
 _site/
 .node_modules/
-
+node_modules/
