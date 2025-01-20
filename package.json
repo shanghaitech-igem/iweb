@@ -1,5 +1,8 @@
 {
     "scripts": {
         "deploy": "bundle exec jekyll build && gh-pages -d _site -b pages -f"
-    }   
+    },
+    "dependencies": {
+        "gh-pages": "^6.3.0"
+    }
 }
