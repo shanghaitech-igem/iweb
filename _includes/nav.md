@@ -2,7 +2,7 @@
 * [Step 0](/steps/0) CLI, Linux, WSL
 * [Step 1](/steps/1) Network, Internet
 * [Step 2](/steps/2) HTML, CSS, JavaScript
-* [Step 3](/steps/3) React, Node.js, pnpm
+* [Step 3](/steps/3) React, Node.js
 * [Step 4](/steps/4) Gatsby
 * [Step 5](/steps/5) Git, Deployment
 
