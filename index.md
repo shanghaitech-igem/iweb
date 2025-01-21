@@ -8,7 +8,7 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 
 # References of this Course
 
-* [CS50x: Week 8 HTML, CSS, JavaScript](https://cs50.harvard.edu/x/2024/weeks/8/)
+* [CS50x: Week 8 HTML, CSS, JavaScript](https://cs50.harvard.edu/x/2025/weeks/8/)
 
 * [CS50 Web: Week 0 HTML and CSS](https://cs50.harvard.edu/web/2020/weeks/0/)
 
