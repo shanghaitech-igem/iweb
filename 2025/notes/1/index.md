@@ -15,19 +15,19 @@ Assume we have a network of computers fully connected to each other with bare da
 
 Clearly, this network is not practical.
 
-![A Naive Network](/notes/images/1/naive-traffic.webp)
+![A Naive Network](./images/naive-traffic.webp)
 
 ## An Addressed Network
 
 But if we assign an address to each computer, then the sender can embed the address of the receiver in the message. When a computer receives a message, it checks the address of the receiver. If the address matches, the computer processes the message; otherwise, it discards the message.
 
-![A Network with Address](/notes/images/1/address-traffic.webp)
+![A Network with Address](./images/address-traffic.webp)
 
 ## Internet Protocol (IP)
 
 That's the key idea behind the Internet Protocol (IP). Each computer on the Internet has a unique address called an IP address. When a computer sends a message, it embeds the IP address of the receiver in the message. When a computer receives a message, it checks the IP address of the receiver. If the address matches, the computer processes the message; otherwise, it discards the message.
 
-![Packet of Data under IP](/notes/images/1/protocol-ip.webp)
+![Packet of Data under IP](./images/protocol-ip.webp)
 
 Specifically, the structure of a packet of data under IP is as follows:
 
@@ -58,7 +58,7 @@ But as computer could run multiple programs, how does the computer know which pr
 
 Notice the protocol in the graph is actually UDP/IP, a combination of UDP and IP. 
 
-![Packet of Data under UDP](/notes/images/1/protocol-udp.webp)
+![Packet of Data under UDP](./images/protocol-udp.webp)
 
 Specifically, the structure of a packet of data under UDP is as follows:
 
@@ -82,7 +82,7 @@ Based on UDP, the key improvement of the Transmission Control Protocol (TCP) is 
 
 Notice the protocol in the graph is actually TCP/IP, a combination of TCP and IP. 
 
-![Packet of Data under UDP](/notes/images/1/protocol-tcp.webp)
+![Packet of Data under UDP](./images/protocol-tcp.webp)
 
 Specifically, the structure of a packet of data under TCP is as follows:
 
@@ -152,7 +152,7 @@ Internet is just a giant network of computers connected to each other, and the m
 * Assume we have a network of computers fully connected to each other with bare data cables.
 * When a computer sends a message, the signal is broadcasted to all other computers due to physical laws, and all computers receive the message.
 * This is a naive network and is not practical.
-* ![A Naive Network](/notes/images/1/naive-traffic.webp)
+* ![A Naive Network](./images/naive-traffic.webp)
 
 ---
 
@@ -164,7 +164,7 @@ Internet is just a giant network of computers connected to each other, and the m
   * It checks the address of the receiver.
   * If the address matches, the computer processes the message.
   * Otherwise, it discards the message.
-* ![A Network with Address](/notes/images/1/address-traffic.webp)
+* ![A Network with Address](./images/address-traffic.webp)
 
 ---
 
@@ -179,7 +179,7 @@ Internet is just a giant network of computers connected to each other, and the m
   * Otherwise, it discards the message.
 
 * The structure of a packet of data under IP:  
-  ![Packet of Data under IP](/notes/images/1/protocol-ip.webp)  
+  ![Packet of Data under IP](./images/protocol-ip.webp)  
 
   In detail **if are interested**:
   ```
@@ -217,7 +217,7 @@ Internet is just a giant network of computers connected to each other, and the m
 
 
 * The structure of a packet of data under UDP:  
-  ![Packet of Data under UDP](/notes/images/1/protocol-udp.webp)
+  ![Packet of Data under UDP](./images/protocol-udp.webp)
 
   In detail **if are interested**:
   ```
@@ -242,7 +242,7 @@ Internet is just a giant network of computers connected to each other, and the m
   * Data chunks can arrive in different orders but are reassembled correctly.
 
 * The structure of a packet of data under TCP:  
-  ![Packet of Data under TCP](/notes/images/1/protocol-tcp.webp)
+  ![Packet of Data under TCP](./images/protocol-tcp.webp)
   
   In detail **if are interested**:
   ```
@@ -313,7 +313,7 @@ Internet is just a giant network of computers connected to each other, and the m
 * DNS, or domain name systems, is a collection of servers on the internet that are used to query the website's IP addresses like `shanghaitech.edu.cn`. Just like the phone book to look up a phone number, DNS is the phone book of the internet.
 
 * So each time when we visit a website, our computer will first ask the DNS server for the IP address of the website, and then use the IP address to visit the website.  
-  ![The process of visiting a website with DNS](/notes/images/1/dns-query.webp)
+  ![The process of visiting a website with DNS](./images/dns-query.webp)
 
 * If we use `ping` command in the terminal, we can see the IP address of the website we are visiting:
   ```bash

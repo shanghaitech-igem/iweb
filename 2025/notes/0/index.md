@@ -43,13 +43,13 @@ This course is divided into 5 steps, each building on the previous one. The step
 
 ### Where CLI Comes From
    * **Text-Based Interaction**: In a certain of period, computers were input with typewriters, so every input will be remain on the paper, then the computer will print the output on the paper too.  
-    ![A gif of a typewriter usage example](/notes/images/0/typewirter.webp)
+    ![A gif of a typewriter usage example](./images/typewirter.webp)
 
    * **Use Screen as Paper**: Even after the usage of screens, this way of interaction continued, the engineers just view the screen as a infinite long paper. As the screens is where the initial point of the input and the final point of the output, we call such device as a terminal.  
-    ![A gif of a terminal usage example](/notes/images/0/terminal.webp)
+    ![A gif of a terminal usage example](./images/terminal.webp)
 
    * **Today's CLI**: Nowadays, we often uses Graphical User Interface (GUI) to interact with computers on Windows and MacOS. Under such environment, there's actually no real terminal CLI exists. However, this way of interaction is still widely used, thus many people uses the terminal emulator to interact with the computer.  
-    ![A gif of a terminal emulator usage example](/notes/images/0/terminal-emu.webp)
+    ![A gif of a terminal emulator usage example](./images/terminal-emu.webp)
 
 ### Why CLI?
 
@@ -118,7 +118,7 @@ cat hello.txt
 * Different OS serves for the same purpose as said before, so there's no significant difference when we are using them besides the software ecosystem, especially when we are developing our own softwares.
 
 ## Linux
-![Logo of linux](/notes/images/0/linux-logo.webp)
+![Logo of linux](./images/linux-logo.webp)
 
 * Specifically, [Linux](https://github.com/torvalds/linux) is a open-source OS under the GNU General Public License (GPL), which means that it is free to use and modify. That's a important reason why Linux is so popular in the server field.
 

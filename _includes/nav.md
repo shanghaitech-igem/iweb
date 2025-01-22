@@ -1,14 +1,14 @@
 
-* [Step 0](/steps/0) CLI, Linux, WSL
-* [Step 1](/steps/1) Internet, HTTP, DNS
-* [Step 2](/steps/2) HTML, CSS, JavaScript
-* [Step 3](/steps/3) Node.js, TypeScript, React 
-* [Step 4](/steps/4) Gatsby
-* [Step 5](/steps/5) Git, Deployment
+* [Step 0](/2025/steps/0) CLI, Linux, WSL
+* [Step 1](/2025/steps/1) Internet, HTTP, DNS
+* [Step 2](/2025/steps/2) HTML, CSS, JavaScript
+* [Step 3](/2025/steps/3) Node.js, TypeScript, React 
+* [Step 4](/2025/steps/4) Gatsby
+* [Step 5](/2025/steps/5) Git, Deployment
 
 ---
 
-* [Final Project](/project)
+* [Final Project](/2025/project)
 
 ---
 
