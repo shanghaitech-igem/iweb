@@ -64,8 +64,25 @@ Develop a personal blog website template using [Gatsby](https://www.gatsbyjs.com
 
 
 ## Evaluation Criteria
-1. Code quality and organization (30%)
-2. Features (25%)
-3. Performance (20%)
-4. Documentation quality (15%)
-5. Creativity and innovation (10%)
+- Code quality and organization (35%)
+    * Consistent code style
+    * Proper use of TypeScript
+    * Clean and readable code
+    * Concise commit messages
+    * Good branching strategy
+    * Proper use of GitLab's Issue Tracker
+- Features (25%)
+    * Implementation of required features
+    * Implementation of optional features
+    * User-friendly content management
+- Performance (15%)
+    * Small network transfer size
+    * Fast loading times
+    * Render performance
+- Documentation quality (15%)
+    * User guide for content creation
+    * README file with instructions
+    * Code comments
+- Creativity and innovation (10%)
+    * Unique features
+    * Creative design
