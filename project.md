@@ -28,7 +28,7 @@ Develop a [personal blog website template](https://fuwari.vercel.app/) using [Ga
     * [Deploy with pre-compressed assets with brotli and gzip](https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets)
 
 6. **Documentation**
-    * Provide an user guide for content creation (You could put it on your project's website)
+    * Provide an [user guide](https://2024.igem.wiki/shanghaitech-china/docs/writing/) for content creation (You could put it on your project's website)
     * A [README](https://gitlab.com/gitlab-org/gitlab/-/blob/master/README.md) file with instructions for running the project locally
 
 ## Optional Features 
@@ -36,7 +36,7 @@ Develop a [personal blog website template](https://fuwari.vercel.app/) using [Ga
 
 1. **Gatsby Framework Implementation**
     * CDN image optimization
-    * SEO
+    * SEO (Search Engine Optimization)
     * MDX processing
     * RSS feed generation
 
@@ -52,7 +52,6 @@ Develop a [personal blog website template](https://fuwari.vercel.app/) using [Ga
    * Accessible color scheme (WCAG 2.1 compliant)
 
 4. **Performance Optimization**
-   * Implement code splitting
    * Optimize image loading
    * Include lazy loading for components
 
