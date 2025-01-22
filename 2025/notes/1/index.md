@@ -17,8 +17,6 @@ title: Lecture 1
 * This is a naive network and is not practical.
 * ![A Naive Network](./images/naive-traffic.webp)
 
----
-
 ## An Addressed Network
 
 * Assign an address to each computer.
@@ -28,8 +26,6 @@ title: Lecture 1
   * If the address matches, the computer processes the message.
   * Otherwise, it discards the message.
 * ![A Network with Address](./images/address-traffic.webp)
-
----
 
 ## Internet Protocol (IP)
 
@@ -65,8 +61,6 @@ title: Lecture 1
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   ```
 
----
-
 ## User Datagram Protocol (UDP)
 
 * **UDP** addresses the issue of multiple programs running on a single computer.
@@ -94,8 +88,6 @@ title: Lecture 1
   |                             Data                              |
   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   ```
-
----
 
 ## Transmission Control Protocol (TCP)
 
