@@ -137,6 +137,43 @@ title: Lecture 1
   * We can access any computer on the Internet if we know its **IP address**.
   * We can access a specific program on the computer if we know its **port number**
 
+## HTTP and HTTPS
+
+* _HTTP_ or _hypertext transfer protocol_ is an application-level protocol that developers use to build powerful and useful things through the transfer of data from one place to another. _HTTPS_ is a secure version of this protocol.
+
+* Unlike the protocol mentioned previously (TCP/IP), HTTP is a _higher-level_ protocol that is built on top of TCP/IP, it's more like the protocol defines how the contents in the data chunks should be structured, instead of how packet contains the data should be structured.
+  ```
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                                                               |
+  |                Headers (TCP/IP or UDP/IP Stuffs)              |    <--- Transmission Level
+  |                                                               |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  |                                                               |
+  |               Data (Organized according to HTTP)              |    <--- Application Level
+  |                                                               |
+  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  ```
+
+
+* When we see an address such as `http://10.20.229.83:8080` we are actually implicitly visiting that address with a `/` at the end of it.
+
+* The _path_ is what exists after that slash. For example, `http://10.20.229.83:8080/folder/file.html` visits the software with port `8080`, which is on the machine with ip address `10.20.229.83` and browses to the `folder` directory, and then visits the file named `file.html`.
+
+* `http` in this address is the protocol that is used to connect to that web address. By protocol, we mean that HTTP utilizes `GET` or `POST` _requests_ to ask for information from a server. When we open firefox's `developer tools` and visit `Network`, selecting any item, we will see `Headers`. we’ll see mentions of `GET`. This is possible in other browsers as well, using slightly different methods.
+
+* For example, when issuing a GET request, our computer may send the following data to a server:
+  ```
+  GET / HTTP/1
+  Host: 10.20.229.83:8080
+  ```
+  Notice that this requests via HTTP the content served on www.harvard.edu.
+    
+* Generally, after making a request to a server, we will receive the following data in `Response Headers`:
+  ```
+  HTTP/1 200 OK
+  Content-type: text/html; charset=utf-8
+  ```
+
 
 ## Demo on Web Services Hosting
 
