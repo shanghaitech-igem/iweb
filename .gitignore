@@ -4,3 +4,4 @@ vendor/
 _site/
 .node_modules/
 node_modules/
+.venv/
