@@ -5,7 +5,7 @@ title: Project
 # Final Project: *Personal Blog Website Template*
 
 ## Project Overview
-Develop a personal blog website template using [Gatsby](https://www.gatsbyjs.com/) framework and deploy it natively on [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
+Develop a [personal blog website template](https://fuwari.vercel.app/) using [Gatsby](https://www.gatsbyjs.com/) framework and deploy it natively on [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
 
 ## Technical Requirements
 1. **Gatsby Framework Implementation**
