@@ -1,6 +1,6 @@
 
 * [Step 0](/steps/0) CLI, Linux, WSL
-* [Step 1](/steps/1) Network, Internet
+* [Step 1](/steps/1) Internet, HTTP, DNS
 * [Step 2](/steps/2) HTML, CSS, JavaScript
 * [Step 3](/steps/3) Node.js, TypeScript, React 
 * [Step 4](/steps/4) Gatsby
