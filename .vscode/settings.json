@@ -1,11 +1,15 @@
 {
     "scss.validate": false,
     "cSpell.words": [
+        "Datagram",
         "igem",
         "iweb",
         "Malan",
+        "shanghaitech",
         "SHEN",
         "tanglzh",
+        "Zheng",
         "zivmax"
-    ]
+    ],
+    "editor.tabSize": 2
 }
