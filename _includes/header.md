@@ -2,7 +2,7 @@
 
 ## Interactive Web Engineering Basics
 
-ShanghaiTech's iGEM 2025
+ShanghaiTech University
 
 [Lin-Zheng TANG](https://zivmax.top)  
 [tanglzh2022@\<ShanghaiTech\>](mailto:tanglzh2022@shanghaitech.edu.cn)
