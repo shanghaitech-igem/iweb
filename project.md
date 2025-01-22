@@ -9,6 +9,8 @@ Develop a [personal blog website template](https://fuwari.vercel.app/) using [Ga
 > The actual topic of the final project could be changed so long as your project could be adapted to fit the requirements of the final project.
 
 ## Technical Requirements
+Note that the following requirements are compulsory for the final project. **Any project being considered not meeting these requirements will be disqualified.**
+
 1. **Gatsby Framework Implementation**
     * Use [Gatsby with TypeScript](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/) as the primary framework
     * Implement at least one [custom Gatsby plugin](https://www.gatsbyjs.com/docs/creating-plugins/)
