@@ -378,7 +378,7 @@ title: Lecture 2
 
 ![link selectors](https://cs50.harvard.edu/web/2020/notes/0/images/selectors2.png)
 
-* Not only can we use CSS to change what an element looks like permanently, but also what it looks like under certain conditions. For example, what if we wanted a button to change color when we hover over it? We can acheive this using a [CSS pseudoclass](https://www.w3schools.com/css/css_pseudo_classes.asp), which provides additional styling during special circumstances. We write this by adding a colon after our selector, and then adding the circumstance after that colon.
+* Not only can we use CSS to change what an element looks like permanently, but also what it looks like under certain conditions. For example, what if we wanted a button to change color when we hover over it? We can achieve this using a [CSS pseudoclass](https://www.w3schools.com/css/css_pseudo_classes.asp), which provides additional styling during special circumstances. We write this by adding a colon after our selector, and then adding the circumstance after that colon.
 * In the case of the button, we would add `:hover` to the button selector to specify the design only when hovering:
   ```html
   <!DOCTYPE html>
@@ -445,7 +445,7 @@ title: Lecture 2
   ```
   ![screen size](https://cs50.harvard.edu/web/2020/notes/0/images/responsive0.gif)
 
-* Another way to deal with differing screen size is using a new CSS attribute known as a [flexbox](https://www.w3schools.com/css/css3_flexbox.asp). This allows us to easily have elements wrap around to the next line if they don’t fit horizontally. We do this by putting all of our elements in a `div` that we’ll call our container. We then add some styling to that div specifying that we want to use a flexbox display for the elements inside of it. We’ve also added some additional styling to the inner divs to better illustrate the wrapping that’s occuring here.
+* Another way to deal with differing screen size is using a new CSS attribute known as a [flexbox](https://www.w3schools.com/css/css3_flexbox.asp). This allows us to easily have elements wrap around to the next line if they don’t fit horizontally. We do this by putting all of our elements in a `div` that we’ll call our container. We then add some styling to that div specifying that we want to use a flexbox display for the elements inside of it. We’ve also added some additional styling to the inner divs to better illustrate the wrapping that’s occurring here.
   ```html
   <!DOCTYPE html>
   <html lang="en">
@@ -878,7 +878,7 @@ Let’s use this idea of DOM manipulation to improve our counter page:
 
 ![count 2](https://cs50.harvard.edu/web/2020/notes/5/images/count2.gif)
 
-We can make this page even more interesting by displaying an alert every time the counter gets to a multiple of ten. In this alert, we’ll want to format a string to customize the message, which in JavaScript we can do using [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Template literals requre that there are backticks (`` ` ``) around the entire expression and a $ and curly braces around any substitutions. For example, let’s change our count function
+We can make this page even more interesting by displaying an alert every time the counter gets to a multiple of ten. In this alert, we’ll want to format a string to customize the message, which in JavaScript we can do using [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Template literals require that there are backticks (`` ` ``) around the entire expression and a $ and curly braces around any substitutions. For example, let’s change our count function
 
 ```js
 function count() {
@@ -1054,7 +1054,7 @@ Some notes on the page above:
 
 ### JavaScript Console
 
-The console is a useful tool for testing out small bits of code and debugging. You can write and run JavaScript code in the console, which can be found by inspecting element in your web browser and then clicking `console`. (The exact process may change frome browser to browser.) One useful tool for debugging is printing to the console, which you can do using the `console.log` function. For example, in the `colors.html` page above, I can add the following line:
+The console is a useful tool for testing out small bits of code and debugging. You can write and run JavaScript code in the console, which can be found by inspecting element in your web browser and then clicking `console`. (The exact process may change from browser to browser.) One useful tool for debugging is printing to the console, which you can do using the `console.log` function. For example, in the `colors.html` page above, I can add the following line:
 
 ```
 console.log(document.querySelectorAll('button'));
@@ -1133,7 +1133,7 @@ There are many other [events](https://www.w3schools.com/js/js_events.asp) we can
 
 ### TODO List
 
-To put together a few of the things we’ve learned in this lecture, let’s work on making a TODO list entirely in JavaScript. We’ll start by writing the HTML layout of the page. Notice below how we leave space for an unorderd list, but we dont yet add anything to it. Also notice that we add a link to `tasks.js` where we’ll write our JavaScript.
+To put together a few of the things we’ve learned in this lecture, let’s work on making a TODO list entirely in JavaScript. We’ll start by writing the HTML layout of the page. Notice below how we leave space for an unordered list, but we don't yet add anything to it. Also notice that we add a link to `tasks.js` where we’ll write our JavaScript.
 
 ```html
 <!DOCTYPE html>
