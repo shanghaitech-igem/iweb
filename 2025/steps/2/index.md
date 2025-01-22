@@ -2,4 +2,7 @@
 title: Step 2 HTML, CSS, JavaScript
 ---
 
-# Under Construction...
+# Step 2 *HTML, CSS, JavaScript*
+
+- Lecture
+  * [Notes](../../notes/2/)
