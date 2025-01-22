@@ -9,143 +9,6 @@ title: Lecture 1
 {:toc}
 
 
-## A Naive Network
-
-Assume we have a network of computers fully connected to each other with bare data cables. When a computer sends a message, the signal is broadcasted to all other computers due to the physical laws, and all computers receive the message. This is a naive network.
-
-Clearly, this network is not practical.
-
-![A Naive Network](./images/naive-traffic.webp)
-
-## An Addressed Network
-
-But if we assign an address to each computer, then the sender can embed the address of the receiver in the message. When a computer receives a message, it checks the address of the receiver. If the address matches, the computer processes the message; otherwise, it discards the message.
-
-![A Network with Address](./images/address-traffic.webp)
-
-## Internet Protocol (IP)
-
-That's the key idea behind the Internet Protocol (IP). Each computer on the Internet has a unique address called an IP address. When a computer sends a message, it embeds the IP address of the receiver in the message. When a computer receives a message, it checks the IP address of the receiver. If the address matches, the computer processes the message; otherwise, it discards the message.
-
-![Packet of Data under IP](./images/protocol-ip.webp)
-
-Specifically, the structure of a packet of data under IP is as follows:
-
-```
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|Version|  IHL  |Type of Service|         Total Length          |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|        Identification         |Flags|     Fragment Offset     |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-| Time to Live  |   Protocol    |        Header Checksum        |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                        Source Address                         |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                      Destination Address                      |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                    Options                    |    Padding    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                             Data                              |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-
-
-## User Datagram Protocol (UDP)
-
-But as computer could run multiple programs, how does the computer know which program should process the message? That's the key idea behind the User Datagram Protocol (UDP). Each program on the computer has a unique port number. When a computer sends a message, it embeds the port number of the receiver in the message. When a computer receives a message, it checks the port number of the receiver. If the port number matches, the computer processes the message; otherwise, it discards the message.
-
-Notice the protocol in the graph is actually UDP/IP, a combination of UDP and IP. 
-
-![Packet of Data under UDP](./images/protocol-udp.webp)
-
-Specifically, the structure of a packet of data under UDP is as follows:
-
-```
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|          Source Port          |       Destination Port        |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|            Length             |           Checksum            |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                             Data                              |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-``` 
-
-
-
-## Transmission Control Protocol (TCP)
-
-Based on UDP, the key improvement of the Transmission Control Protocol (TCP) is that it ensures the message is delivered in order and without error, and allow the data chunks arrive in different order but still be reassembled in the correct order. We won't touch this deeper, the knowledge of TCP currently is enough for us to understand the Internet.
-
-Notice the protocol in the graph is actually TCP/IP, a combination of TCP and IP. 
-
-![Packet of Data under UDP](./images/protocol-tcp.webp)
-
-Specifically, the structure of a packet of data under TCP is as follows:
-
-```
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|          Source Port          |       Destination Port        |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                        Sequence Number                        |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                     Acknowledgment Number                     |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|Offset | Res.  |     Flags     |            Window             |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|           Checksum            |        Urgent Pointer         |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                    Options                    |    Padding    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                             Data                              |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-
-
-## The Internet Using TCP/IP
-
-Internet is just a giant network of computers connected to each other, and the main protocol used is TCP/IP, which is a combination of TCP and IP. Thus theoretically, we could access any computer on the Internet, as long as we know its IP address, and access a specific program on the computer, as long as we know its port number.
-
-
-## Demo on Web Services Hosting
-
-* To demonstrate the how we actually access another computer through the Network using TCP/IP, let's set up a simple web service on a remote machine and access it from our local machine.
-
-* First, let's connect to the machine with the corresponding IP address using SSH to get a terminal on the remote machine. 
-  ```bash
-  ssh username@ip-address
-  ```
-> In the lecture demo, the specific command is `ssh zivmax@10.20.229.83`
-
-* Then, let's create a temporary directory and navigate to it.
-  ```bash
-  mkdir server
-  cd server
-  ```
-
-* Next, let's create a simple web server using Python.
-  ```bash
-  python3 -m http.server 8080 --bind 0.0.0.0
-  ```
-  This command will start a simple http server on port `8080`, and `--bind 0.0.0.0` allows machines with any IP address to access the server.
-
-* Now, let's access the server from our local machine. Open a web browser and type in `http://<ip-address>:8080` in the URL bar.
-> In the lecture demo, the specific address is `http://10.20.229.83:8080`.
-
-* We can see the content of the `server` folder on the remote machine is displayed in the web browser on our local machine, but it's empty now.
-
-* Let's add a file to the `server` folder:
-  ```bash
-  echo "Hello, World!" > hello.txt
-  ```
-  and refresh the web page on our local machine. We can see the `Hello, World!` is displayed in the web browser.
-
-* In the very early days of the Internet, users just accessed plain text files like this. But as more and more people read on the Internet, some people think it's time to bring some more interesting things to the users.
 
 ## A Naive Network
 
@@ -272,7 +135,44 @@ Internet is just a giant network of computers connected to each other, and the m
 * The main protocol used is **TCP/IP**, a combination of TCP and IP.
 * In theory:
   * We can access any computer on the Internet if we know its **IP address**.
-  * We can access a specific program on the computer if we know its **port number**.
+  * We can access a specific program on the computer if we know its **port number**
+
+
+## Demo on Web Services Hosting
+
+* To demonstrate the how we actually access another computer through the Network using TCP/IP, let's set up a simple web service on a remote machine and access it from our local machine.
+
+* First, let's connect to the machine with the corresponding IP address using SSH to get a terminal on the remote machine. 
+  ```bash
+  ssh username@ip-address
+  ```
+> In the lecture demo, the specific command is `ssh zivmax@10.20.229.83`
+
+* Then, let's create a temporary directory and navigate to it.
+  ```bash
+  mkdir server
+  cd server
+  ```
+
+* Next, let's create a simple web server using Python.
+  ```bash
+  python3 -m http.server 8080 --bind 0.0.0.0
+  ```
+  This command will start a simple http server on port `8080`, and `--bind 0.0.0.0` allows machines with any IP address to access the server.
+
+* Now, let's access the server from our local machine. Open a web browser and type in `http://<ip-address>:8080` in the URL bar.
+> In the lecture demo, the specific address is `http://10.20.229.83:8080`.
+
+* We can see the content of the `server` folder on the remote machine is displayed in the web browser on our local machine, but it's empty now.
+
+* Let's add a file to the `server` folder:
+  ```bash
+  echo "Hello, World!" > hello.txt
+  ```
+  and refresh the web page on our local machine. We can see the `Hello, World!` is displayed in the web browser.
+
+* In the very early days of the Internet, users just accessed plain text files like this. But as more and more people read on the Internet, some people think it's time to bring some more interesting things to the users.
+.
 
 ## Inspecting HTTP Logs in CLI
 * We can analyze the work of HTTP protocols at terminal. For example, type the following in our terminal window:
