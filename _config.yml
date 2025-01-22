@@ -6,3 +6,6 @@ cs50:
   tz: Asia/Shanghai
   
 baseurl: ""
+
+exclude:
+  - utils
