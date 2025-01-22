@@ -7,6 +7,8 @@ title: Project
 ## Project Overview
 Develop a [personal blog website template](https://fuwari.vercel.app/) using [Gatsby](https://www.gatsbyjs.com/) framework and deploy it natively on [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
 
+> The actual topic of the final project could be changed so long as your project could be adapted to fit the requirements of the final project.
+
 ## Technical Requirements
 1. **Gatsby Framework Implementation**
     * Use [Gatsby with TypeScript](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/) as the primary framework
