@@ -270,19 +270,43 @@ React simplifies the process of building complex UIs by breaking them down into 
 To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
 
 1. **Create a New React Project**: Use the following command to create a new React project:
-    ```bash
-    pnpm create vite@latest react-app --template react
-    cd react-app
-    pnpm install
-    ```
+  ```bash
+  pnpm create vite@latest react-app --template react
+  cd react-app
+  pnpm install
+  ```
 
 2. **Start the Development Server**: Run the development server to see your React app in action:
-    ```bash
-    pnpm install
-    pnpm start
-    ```
-    This will open your default web browser and load the React app at `http://localhost:3000`.
+  ```bash
+  pnpm install
+  pnpm start
+  ```
 
+3. **The Project Structure**:
+  ```bash
+  .
+  ├── README.md
+  ├── eslint.config.js
+  ├── index.html
+  ├── node_modules
+  │   ├── @eslint
+  │   ...
+  │   └── vite
+  ├── package.json
+  ├── pnpm-lock.yaml
+  ├── public
+  │   └── vite.svg
+  ├── src
+  │   ├── App.css
+  │   ├── App.jsx
+  │   ├── assets
+  │   ├── index.css
+  │   └── main.jsx
+  └── vite.config.js
+  ```
+  * `src`: Contains the source code of our React application, we coding in this directory.
+  * `src/main.jsx`: The entry point, import the main component from `App.jsx` and render it to the DOM.
+  * `src/App.jsx`: The main component, the start point of our coding.
 
 ## Components: The Building Blocks of React
 
@@ -311,7 +335,7 @@ Components are the foundation of every React application. They allow you to brea
 * **Returning a Single Parent Element**  
   React components can only return **one parent element**. If you need to return multiple elements, wrap them in a `div` or use a **React Fragment** (`<>...</>`):
   ```jsx
-  function App() {
+  export default export default function App() {
     return (
       <>
         <Greeting name="Alice" />
@@ -320,6 +344,14 @@ Components are the foundation of every React application. They allow you to brea
     );
   }
   ```
+  
+* The `export` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, a error will be thrown:
+```
+Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
+```
+
+* The `default` keyword is used to specify the default export of the module for the scenario when the module is imported without specifying a name.
+
 
 
 ## Key Concepts in React
@@ -337,7 +369,7 @@ Props (short for "properties") are how you pass data from one component to anoth
     return <h1>Hello, {name}!</h1>;
   }
 
-  function App() {
+  export default function App() {
     return <Greeting name="Alice" />;
   }
   ```
@@ -349,7 +381,7 @@ Props (short for "properties") are how you pass data from one component to anoth
     return <div className="card">{children}</div>;
   }
 
-  function App() {
+  export default function App() {
     return (
       <Card>
         <h1>Title</h1>
@@ -481,7 +513,7 @@ Context allows you to pass data through the component tree without manually pass
   ```jsx
   const ThemeContext = React.createContext('light');
 
-  function App() {
+  export default function App() {
     const [theme, setTheme] = useState('light');
 
     const toggleTheme = () => {
@@ -528,7 +560,7 @@ Context allows you to pass data through the component tree without manually pass
   ```jsx
   const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
-  function App() {
+  export default function App() {
     return (
       <React.Suspense fallback={<div>Loading...</div>}>
         <LazyComponent />
@@ -572,7 +604,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
     );
   }
 
-  function App() {
+  export default function App() {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -627,7 +659,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
       return <div>{count}</div>;
   }
   
-  function App() {
+  export default function App() {
       return (
           <div>
               <Counter />
