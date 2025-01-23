@@ -371,17 +371,21 @@ State is how React manages data that changes over time. Unlike regular variables
   ```
 
 * **Controlled Components**  
-  Controlled components use state to manage form inputs. For example:
+  Controlled components use state to manage form inputs:
   ```jsx
   function InputField() {
     const [value, setValue] = useState('');
 
     return (
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <div>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Type something..."
+        />
+        <button onClick={() => setValue('')}>Clear</button>
+      </div>
     );
   }
   ```
@@ -405,18 +409,25 @@ React provides built-in event handlers like `onClick`, `onChange`, and `onSubmit
 * Example:
   ```jsx
   function Button() {
+    const [isDisabled, setIsDisabled] = useState(false);
+
     const handleClick = () => {
       alert('Button clicked!');
+      setIsDisabled(true);
     };
 
-    return <button onClick={handleClick}>Click me</button>;
+    return (
+      <button onClick={handleClick} disabled={isDisabled}>
+        {isDisabled ? 'Clicked' : 'Click me'}
+      </button>
+    );
   }
   ```
 
 
 ### Hooks: Extending Component Functionality
 
-Hooks are functions that let you "hook into" React features like state and lifecycle methods.
+Hooks are functions that let you "hook into" React features like state and lifecycle methods. The real meaning of "hook" is that only if the component uses the feature, otherwise the feature is actually disabled under the hood for performance at runtime.
 
 * **Common Hooks**:
   * `useState`: Manages state.
@@ -443,14 +454,21 @@ Hooks are functions that let you "hook into" React features like state and lifec
 
 Context allows you to pass data through the component tree without manually passing props at every level.
 
-* Example:
+* Let's create a theme context that provides the current theme to all components:
   ```jsx
   const ThemeContext = React.createContext('light');
 
   function App() {
+    const [theme, setTheme] = useState('light');
+
+    const toggleTheme = () => {
+      setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    };
+
     return (
-      <ThemeContext.Provider value="dark">
+      <ThemeContext.Provider value={theme}>
         <Toolbar />
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </ThemeContext.Provider>
     );
   }
@@ -459,6 +477,7 @@ Context allows you to pass data through the component tree without manually pass
     const theme = useContext(ThemeContext);
     return <div>Current theme: {theme}</div>;
   }
+
   ```
 
 
@@ -500,7 +519,7 @@ Context allows you to pass data through the component tree without manually pass
 
 Portals let you render a component outside its parent DOM hierarchy, which is useful for modals, tooltips, and dropdowns.
 
-* Example:
+* Let's create a portal that renders a child component outside the parent div:
   ```jsx
   import { createPortal } from 'react-dom';
 
@@ -517,3 +536,82 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
   }
   ```
 
+* This feature is especially useful for creating modals, tooltips, and other UI elements that need to break out of the normal flow of the page:
+  ```jsx
+  import { createPortal } from 'react-dom';
+
+  function Modal({ children }) {
+    return createPortal(
+      <div style={{ position: 'fixed', top: '20%', left: '50%', transform: 'translateX(-50%)', padding: '20px', background: 'white', border: '1px solid #ccc' }}>
+        {children}
+      </div>,
+      document.body
+    );
+  }
+
+  function App() {
+    const [showModal, setShowModal] = useState(false);
+
+    return (
+      <div>
+        <button onClick={() => setShowModal(true)}>Show Modal</button>
+        {showModal && (
+          <Modal>
+            <p>This is a modal!</p>
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </Modal>
+        )}
+      </div>
+    );
+  }
+  ```
+
+  ## Purity of Function
+
+  In functional programming, a pure function is a function that, given the same input, will always return the same output and does not have any side effects. Pure functions are predictable and easier to test, debug, and reason about.
+
+  ### Characteristics of Pure Functions
+
+  > For person who is familiar with any other programming language, pure function could simply being not use any global variable or not modify any global variable.
+
+
+  * **Deterministic**: A pure function always produces the same output for the same input.
+  * **No Side Effects**: A pure function does not modify any external state or interact with the outside world (e.g., no modifying global variables, no I/O operations).
+
+
+  ### An Inpure Function
+  To create a inpure function, this is a good minimal example:
+  ```js
+  let counter = 0;
+  function increment() {
+      counter++;
+      return counter;
+  }
+
+  console.log(increment()); // 1
+  console.log(increment()); // 2
+  console.log(increment()); // 3
+  console.log(increment()); // 4
+  ```
+  The output is determined by how many times the function has been called.
+
+  ### An Impure Component
+  A inpure component is just the same:
+  ```jsx
+  let count = 0;
+  function Counter() {
+      count++;
+      return <div>{count}</div>;
+  }
+  
+  function App() {
+      return (
+          <div>
+              <Counter />
+              <Counter />
+              <Counter />
+          </div>
+      );
+  }  
+  ```
+  When we reuse components, React reuses the compiled version of the component too, it won't compile the component again. So the `count` variable is shared among all the `Counter` components.
