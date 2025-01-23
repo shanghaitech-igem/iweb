@@ -548,7 +548,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
 
   function Modal({ children }) {
     return createPortal(
-      <div style={{ position: 'fixed', top: '20%', left: '50%', transform: 'translateX(-50%)', padding: '20px', background: 'white', border: '1px solid #ccc' }}>
+      <div style={% raw %}{{ position: 'fixed', top: '20%', left: '50%', transform: 'translateX(-50%)', padding: '20px', background: 'white', border: '1px solid #ccc' }}{% endraw %}>
         {children}
       </div>,
       document.body
