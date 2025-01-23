@@ -114,6 +114,32 @@ title: Lecture 3
   npx cowsay "Hello, Node.js!"
   ```
 
+## PNPM
+
+* [PNPM](https://pnpm.io/) is an alternative package manager for Node.js that aims to solve some of the issues with NPM. It uses a different approach to package management, which can lead to faster and more efficient installations.
+
+* To install PNPM, run:
+  ```bash
+  curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=10.0.0 sh -
+  ```
+
+* Most of the NPM command could be directly replaced by PNPM:
+  ```bash
+  pnpm install
+  pnpm run start
+  pnpm run build
+  ```
+
+* Using `npx` to run installed packages could be replaced by PNPM:
+  ```bash
+  pnpm install cowsay
+  pnpm exec cowsay "Hello, Node.js!"
+  ```
+* Using `npx` to run not installed packages could be replaced by PNPM:
+  ```bash
+  pnpm dlx cowsay "Hello, Node.js!"
+  ```
+
 ## TypeScript (TS)
 
 * Like Python, JavaScript is a dynamically typed language. This means that the type of a variable is determined at runtime. It indeed makes the language more flexible, and more convenient in some cases. But for a large project, dynamic typing prevent the ability to statically check the code, and providing better code completion and refactoring.
@@ -182,7 +208,7 @@ title: Lecture 3
 
 * But TypeScript could not run directly in Node.js. We need to compile it to JavaScript first. To install the TypeScript compiler, run:
   ```bash
-  npm install typescript
+  pnpm install typescript
   ```
 
 * Let's fix and compile the `error.ts` file to `error.js`:
@@ -244,20 +270,18 @@ React simplifies the process of building complex UIs by breaking them down into 
 To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
 
 1. **Create a New React Project**: Use the following command to create a new React project:
-   ```bash
-   npx create-react-app@latest react-app
-   ```
+    ```bash
+    pnpm create vite@latest react-app --template react
+    cd react-app
+    pnpm install
+    ```
 
-2. **Navigate to the Project Directory**: Move into the newly created project directory:
-   ```bash
-   cd react-app
-   ```
-
-3. **Start the Development Server**: Run the development server to see your React app in action:
-   ```bash
-   npm start
-   ```
-   This will open your default web browser and load the React app at `http://localhost:3000`.
+2. **Start the Development Server**: Run the development server to see your React app in action:
+    ```bash
+    pnpm install
+    pnpm start
+    ```
+    This will open your default web browser and load the React app at `http://localhost:3000`.
 
 
 ## Components: The Building Blocks of React
@@ -626,9 +650,8 @@ Finally, let's talk about using TypeScript with React.
 To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
 
 ```bash
-npx create-react-app@latest react-app-ts --template typescript
+pnpm create vite@latest react-app-ts --template react-ts
 cd react-app-ts
-npm install @types/react @types/react-dom
 ```
 
 
