@@ -2,4 +2,7 @@
 title: Step 4 Gatsby
 ---
 
-# Under Construction...
+# Step 4 *Gatsby*
+
+- Lecture
+  * [Notes](../../notes/4/)
