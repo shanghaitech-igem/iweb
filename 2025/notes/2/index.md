@@ -878,7 +878,7 @@ Let’s get started on another example of a page that can be a bit more interact
     </head>
     <body>
         <form>
-            <input autofocus id="name" placeholder="Name" type="text">
+            <input id="name" placeholder="Name" type="text">
             <input type="submit">
         </form>
     </body>
@@ -1006,3 +1006,155 @@ There are many other [events](https://www.w3schools.com/js/js_events.asp) we can
 * `onload`
 * `onblur`
 * …
+
+## Animation
+
+
+Another way we can make our sites a bit more interesting is by adding some animation to them. It turns out that in addition to providing styling, CSS makes it easy for us to animate HTML elements.
+
+To create an animation in CSS, we use the format below, where the animation specifics can include starting and ending styles (`to` and `from`) or styles at different stages in the duration (anywhere from `0%` to `100%`). For example:
+
+```css
+@keyframes animation_name {
+    from {
+        /* Some styling for the start */
+    }
+
+    to {
+        /* Some styling for the end */
+    }
+}
+```
+
+or:
+
+```css
+@keyframes animation_name {
+    0% {
+        /* Some styling for the start */
+    }
+
+    75% {
+        /* Some styling after 3/4 of animation */
+    }
+
+    100% {
+        /* Some styling for the end */
+    }
+}
+```
+
+Then, to apply an animation to an element, we include the `animation-name`, the `animation-duration` (in seconds), and the `animation-fill-mode` (typically `forwards`). For example, here’s a page where a title grows when we first enter the page:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Animate</title>
+        <style>
+            @keyframes grow {
+                from {
+                    font-size: 20px;
+                }
+                to {
+                    font-size: 100px;
+                }
+            }
+
+            h1 {
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+    </body>
+</html>
+```
+
+<iframe src="src/growing.html"></iframe>
+
+We can do more than just manipulate size: the below example shows how we can change the position of a heading just by changing a few lines:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Animate</title>
+        <style>
+            @keyframes move {
+                from {
+                    left: 0%;
+                }
+                to {
+                    left: 50%;
+                }
+            }
+
+            h1 {
+                position: relative;
+                animation-name: move;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+    </body>
+</html>
+```
+
+<iframe src="src/sliding.html"></iframe>
+
+Now, let’s look at setting some intermediate CSS properties as well. We can specify the style at any percentage of the way through an animation. In the below example we’ll move the title from left to right, and then back to left by altering only the animation from above
+
+```css
+@keyframes move {
+    0% {
+        left: 0%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+```
+
+<iframe src="src/back-forth.html"></iframe>
+
+If we want to repeat an animation multiple times, we can change the `animation-iteration-count` to a number higher than one (or even `infinite` for endless animation). There are many [animation properties](https://www.w3schools.com/cssref/css3_pr_animation.asp) that we can set in order to change different aspects of our animation.
+
+In addition to CSS, we can use JavaScript to further control our animations. Let’s use our moving header example (with infinite repetition) to show how we can create a button that starts and stops the animation. Assuming we already have an animation, button, and heading, we can add the following script to start and pause the animation:
+
+```js
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Find heading
+    const h1 = document.querySelector('h1');
+
+    // Pause Animation by default
+    h1.style.animationPlayState = 'paused';
+
+    // Wait for button to be clicked
+    document.querySelector('button').onclick = () => {
+
+        // If animation is currently paused, begin playing it
+        if (h1.style.animationPlayState == 'paused') {
+            h1.style.animationPlayState = 'running';
+        }
+
+        // Otherwise, pause the animation
+        else {
+            h1.style.animationPlayState = 'paused';
+        }
+    }
+
+})
+```
+
+<iframe src="src/pause.html"></iframe>
