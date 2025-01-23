@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/zivmax/jekyll-theme-cs50
-  revision: 9c36bce963bb6924b8098a43788f700b6e8709b3
-  branch: 404-assets-path
+  revision: 2023b694796eb023f42c47b858a1497114bb1093
+  branch: develop
   specs:
     jekyll-theme-cs50 (1.1.0)
       deep_merge (= 1.2.2)
