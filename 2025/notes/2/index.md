@@ -9,7 +9,7 @@ title: Lecture 2
 {:toc}
 
 
-## HTML (Hypertext Markup Language)
+## Hypertext Markup Language (HTML)
 
 * HTML is a markup language that defines the structure of a web page. It is interpreted by your web browser (Safari, Google Chrome, Firefox, etc.) in order to display content on your screen.
 * Let’s get started by writing a simple HTML file!
@@ -22,51 +22,67 @@ title: Lecture 2
       <body>
           Hello, world!
       </body>
-  <html>
+  </html>
   ```
 
 * When we open up this file in our browser, we get:
+  <iframe src="src/hello.html"></iframe>
 
-  ![Hello Page](https://cs50.harvard.edu/web/2020/notes/0/images/hello0.png)
 
 * Now, let’s take some time to talk about the file we just wrote, which seems to be pretty complicated for such a simple page.
-    * In the first line, we are declaring (to the web browser) that we are writing the document in the latest version of HTML: HTML5.
-    * After that, the page consists of nested **HTML elements** (such as html and body), each with an **opening and closing tag** marked with either `<element>` for an opening and `</element>` for a closing.
-    * Notice how each of the inner elements is indented just a bit further than the last. While this is not necessarily required by the browser, it will be very helpful to keep this up in your own code.
-    * HTML elements can include **attributes**, which give the browser extra information about the element. For example, when we include `lang="en"` in our initial tag, we are telling the browser that we are using English as our primary language.
-    * Inside the HTML element, we typically want to include both a `head` and a `body` tag. The head element will include information about your page that is not necessarily displayed, and the body element will contain what is actually visible to users who visit the site.
-    * Within the head, we have included a `title` for our webpage, which you’ll notice is displayed in the tab at the top of our web browser.
-    * Finally, we’ve included the text “Hello, world!” in the body, which is the visible part of our page.
+  * In the first line, we are declaring (to the web browser) that we are writing the document in the latest version of HTML: HTML5.
+  * After that, the page consists of nested **HTML elements** (such as html and body), each with an **opening and closing tag** marked with either `<element>` for an opening and `</element>` for a closing.
+  * Notice how each of the inner elements is indented just a bit further than the last. While this is not necessarily required by the browser, it will be very helpful to keep this up in your own code.
+  * HTML elements can include **attributes**, which give the browser extra information about the element. For example, when we include `lang="en"` in our initial tag, we are telling the browser that we are using English as our primary language.
+  * Inside the HTML element, we typically want to include both a `head` and a `body` tag. The head element will include information about your page that is not necessarily displayed, and the body element will contain what is actually visible to users who visit the site.
+  * Within the head, we have included a `title` for our webpage, which you’ll notice is displayed in the tab at the top of our web browser.
+  * Finally, we’ve included the text “Hello, world!” in the body, which is the visible part of our page.
 
 ### Document Object Model (DOM)
 
-![DOM](https://cs50.harvard.edu/web/2020/notes/0/images/dom.png)
 
 * The DOM is a convenient way of visualizing the way HTML elements relate to each other using a tree-like structure. Above is an example of the DOM layout for the page we just wrote.
 
+  ```mermaid
+  graph TD
+      A[html] --> B[head]
+      A --> C[body]
+      B --> D[title]
+      D --> E[Hello, world!]
+      C --> F[Hello!]
+
+  style E fill:,stroke:#333,stroke-width:2px,color:#7bcc98
+  style F fill:,stroke:#333,stroke-width:2px,color:#7bcc98
+  ```
+
 ### More HTML Elements
 
-* There are many HTML elements you may want to use to customize your page, including headings, lists, and bolded sections. In this next example, we’ll see a few of of these in action.
-* One more thing to note: `<!-* -->` gives us a comment in HTML, so we’ll use that below to explain some of the elements.
+* There are many HTML elements you may want to use to customize your page, including headings, lists, and bolded sections. 
+
+* One more thing to note: `<!-- -->` gives us a comment in HTML, so we’ll use that below to explain some of the elements.
+
+* In case you’re worried about it, know that you’ll never have to memorize these elements. It’s very easy to simply search something like “image in HTML” to find the `img` tag. One resource that’s especially helpful for learning about these elements is [W3 Schools](https://www.w3schools.com/html/html_elements.asp).
   ```html
   <!DOCTYPE html>
   <html lang="en">
+
       <head>
           <title>HTML Elements</title>
       </head>
+
       <body>
-          <!-* We can create headings using h1 through h6 as tags. -->
+          <!-- We can create headings using h1 through h6 as tags. -->
           <h1>A Large Heading</h1>
           <h2>A Smaller Heading</h2>
           <h6>The Smallest Heading</h6>
 
-          <!-* The strong and i tags give us bold and italics respectively. -->
+          <!-- The strong and i tags give us bold and italics respectively. -->
           A <strong>bold</strong> word and an <i>italicized</i> word!
 
-          <!-* We can link to another page (such as cs50's page) using a. -->
-          View the <a href="https://cs50.harvard.edu/">CS50 Website</a>!
+        <!-- We can link to another page (such as iweb's page) using a. -->
+          View the <a href="https://shanghaitech-igem/web">iWEB Website</a>!
 
-          <!-* We used ul for an unordered list and ol for an ordered one. both ordered and unordered lists contain li, or list items. -->
+          <!-- We used ul for an unordered list and ol for an ordered one. both ordered and unordered lists contain li, or list items. -->
           An unordered list:
           <ul>
               <li>foo</li>
@@ -80,15 +96,15 @@ title: Lecture 2
               <li>baz</li>
           </ol>
 
-          <!-* Images require a src attribute, which can be either the path to a file on your computer or the link to an image online. It also includes an alt attribute, which gives a description in case the image can't be loaded. -->
+          <!-- Images require a src attribute, which can be either the path to a file on your computer or the link to an image online. It also includes an alt attribute, which gives a description in case the image can't be loaded. -->
           An image:
-          <img src="../../images/duck.jpeg" alt="Rubber Duck Picture">
-          <!-* We can also see above that for some elements that don't contain other ones, closing tags are not necessary. -->
+          <img src="../images/duck.jpeg" alt="Rubber Duck Picture">
+          <!-- We can also see above that for some elements that don't contain other ones, closing tags are not necessary. -->
 
-          <!-* Here, we use a br tag to add white space to the page. -->
-          <br/> <br/>
+          <!-- Here, we use a br tag to add white space to the page. -->
+          <br /> <br />
 
-          <!-* A few different tags are necessary to create a table. -->
+          <!-- A few different tags are necessary to create a table. -->
           <table>
               <thead>
                   <th>Ocean</th>
@@ -109,46 +125,13 @@ title: Lecture 2
               </tbody>
           </table>
       </body>
-  <html>
-  ```
 
-  This page, when rendered, looks something like this:
-
-  ![Elements](https://cs50.harvard.edu/web/2020/notes/0/images/elements.png)
-
-* In case you’re worried about it, know that you’ll never have to memorize these elements. It’s very easy to simply search something like “image in HTML” to find the `img` tag. One resource that’s especially helpful for learning about these elements is [W3 Schools](https://www.w3schools.com/html/html_elements.asp).
-
-### Forms
-
-* Another set of elements that is really important when creating a website is how to collect information from users. You can allow users to enter information using an HTML form, which can contain several different types of input. Later in the course, we’ll learn about how to handle information once a form has been submitted.
-* Just as with other HTML elements, there’s no need to memorize these, and W3 Schools is a great resource for learning about them!
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <title>Forms</title>
-  </head>
-  <body>
-      <form>
-          <input type="text" placeholder="First Name" name="first">
-          <input type="password" placeholder="Password" name="password">
-          <div>
-              Favorite Color:
-              <input name="color" type="radio" value="blue"> Blue
-              <input name="color" type="radio" value="green"> Green
-              <input name="color" type="radio" value="yellow"> Yellow
-              <input name="color" type="radio" value="red"> Red
-
-          </div>
-          <input type="submit">
-      </form>
-  </body>
   </html>
   ```
 
-  ![form](https://cs50.harvard.edu/web/2020/notes/0/images/form.png)
+  <iframe src="src/elements.html"></iframe>
 
-## CSS (Cascading Style Sheets)
+## Cascading Style Sheets (CSS)
 
 * CSS is used to customize the appearance of a website.
 * While we’re just getting, started, we can add a style attribute to any HTML element in order to apply some CSS to it.
@@ -164,10 +147,10 @@ title: Lecture 2
           <h1 style="color: blue; text-align: center;">A Colorful Heading!</h1>
           Hello, world!
       </body>
-  <html>
+  </html>
   ```
-
-  ![blue heading](https://cs50.harvard.edu/web/2020/notes/0/images/style0.png)
+  <iframe src="src/blue-heading.html"></iframe>
+  
 
 * If we style an outer element, all of the inner elements automatically take on that style. We can see this if we move the styling we just applied from the header tag to the body tag:
 
@@ -181,14 +164,14 @@ title: Lecture 2
           <h1 >A Colorful Heading!</h1>
           Hello, world!
       </body>
-  <html>
+  </html>
   ```
 
-  ![blue everywhere](https://cs50.harvard.edu/web/2020/notes/0/images/style1.png)
+  <iframe src="src/blue-everywhere.html"></iframe>
 
 * While we can style our web page as we’ve done above, to achieve better design, we should be able to move our styling away from the individual lines.
     
-    * One way of doing this is to add your styling between `<style>` tags in the `head`. Inside these tags, we write which types of elements we want to be style, and the styling we wish to apply to them. For example:
+  * One way of doing this is to add your styling between `<style>` tags in the `head`. Inside these tags, we write which types of elements we want to be style, and the styling we wish to apply to them. For example:
       ```html
         <html lang="en">
         <!DOCTYPE html>
@@ -208,7 +191,7 @@ title: Lecture 2
         </html>
       ```
     
-    * Another way is to include in a `<link>` element in your `head` with a link to a styles.css file that contains some styling. This means the HTML file would look like:
+  * Another way is to include in a `<link>` element in your `head` with a link to a styles.css file that contains some styling. This means the HTML file would look like:
       ```html
         <html lang="en">
         <!DOCTYPE html>
@@ -232,16 +215,16 @@ title: Lecture 2
       ```
     
 * There are far too many CSS properties to go over here, but just like HTML elements, it’s typically easy to Google something along the lines of “change font to blue CSS” to get the result. Some of the most common ones though are:
-    * `color`: the color of text
-    * `text-align`: where elements are placed on the page
-    * `background-color`: can be set to any color
-    * `width`: in pixels or percent of a page
-    * `height`: in pixels or percent of a page
-    * `padding`: how much space should be left inside an element
-    * `margin`: how much space should be left outside an element
-    * `font-family`: type of font for text on page
-    * `font-size`: in pixels
-    * `border`: size type (solid, dashed, etc) color
+  * `color`: the color of text
+  * `text-align`: where elements are placed on the page
+  * `background-color`: can be set to any color
+  * `width`: in pixels or percent of a page
+  * `height`: in pixels or percent of a page
+  * `padding`: how much space should be left inside an element
+  * `margin`: how much space should be left outside an element
+  * `font-family`: type of font for text on page
+  * `font-size`: in pixels
+  * `border`: size type (solid, dashed, etc) color
 * Let’s use some of what we just learned to improve upon our oceans table from above. Here’s some HTML to start us off:
   ```html
   <!DOCTYPE html>
@@ -270,10 +253,10 @@ title: Lecture 2
               </tbody>
           </table>
       </body>
-  <html>
+  </html>
   ```
 
-  ![table bad](https://cs50.harvard.edu/web/2020/notes/0/images/table0.png)
+  <iframe src="src/table-bad.html"></iframe>
 
 * The above looks a lot like what we had before, but now, either by including a `style` tag or a `link` to a stylesheet in the head element, we add the following css:
   ```css
@@ -294,7 +277,7 @@ title: Lecture 2
   ```
   Which leaves us with this nicer-looking table:  
 
-  ![table good](https://cs50.harvard.edu/web/2020/notes/0/images/table1.png)
+  <iframe src="src/table-good.html"></iframe>
 
 * You may already be thinking that there’s some needless repetition in our CSS at the moment, as `td` and `th` have the same styling. We can (and should) condense this down to the following code, using a comma to show the styling should apply to more than one element type.
   ```css
@@ -310,323 +293,210 @@ title: Lecture 2
   ```
 
 * This is a good introduction into what are known as [CSS selectors](https://www.w3schools.com/cssref/css_selectors.asp). There are many ways to determine which HTML elements you are styling, some of which we’ll mention here:
-    * **element type**: this is what we’ve been doing so far: styling all elements of the same type.
-    * **id**: Another option is to give our HTML elements an id like so: `<h1 id="first-header">Hello!</h1>` and then applying styling using `#first-header{...}` using the hashtag to show that we’re searching by id. Importantly, no two elements can have the same id, and no element can have more than one id.
-    * **class**: This is similar to id, but a class can be shared by more than one element, and a single element can have more than one class. We add classes to an HTML element like this: `<h1 class="page-text muted">Hello!</h1>` (note that we just added two classes to the element: `page-text` and `muted`). We then style based on class using a period instead of a hashtag: `.muted {...}`
+  * **element type**: this is what we’ve been doing so far: styling all elements of the same type.
+  * **id**: Another option is to give our HTML elements an id like so: `<h1 id="first-header">Hello!</h1>` and then applying styling using `#first-header{...}` using the hashtag to show that we’re searching by id. Importantly, no two elements can have the same id, and no element can have more than one id.
+  * **class**: This is similar to id, but a class can be shared by more than one element, and a single element can have more than one class. We add classes to an HTML element like this: `<h1 class="page-text muted">Hello!</h1>` (note that we just added two classes to the element: `page-text` and `muted`). We then style based on class using a period instead of a hashtag: `.muted {...}`
 * Now, we also have to deal with the problem of potentially conflicting CSS. What happens when a header should be red based on its class but blue based on its id? CSS has a specificity order that goes:
     1. In-line styling
     2. id
     3. class
     4. element type
-* In addition to the comma for multiple selectors, there are several other ways to specify which elements you would like to style. This table from lecture provides a few, and we’ll go through a few examples below:
+* In addition to the comma for multiple selectors, there are several other ways to specify which elements you would like to style:  
+  ```css  
 
-![selectors](https://cs50.harvard.edu/web/2020/notes/0/images/selectors.png)
+  /* Universal Selector - Applies to all elements */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-**Descendant Selector**: Here, we use the descendant selector to only apply styling to list items found within an unordered list:
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Using Selectors</title>
-        <style>
-            ul li {
-                color: blue;
-            }
-        </style>
-    </head>
-    <body>
-        <ol>
-            <li>foo</li>
-            <li> bar
-                <ul>
-                    <li>hello</li>
-                    <li>goodbye</li>
-                    <li>hello</li>
-                </ul>
-            </li>
-            <li>baz</li>
-        </ol>
+  /* Type Selector - Applies to all <p> elements */
+  p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+  }
 
-    </body>
-<html>
-```
+  /* Class Selector - Applies to elements with class="highlight" */
+  .highlight {
+      background-color: yellow;
+      font-weight: bold;
+  }
 
-![list selector](https://cs50.harvard.edu/web/2020/notes/0/images/selectors0.png)
+  /* ID Selector - Applies to the element with id="header" */
+  #header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+  }
 
-**Attributes as Selectors**: We can also narrow down our selection based on the attributes we assign to HTML elements using brackets. For example, in the following list of links, we choose to only make the link to Amazon red:
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Using Selectors</title>
-        <style>
-            a[href="https://www.amazon.com/"] {
-                color: red;
-            }
-        </style>
-    </head>
-    <body>
-        <ol>
-            <li><a href="https://www.google.com/">Google</a></li>
-            <li><a href="https://www.amazon.com/">Amazon</a> </li>
-            <li><a href="https://www.facebook.com/">Facebook</a></li>
-        </ol>
+  /* Attribute Selector - Applies to <a> elements with a target attribute */
+  a[target] {
+      color: red;
+      text-decoration: none;
+  }
 
-    </body>
-<html>
-```
+  /* Pseudo-class Selector - Applies to <a> elements when hovered */
+  a:hover {
+      color: #FF5733;
+      text-decoration: underline;
+  }
 
-![link selectors](https://cs50.harvard.edu/web/2020/notes/0/images/selectors2.png)
+  /* Pseudo-element Selector - Applies to the first line of <p> elements */
+  p::first-line {
+      font-weight: bold;
+      color: #000;
+  }
 
-* Not only can we use CSS to change what an element looks like permanently, but also what it looks like under certain conditions. For example, what if we wanted a button to change color when we hover over it? We can achieve this using a [CSS pseudoclass](https://www.w3schools.com/css/css_pseudo_classes.asp), which provides additional styling during special circumstances. We write this by adding a colon after our selector, and then adding the circumstance after that colon.
-* In the case of the button, we would add `:hover` to the button selector to specify the design only when hovering:
+  /* Descendant Selector - Applies to <li> elements inside <ul> */
+  ul li {
+      list-style-type: square;
+      margin-left: 20px;
+  }
+
+  /* Child Selector - Applies to <li> elements that are direct children of <ul> */
+  ul > li {
+      color: #555;
+  }
+
+  /* Adjacent Sibling Selector - Applies to <p> elements immediately following <h1> */
+  h1 + p {
+      margin-top: 0;
+      font-style: italic;
+  }
+
+  /* General Sibling Selector - Applies to all <p> elements that are siblings of <h1> */
+  h1 ~ p {
+      color: #777;
+  }
+
+  /* Grouping Selector - Applies to <h1>, <h2>, and <h3> elements */
+  h1, h2, h3 {
+      font-family: 'Arial', sans-serif;
+      color: #2C3E50;
+  }
+
+  /* Combining Selectors - Applies to <a> elements with class="button" */
+  a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498DB;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+  }
+
+  /* :nth-child() Pseudo-class - Applies to every odd <li> element */
+  li:nth-child(odd) {
+      background-color: #f9f9f9;
+  }
+
+  /* :not() Pseudo-class - Applies to all <p> elements that do not have class="special" */
+  p:not(.special) {
+      opacity: 0.8;
+  }
+  ```
+
+* Utilizing the power of VSCode, we could hover over a CSS selector to see which elements it’s affecting. This can be very helpful when you’re trying to figure out why a certain element is styled a certain way.
+
+  ![hover](./images/hover.webp)
+
+## CSS's Box Model
+
+* The box model of CSS is essential to understand when working layout and design. It consists of four parts:
+  * **Content**: The actual content of the box, where text and images appear.
+  * **Padding**: Clears an area around the content. The padding is transparent.
+  * **Border**: A border that goes around the padding and content.
+  * **Margin**: Clears an area outside the border. The margin is transparent.
+
+  ![Box Model](./images/box-model.webp)
+
+* The code below could show it better:
+
   ```html
   <!DOCTYPE html>
   <html lang="en">
-      <head>
-          <title>Pseudoclasses</title>
-          <style>
-              button {
-                  background-color: red;
-                  width: 200px;
-                  height: 50px;
-                  font-size: 24px;
-              }
-
-              button:hover {
-                  background-color: green;
-              }
-          </style>
-      </head>
-      <body>
-          <button>Button 1</button>
-          <button>Button 2</button>
-          <button>Button 3</button>
-
-      </body>
-  <html>
-  ```
-  ![buttons](https://cs50.harvard.edu/web/2020/notes/0/images/buttons.gif)
-
-## Responsive Design
-
-* Today, many people view websites on devices other than computers, such as smartphones and tablets. It’s important to make sure your website is readable to people on all devices.
-* One way we can achieve this is through knowledge of the **viewport**. The viewport is the part of the screen that is actually visible to the user at any given time. By default, many webpages assume that the viewport is the same on any device, which is what leads to many sites (especially older ones) being difficult to interact with on mobile devices.
-* One simple way to improve the appearance of a site on a mobile device is to add the following line in the head of our HTML files. This line tells the mobile device to use a viewport that is the same width as that of the device you’re using rather than a much larger one.
-  ```html
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  ```
-
-* Another way we can deal with different devices is through [media queries](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp). Media queries are ways of changing the style of a page based on how the page is being viewed.
-* For an example of a media query, let’s try to simply change the color of the screen when it shrinks down to a certain size. We signal a media query by typing `@media` followed by the type of query in parentheses:
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-      <head>
-          <title>Screen Size</title>
-          <style>
-              @media (min-width: 600px) {
-                  body {
-                      background-color: red;
-                  }
-              }
-
-              @media (max-width: 599px) {
-                  body {
-                      background-color: blue;
-                  }
-              }
-          </style>
-      </head>
-      <body>
-          <h1>Welcome to the page!</h1>
-      </body>
-  </html>
-  ```
-  ![screen size](https://cs50.harvard.edu/web/2020/notes/0/images/responsive0.gif)
-
-* Another way to deal with differing screen size is using a new CSS attribute known as a [flexbox](https://www.w3schools.com/css/css3_flexbox.asp). This allows us to easily have elements wrap around to the next line if they don’t fit horizontally. We do this by putting all of our elements in a `div` that we’ll call our container. We then add some styling to that div specifying that we want to use a flexbox display for the elements inside of it. We’ve also added some additional styling to the inner divs to better illustrate the wrapping that’s occurring here.
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-      <head>
-          <title>Screen Size</title>
-          <style>
-              #container {
-                  display: flex;
-                  flex-wrap: wrap;
-              }
-
-              #container > div {
-                  background-color: green;
-                  font-size: 20px;
-                  margin: 20px;
-                  padding: 20px;
-                  width: 200px;
-              }
-          </style>
-      </head>
-      <body>
-          <div id="container">
-              <div>Some text 1!</div>
-              <div>Some text 2!</div>
-              <div>Some text 3!</div>
-              <div>Some text 4!</div>
-              <div>Some text 5!</div>
-              <div>Some text 6!</div>
-              <div>Some text 7!</div>
-              <div>Some text 8!</div>
-              <div>Some text 9!</div>
-              <div>Some text 10!</div>
-              <div>Some text 11!</div>
-              <div>Some text 12!</div>
-          </div>
-      </body>
-  </html>
-  ```
-  ![flexbox](https://cs50.harvard.edu/web/2020/notes/0/images/flexbox.gif)
-
-* Another popular way of styling a page is using an HTML [grid](https://www.w3schools.com/css/css_grid.asp). In this grid, we can specify style attributes such as column widths and gaps between columns and rows, as demonstrated below. Note that when we specify column widths, we say the third one is `auto`, meaning it should fill the rest of the page.
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-      <head>
-          <title>My Web Page!</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <style>
-              .grid {
-                  background-color: green;
-                  display: grid;
-                  padding: 20px;
-                  grid-column-gap: 20px;
-                  grid-row-gap: 10px;
-                  grid-template-columns: 200px 200px auto;
-              }
-
-              .grid-item {
-                  background-color: white;
-                  font-size: 20px;
-                  padding: 20px;
-                  text-align: center;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="grid">
-              <div class="grid-item">1</div>
-              <div class="grid-item">2</div>
-              <div class="grid-item">3</div>
-              <div class="grid-item">4</div>
-              <div class="grid-item">5</div>
-              <div class="grid-item">6</div>
-              <div class="grid-item">7</div>
-              <div class="grid-item">8</div>
-              <div class="grid-item">9</div>
-              <div class="grid-item">10</div>
-              <div class="grid-item">11</div>
-              <div class="grid-item">12</div>
-          </div>
-      </body>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>CSS Box Model Demo with Two Boxes</title>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <div class="box box1">
+                Box 1
+            </div>
+            <div class="box box2">
+                Box 2
+            </div>
+        </body>
   </html>
   ```
 
-  ![grid](https://cs50.harvard.edu/web/2020/notes/0/images/grid.gif)
+  ```css
 
-## Bootstrap
+  /* Reset default margin and padding */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-* It turns out that there are many libraries that other people have already written that can make the styling of a webpage even simpler. One popular library that we’ll use throughout the course is known as [bootstrap](https://getbootstrap.com/).
-* We can include bootstrap in our code by adding a single line to the head of our HTML file:
-  ```html
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+  }
+
+  /* Common styles for both boxes */
+  .box {
+      width: 200px; /* Content width */
+      height: 100px; /* Content height */
+      padding: 20px; /* Space between content and border */
+      border: 10px solid #3498db; /* Border around the padding */
+      margin: 30px; /* Space outside the border */
+      background-color: #e74c3c; /* Background color of the content area */
+      color: white; /* Text color */
+      text-align: center;
+      line-height: 100px; /* Vertically center text */
+      position: relative; /* For pseudo-elements */
+  }
+
+  /* Box 1 specific styles */
+  .box1 {
+      background-color: #e74c3c; /* Red background */
+      border: 5px solid #3498db; /* Border around the padding */
+      margin-bottom: 100px; /* Margin at the bottom */
+  }
+
+  /* Box 2 specific styles */
+  .box2 {
+      background-color: #2ecc71; /* Green background */
+      border: 10px solid #3498db; /* Border around the padding */
+  }
+
+  /* Optional: Add a visual guide for the box model */
+  .box::before {
+      content: 'Margin Area';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: calc(100% + 60px);
+      height: calc(100% + 60px);
+      border: 2px dashed #000;
+      pointer-events: none;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: calc(100px + 60px);
+      color: #000;
+      font-size: 14px;
+      opacity: 0.7;
+  }
   ```
+  <iframe src="src/box-model.html"></iframe>
 
-* Next, we can look at some of bootstrap’s features by navigating to the [documentation](https://getbootstrap.com/docs/4.5/components/) portion of their website. On this page, you’ll find many examples of classes you can add to elements that allow them to be styled with bootstrap.
-* One popular bootstrap feature is their [grid system](https://getbootstrap.com/docs/4.0/layout/grid/). Bootstrap automatically splits a page into 12 columns, and we can decide how many columns an element takes up by adding the class `col-x` where `x` is a number between 1 and 12. For example, in the following page, we have a row of columns of equal width, and then a row where the center column is larger:
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-      <head>
-          <title>My Web Page!</title>
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-          <style>
-              .row > div {
-                  padding: 20px;
-                  background-color: teal;
-                  border: 2px solid black;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="row">
-                  <div class="col-4">
-                      This is a section.
-                  </div>
-                  <div class="col-4">
-                      This is another section.
-                  </div>
-                  <div class="col-4">
-                      This is a third section.
-                  </div>
-              </div>
-          </div>
-          <br/>
-          <div class="container">
-              <div class="row">
-                  <div class="col-3">
-                      This is a section.
-                  </div>
-                  <div class="col-6">
-                      This is another section.
-                  </div>
-                  <div class="col-3">
-                      This is a third section.
-                  </div>
-              </div>
-          </div>
-      </body>
-  </html>
-  ```
-
-  ![columns](https://cs50.harvard.edu/web/2020/notes/0/images/cols1.gif)
-
-* To improve mobile-responsiveness, bootstrap also allows us to specify column sizes that differ depending on the screen size. In the following example, we use `col-lg-3` to show that an element should take up 3 columns on a large screen, and `col-sm-6` to show an element should take up 6 columns when the screen is small:
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-      <head>
-          <title>My Web Page!</title>
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-          <style>
-              .row > div {
-                  padding: 20px;
-                  background-color: teal;
-                  border: 2px solid black;
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-3 col-sm-6">
-                      This is a section.
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                      This is another section.
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                      This is a third section.
-                  </div>
-                  <div class="col-lg-3 col-sm-6">
-                      This is a fourth section.
-                  </div>
-              </div>
-          </div>
-      </body>
-  </html>
-  ```
-
-  ![wrap columns](https://cs50.harvard.edu/web/2020/notes/0/images/cols2.gif)
 
 ## Sass (Syntactically Awesome Style Sheets)
 
@@ -705,13 +575,13 @@ title: Lecture 2
   }
   ```
 
-  ![inheritance](https://cs50.harvard.edu/web/2020/notes/0/images/inherit.png)
+  <iframe src="src/inheritance.html"></iframe>
 
 ## JavaScript
 
 Let’s begin by revisiting a diagram from a couple of lectures ago:
 
-![Client Server Diagram](https://cs50.harvard.edu/web/2020/notes/5/images/client_server.png)
+![Client Server Diagram](./images/client_server.webp)
 
 Recall that in most online interactions, we have a client/user that sends an HTTP Request to a server, which sends back an HTTP Response. All of the Python code we’ve written so far using Django has been running on a server. JavaScript will allow us to run code on the client side, meaning no interaction with the server is necessary while it’s running, allowing our websites to become much more interactive.
 
@@ -738,7 +608,7 @@ The `alert` function in JavaScript displays a message to the user which they can
 </html>
 ```
 
-![alert](https://cs50.harvard.edu/web/2020/notes/5/images/alert0.png)
+![alert](./images/alert0.webp)
 
 ## Events
 
@@ -762,7 +632,10 @@ Now, let’s work on running this function whenever a button is clicked. To do t
 <button onclick="hello()">Click Here</button>
 ```
 
-These changes allow us to wait to run parts of our JavaScript code until a certain event occurs.
+These changes allow us to wait to run parts of our JavaScript code until a certain event occurs:
+
+<iframe src="src/alert.html"></iframe>
+
 
 ## Variables
 
@@ -808,7 +681,7 @@ For an example of how we can use a variable, let’s take a look at a page that 
 </html>
 ```
 
-![counting](https://cs50.harvard.edu/web/2020/notes/5/images/count.gif)
+<iframe src="src/counting.html"></iframe>
 
 ## `querySelector`
 
@@ -850,7 +723,7 @@ Just as in Python, we can also take advantage of [conditions](https://www.w3scho
 </html>
 ```
 
-![toggle](https://cs50.harvard.edu/web/2020/notes/5/images/toggle.gif)
+<iframe src="src/toggle.html"></iframe>
 
 ## DOM Manipulation
 
@@ -876,7 +749,7 @@ Let’s use this idea of DOM manipulation to improve our counter page:
 </html>
 ```
 
-![count 2](https://cs50.harvard.edu/web/2020/notes/5/images/count2.gif)
+<iframe src="src/dom-manipulate.html"></iframe>
 
 We can make this page even more interesting by displaying an alert every time the counter gets to a multiple of ten. In this alert, we’ll want to format a string to customize the message, which in JavaScript we can do using [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Template literals require that there are backticks (`` ` ``) around the entire expression and a $ and curly braces around any substitutions. For example, let’s change our count function
 
@@ -891,7 +764,7 @@ function count() {
 }
 ```
 
-![count with alert](https://cs50.harvard.edu/web/2020/notes/5/images/count3.gif)
+<iframe src="src/count-alert.html"></iframe>
 
 Now, let’s look at some ways in which we can improve the design of this page. First, just as we try to avoid in-line styling with CSS, we want to avoid in-line JavaScript as much as possible. We can do this in our counter example by adding a line of script that changes the `onclick` attribute of a button on the page, and removing the `onclick` attribute from within the `button` tag.
 
@@ -903,7 +776,7 @@ One thing to notice about what we’ve just done is that we’re not calling the
 
 The above change alone is not enough though, as we can see by inspecting the page and looking at our browser’s console:
 
-![error console](https://cs50.harvard.edu/web/2020/notes/5/images/error0.png)
+![error console](./images/error0.webp)
 
 This error came up because when JavaScript searched for an element using `document.querySelector('button')`, it didn’t find anything. This is because it takes a small bit of time for the page to load, and our JavaScript code ran before the button had been rendered. To account for this, we can specify that code will run only after the page has loaded using the [addEventListener](https://www.w3schools.com/jsref/met_document_addeventlistener.asp) function. This function takes in two arguments:
 
@@ -977,6 +850,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 ```
 
+<iframe src="src/counter.html"></iframe>
+
+
 Having JavaScript in a separate file is useful for a number of reasons:
 
 * Visual appeal: Our individual HTML and JavaScript files become more readable.
@@ -989,27 +865,27 @@ Let’s get started on another example of a page that can be a bit more interact
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Hello</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('form').onsubmit = function() {
-                const name = document.querySelector('#name').value;
-                alert(`Hello, ${name}`);
-            };
-        });
-    </script>
-</head>
-<body>
-    <form>
-        <input autofocus id="name" placeholder="Name" type="text">
-        <input type="submit">
-    </form>
-</body>
+    <head>
+        <title>Hello</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('form').onsubmit = function() {
+                    const name = document.querySelector('#name').value;
+                    alert(`Hello, ${name}`);
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <input autofocus id="name" placeholder="Name" type="text">
+            <input type="submit">
+        </form>
+    </body>
 </html>
 ```
 
-![Greeting Demo](https://cs50.harvard.edu/web/2020/notes/5/images/greet.gif)
+<iframe src="src/greet.html"></iframe>
 
 Some notes about the page above:
 
@@ -1022,28 +898,28 @@ We can do more than just add HTML to our page using JavaScript, we can also chan
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <title>Colors</title>
-     <script>
-         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('button').forEach(function(button) {
-                button.onclick = function() {
-                    document.querySelector("#hello").style.color = button.dataset.color;
-                }
+    <head>
+        <title>Colors</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('button').forEach(function(button) {
+                    button.onclick = function() {
+                        document.querySelector("#hello").style.color = button.dataset.color;
+                    }
+                });
             });
-         });
-     </script>
-</head>
-<body>
-    <h1 id="hello">Hello</h1>
-    <button data-color="red">Red</button>
-    <button data-color="blue">Blue</button>
-    <button data-color="green">Green</button>
-</body>
+        </script>
+    </head>
+    <body>
+        <h1 id="hello">Hello</h1>
+        <button data-color="red">Red</button>
+        <button data-color="blue">Blue</button>
+        <button data-color="green">Green</button>
+    </body>
 </html>
 ```
 
-![Color demo](https://cs50.harvard.edu/web/2020/notes/5/images/colors.gif)
+<iframe src="src/colors.html"></iframe>
 
 Some notes on the page above:
 
@@ -1056,13 +932,13 @@ Some notes on the page above:
 
 The console is a useful tool for testing out small bits of code and debugging. You can write and run JavaScript code in the console, which can be found by inspecting element in your web browser and then clicking `console`. (The exact process may change from browser to browser.) One useful tool for debugging is printing to the console, which you can do using the `console.log` function. For example, in the `colors.html` page above, I can add the following line:
 
-```
+```js
 console.log(document.querySelectorAll('button'));
 ```
 
 Which gives us this in the console:
 
-![node list](https://cs50.harvard.edu/web/2020/notes/5/images/consoleList.png)
+![node list](./images/consoleList.webp)
 
 ### Arrow Functions
 
@@ -1119,7 +995,7 @@ To get an idea about some other events we can use, let’s see how we can implem
 </html>
 ```
 
-![colors with dropdown](https://cs50.harvard.edu/web/2020/notes/5/images/colors2.gif)
+<iframe src="src/colors-dropdown.html"></iframe>
 
 There are many other [events](https://www.w3schools.com/js/js_events.asp) we can detect in JavaScript including the common ones below:
 
@@ -1130,304 +1006,3 @@ There are many other [events](https://www.w3schools.com/js/js_events.asp) we can
 * `onload`
 * `onblur`
 * …
-
-### TODO List
-
-To put together a few of the things we’ve learned in this lecture, let’s work on making a TODO list entirely in JavaScript. We’ll start by writing the HTML layout of the page. Notice below how we leave space for an unordered list, but we don't yet add anything to it. Also notice that we add a link to `tasks.js` where we’ll write our JavaScript.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Tasks</title>
-        <script src="tasks.js"></script>
-    </head>
-    <body>
-        <h1>Tasks</h1>
-        <ul id="tasks"></ul>
-        <form>
-            <input id="task" placeholder = "New Task" type="text">
-            <input id="submit" type="submit">
-        </form>
-    </body>
-</html>
-```
-
-Now, here’s our code which we can keep in `tasks.js`. A few notes on what you’ll see below:
-
-* This code is slightly different from the code in lecture. Here, we only query for our submit button and input task field once in the beginning and store those two values in the variables `submit` and `newTask`.
-* We can enable/disable a button by setting its `disabled` attribute to `false`/`true`.
-* In JavaScript, we use `.length` to find the length of objects such as strings and arrays.
-* At the end of the script, we add the line `return false`. This prevents the default submission of the form which involves either reloading the current page or redirecting to a new one.
-* In JavaScript, we can create HTML elements using the [createElement](https://www.w3schools.com/jsref/met_document_createelement.asp) function. We can then add those elements to the DOM using the `append` function.
-
-```js
-// Wait for page to load
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Select the submit button and input to be used later
-    const submit = document.querySelector('#submit');
-    const newTask = document.querySelector('#task');
-
-    // Disable submit button by default:
-    submit.disabled = true;
-
-    // Listen for input to be typed into the input field
-    newTask.onkeyup = () => {
-        if (newTask.value.length > 0) {
-            submit.disabled = false;
-        }
-        else {
-            submit.disabled = true;
-        }
-    }
-
-    // Listen for submission of form
-    document.querySelector('form').onsubmit = () => {
-
-        // Find the task the user just submitted
-        const task = newTask.value;
-
-        // Create a list item for the new task and add the task to it
-        const li = document.createElement('li');
-        li.innerHTML = task;
-
-        // Add new element to our unordered list:
-        document.querySelector('#tasks').append(li);
-
-        // Clear out input field:
-        newTask.value = '';
-
-        // Disable the submit button again:
-        submit.disabled = true;
-
-        // Stop form from submitting
-        return false;
-    }
-});
-```
-
-![Tasks demo](https://cs50.harvard.edu/web/2020/notes/5/images/tasks.gif)
-
-## Intervals
-
-In addition to specifying that functions run when an event is triggered, we can also set functions to run after a set amount of time. For example, let’s return to our counter page’s script, and add an interval so even if the user doesn’t click anything, the counter increments every second. To do this, we use the [setInterval](https://www.w3schools.com/jsref/met_win_setinterval.asp) function, which takes as argument a function to be run, and a time (in milliseconds) between function runs.
-
-```js
-let counter = 0;
-            
-function count() {
-    counter++;
-    document.querySelector('h1').innerHTML = counter;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('button').onclick = count;
-
-    setInterval(count, 1000);
-});
-```
-
-![count auto](https://cs50.harvard.edu/web/2020/notes/5/images/count4.gif)
-
-## Local Storage
-
-One thing to notice about all of our sites so far is that every time we reload the page, all of our information is lost. The heading color goes back to black, the counter goes back to 0, and all of the tasks are erased. Sometimes this is what we intend, but other time’s we’ll want to be able to store information that we can use when a user returns to the site.
-
-One way we can do this is by using [Local Storage](https://www.w3schools.com/jsref/prop_win_localstorage.asp), or storing information on the user’s web browser that we can access later. This information is stored as a set of key-value pairs, almost like a Python dictionary. In order to use local storage, we’ll employ two key functions:
-
-* `localStorage.getItem(key)`: This function searches for an entry in local storage with a given key, and returns the value associated with that key.
-* `localStorage.setItem(key, value)`: This function sets and entry in local storage, associating the key with a new value.
-
-Let’s look at how we can use these new functions to update our counter! In the code below,
-
-```js
-// Check if there is already a value in local storage
-if (!localStorage.getItem('counter')) {
-
-    // If not, set the counter to 0 in local storage
-    localStorage.setItem('counter', 0);
-}
-            
-function count() {
-    // Retrieve counter value from local storage
-    let counter = localStorage.getItem('counter');
-
-    // update counter
-    counter++;
-    document.querySelector('h1').innerHTML = counter;
-
-    // Store counter in local storage
-    localStorage.setItem('counter', counter);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Set heading to the current value inside local storage
-    document.querySelector('h1').innerHTML = localStorage.getItem('counter');
-    document.querySelector('button').onclick = count;
-});
-```
-
-## APIs
-
-### JavaScript Objects
-
-A [JavaScript Object](https://www.w3schools.com/js/js_objects.asp) is very similar to a Python dictionary, as it allows us to store key-value pairs. For example, I could create a JavaScript Object representing Harry Potter:
-
-```js
-let person = {
-    first: 'Harry',
-    last: 'Potter'
-};
-```
-
-I can then access or change parts of this object using either bracket or dot notation:
-
-![Harry Potter](https://cs50.harvard.edu/web/2020/notes/5/images/console.png)
-
-One way in which JavaScript Objects are really useful is in transferring data from one site to another, particularly when using [APIs](https://www.mulesoft.com/resources/api/what-is-an-api)
-
-An API, or Application Programming Interface, is a structured form communication between two different applications.
-
-For example, we may want our application to get information from Google Maps, Amazon, or some weather service. We can do this by making calls to a service’s API, which will return structured data to us, often in [JSON](https://www.w3schools.com/js/js_json_intro.asp) (JavaScript Object Notation) form. For example, a flight in JSON form might look like this:
-
-```json
-{
-    "origin": "New York",
-    "destination": "London",
-    "duration": 415
-}
-```
-
-The values within a JSON do not have to just be strings and numbers as in the example above. We can also store lists, or even other JavaScript Objects:
-
-```json
-{
-    "origin": {
-        "city": "New York",
-        "code": "JFK"
-    },
-    "destination": {
-        "city": "London",
-        "code": "LHR"
-    },
-    "duration": 415
-}
-```
-
-### Currency Exchange
-
-To show how we can use APIs in our applications, let’s work on building an application where we can find exchange rates between two currencies. Throughout the exercise, we’ll be using the [European Central Bank’s Exchange Rate API](https://exchangeratesapi.io). By visiting their website, you’ll see the API’s documentation, which is generally a good place to start when you wish to use an API. We can test this api by visiting the URL: [https://api.exchangeratesapi.io/latest?base=USD](https://api.exchangeratesapi.io/latest?base=USD). When you visit this page, you’ll see the exchange rate between the U.S. Dollar and many other currencies, written in JSON form. You can also change the GET parameter in the URL from `USD` to any other currency code to change the rates you get.
-
-Let’s take a look at how to implement this API into an application by creating a new HTML file called `currency.html` and link it to a JavaScript file but leave the body empty:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Currency Exchange</title>
-        <script src="currency.js"></script>
-    </head>
-    <body></body>
-</html>
-```
-
-Now, we’ll use something called [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp), or Asynchronous JavaScript And XML, which allows us to access information from external pages even after our page has loaded. In order to do this, we’ll use the [fetch](https://javascript.info/fetch) function which will allow us to send an HTTP request. The `fetch` function returns a [promise](https://web.dev/promises/). We won’t talk about the details of what a promise is here, but we can think of it as a value that will come through at some point, but not necessarily right away. We deal with promises by giving them a `.then` attribute describing what should be done when we get a `response`. The code snippet below will log our response to the console.
-
-```js
-document.addEventListener('DOMContentLoaded', function() {
-    // Send a GET request to the URL
-    fetch('https://api.exchangeratesapi.io/latest?base=USD')
-    // Put response into json form
-    .then(response => response.json())
-    .then(data => {
-        // Log data to the console
-        console.log(data);
-    });
-});
-```
-
-![Currency log](https://cs50.harvard.edu/web/2020/notes/5/images/curr_log.png)
-
-One important point about the above code is that the argument of `.then` is always a function. Although it seems we are creating the variables `response` and and `data`, those variables are just the parameters of two anonymous functions.
-
-Rather than simply logging this data, we can use JavaScript to display a message to the screen, as in the code below:
-
-```js
-document.addEventListener('DOMContentLoaded', function() {
-    // Send a GET request to the URL
-    fetch('https://api.exchangeratesapi.io/latest?base=USD')
-    // Put response into json form
-    .then(response => response.json())
-    .then(data => {
-
-        // Get rate from data
-        const rate = data.rates.EUR;
-
-        // Display message on the screen
-        document.querySelector('body').innerHTML = `1 USD is equal to ${rate.toFixed(3)} EUR.`;
-    });
-});
-```
-
-![Currency](https://cs50.harvard.edu/web/2020/notes/5/images/exhange.png)
-
-Now, let’s make the site a bit more interactive by allowing the user to choose which currency they would like to see. We’ll start by altering our HTML to allow the user to input a currency:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Currency Exchange</title>
-        <script src="currency.js"></script>
-    </head>
-    <body>
-        <form>
-            <input id="currency" placeholder="Currency" type="text">
-            <input type="submit" value="Convert">
-        </form>
-        <div id="result"></div>
-    </body>
-</html>
-```
-
-Now, we’ll make some changes to our JavaScript so it only changes when the form is submitted, and so it takes into account the user’s input. We’ll also add some error checking here:
-
-```js
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('form').onsubmit = function() {
-
-        // Send a GET request to the URL
-        fetch('https://api.exchangeratesapi.io/latest?base=USD')
-        // Put response into json form
-        .then(response => response.json())
-        .then(data => {
-            // Get currency from user input and convert to upper case
-            const currency = document.querySelector('#currency').value.toUpperCase();
-
-            // Get rate from data
-            const rate = data.rates[currency];
-
-            // Check if currency is valid:
-            if (rate !== undefined) {
-                // Display exchange on the screen
-                document.querySelector('#result').innerHTML = `1 USD is equal to ${rate.toFixed(3)} ${currency}.`;
-            }
-            else {
-                // Display error on the screen
-                document.querySelector('#result').innerHTML = 'Invalid Currency.';
-            }
-        })
-        // Catch any errors and log them to the console
-        .catch(error => {
-            console.log('Error:', error);
-        });
-        // Prevent default submission
-        return false;
-    }
-});
-```
-
-![Echange demo](https://cs50.harvard.edu/web/2020/notes/5/images/exchange.gif)
-
-That’s all for this lecture! Next time, we’ll work on using JavaScript to create even more engaging user interfaces!
