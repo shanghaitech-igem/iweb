@@ -243,23 +243,17 @@ React simplifies the process of building complex UIs by breaking them down into 
 
 To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
 
-1. **Install Node.js and npm**: Ensure you have Node.js and npm installed. You can verify this by running:
+1. **Create a New React Project**: Use the following command to create a new React project:
    ```bash
-   node -v
-   npm -v
+   npx create-react-app@latest react-app
    ```
 
-2. **Create a New React Project**: Use the following command to create a new React project:
-   ```bash
-   npx create-react-app@latest react-app --force
-   ```
-
-3. **Navigate to the Project Directory**: Move into the newly created project directory:
+2. **Navigate to the Project Directory**: Move into the newly created project directory:
    ```bash
    cd react-app
    ```
 
-4. **Start the Development Server**: Run the development server to see your React app in action:
+3. **Start the Development Server**: Run the development server to see your React app in action:
    ```bash
    npm start
    ```
@@ -632,7 +626,7 @@ Finally, let's talk about using TypeScript with React.
 To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
 
 ```bash
-npx create-react-app@latest react-app-ts --template typescript --force
+npx create-react-app@latest react-app-ts --template typescript
 cd react-app-ts
 npm install @types/react @types/react-dom
 ```
