@@ -30,13 +30,83 @@ title: Lecture 4
   ```
   We will choose Sass, Typescript and MDX as the options.
 
-* After `gatsby-cli` has finished creating the project, we can navigate to the project folder and run the following command to start the development server:
+* After `gatsby-cli` has finished creating the project, we can navigate to the project folder and run the following command to switch to `pnpm`:
   ```bash
   cd gatsby-iweb
-  gatsby develop
+  rm -rf node_modules package-lock.json
+  pnpm install
+  pnpm update
   ```
 
+* To start the development server, we can run the following command:
+  ```bash
+  gatsby develop
+  ```
+  The development server will start at `http://localhost:8000/`. We can open this URL in a web browser to see the site:
+  ![The screen shot](./images/localhost-new-site.webp)
 
 
+## Structure of a Gatsby Project
+
+* A Gatsby project has a similar structure to a React project, but with some additional files and folders. The following is the structure of a Gatsby project:
+  ```bash
+  .
+  ├── README.md
+  ├── gatsby-config.ts
+  ├── node_modules
+  │   ├── @babel
+  │   ├── @types
+  │   ├── @typescript-eslint
+  |   ...
+  │   └── gatsby
+  ├── package.json
+  ├── pnpm-lock.yaml
+  ├── src
+  │   ├── images
+  │   │   └── icon.png
+  │   └── pages
+  │       ├── 404.tsx
+  │       └── index.tsx
+  └── tsconfig.json
+  ```
+
+  * The `README.md` file is a markdown file that contains the documentation of the project.
+  * The `gatsby-config.ts` file is a TypeScript file that contains the configuration of the Gatsby project, such as the site metadata, plugins, and other settings.
+  * The `src/pages` folder is a folder that contains the pages of the site. Each file in this folder represents a page of the site.
+    * For example, the `src/pages/hello.tsx` file represents the home page (`localhost:8000/hello`) of the site.
 
 
+## Creating a About Page
+
+* Let's create a new page called `about.tsx` in the `src/pages` folder. The content of the page will be as follows:
+  > It's crucial to export a default component, which will be used Gatsby to render the page.
+
+  ```tsx
+  import * as React from 'react'
+
+  const AboutPage: React.FC = () => (
+    <div>
+      <h1>About</h1>
+      <p>This is the about page.</p>
+    </div>
+  );
+
+  export default AboutPage;
+  ```
+
+* Gatsby lets us define a `<title>` and other [document metadata](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head) with the [Gatsby Head API](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/). We have to export a component called Head from our page template to apply the metadata. Adding such metadata helps search engines like Google to better understand our site.
+  > Don't forget to ex1ort the `Head` component so the external system can use it.
+
+  ```tsx
+  import * as React from 'react'
+
+  const AboutPage: React.FC = () => (
+    <div>
+      <h1>About</h1>
+      <p>This is the about page.</p>
+    </div>
+  );
+
+  export const Head = () => <title>About Me</title>
+  export default AboutPage;
+  ```
