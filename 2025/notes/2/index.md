@@ -173,45 +173,45 @@ title: Lecture 2
     
   * One way of doing this is to add your styling between `<style>` tags in the `head`. Inside these tags, we write which types of elements we want to be style, and the styling we wish to apply to them. For example:
       ```html
-        <html lang="en">
-        <!DOCTYPE html>
-        <head>
-            <title>Hello!</title>
-            <style>
-                h1 {
-                    color: blue;
-                    text-align: center;
-                }
-            </style>
-        </head>
-        <body>
-            <h1 >A Colorful Heading!</h1>
-            Hello, world!
-        </body>
-        </html>
+      <html lang="en">
+      <!DOCTYPE html>
+      <head>
+          <title>Hello!</title>
+          <style>
+              h1 {
+                  color: blue;
+                  text-align: center;
+              }
+          </style>
+      </head>
+      <body>
+          <h1 >A Colorful Heading!</h1>
+          Hello, world!
+      </body>
+      </html>
       ```
     
   * Another way is to include in a `<link>` element in your `head` with a link to a styles.css file that contains some styling. This means the HTML file would look like:
       ```html
-        <html lang="en">
-        <!DOCTYPE html>
-        <head>
-            <title>Hello!</title>
-            <link rel="stylesheet" href="styles.css">
-        </head>
-        <body>
-            <h1 >A Colorful Heading!</h1>
-            Hello, world!
-        </body>
-        </html>
+      <html lang="en">
+      <!DOCTYPE html>
+      <head>
+          <title>Hello!</title>
+          <link rel="stylesheet" href="styles.css">
+      </head>
+      <body>
+          <h1 >A Colorful Heading!</h1>
+          Hello, world!
+      </body>
+      </html>
       ```
     
     And our file called `styles.css` would look like:
       ```css
-        h1 {
-            color: blue;
-            text-align: center;
-        }
+      h1 {
+          color: blue;
+          text-align: center;
+      }
       ```
     
 * There are far too many CSS properties to go over here, but just like HTML elements, it’s typically easy to Google something along the lines of “change font to blue CSS” to get the result. Some of the most common ones though are:
