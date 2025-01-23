@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ref Demo</title>
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div>
+            <div id="root"></div>
+            <script type="text/babel">
+                function TextInputWithFocusButton() {
+                    const inputRef = React.useRef(null);
+
+                    const handleClick = () => {
+                        inputRef.current.focus();
+                    };
+
+                    return (
+                        <div>
+                            <input ref={inputRef} type="text" />
+                            <button onClick={handleClick}>Focus the input</button>
+                        </div>
+                    );
+                }
+                ReactDOM.render(<TextInputWithFocusButton />, document.getElementById("root"));
+            </script>
+        </div>
+    </body>
+
+</html>

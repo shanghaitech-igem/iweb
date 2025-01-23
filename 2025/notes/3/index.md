@@ -294,6 +294,9 @@ Here are some key features of React:
   </html>
   ```
 
+  <iframe src="src/basic.html"></iframe>
+
+
 * We have imported 3 JavaScript Packages:
     * React: Defines components and their behavior
     * ReactDOM: Takes React components and inserts them into the DOM
@@ -319,8 +322,9 @@ Components are the foundation of every React application. They allow you to brea
 
   Example:
   ```jsx
-  function Greeting({ name }) {
-    return <h1 className="greeting">Hello, {name}!</h1>;
+  function Greeting() {
+      let name = "Alice";
+      return <h1>Hello, {name}!</h1>;
   }
   ```
 
@@ -328,19 +332,20 @@ Components are the foundation of every React application. They allow you to brea
   React components can only return **one parent element**. If you need to return multiple elements, wrap them in a `div` or use a **React Fragment** (`<>...</>`):
   ```jsx
   function App() {
-    return (
-      <>
-        <Greeting name="Alice" />
-        <Greeting name="Bob" />
-      </>
-    );
+      return (
+          <div>
+              <Greeting />
+          </div>
+      );
   }
   ```
 
+  <iframe src="src/comp.html"></iframe>
 
-## Key Concepts in React
 
-React has a lots of concepts that you need to understand to build a React application. 
+## Key Features in React
+
+React has a lots of features that you need to understand to build a React application. 
 
 ### Props: Passing Data to Components
 
@@ -388,6 +393,7 @@ Props (short for "properties") are how you pass data from one component to anoth
     );
   }
   ```
+  <iframe src="src/props.html"></iframe>
 
 
 ### State: Managing Dynamic Data
@@ -398,7 +404,7 @@ State is how React manages data that changes over time. Unlike regular variables
   The `useState` hook is the most common way to manage state in functional components:
   ```jsx
   function Counter() {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = React.useState(0);
 
     return (
       <div>
@@ -408,26 +414,8 @@ State is how React manages data that changes over time. Unlike regular variables
     );
   }
   ```
+  <iframe src="src/state.html"></iframe>
 
-* **Controlled Components**  
-  Controlled components use state to manage form inputs:
-  ```jsx
-  function InputField() {
-    const [value, setValue] = useState('');
-
-    return (
-      <div>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Type something..."
-        />
-        <button onClick={() => setValue('')}>Clear</button>
-      </div>
-    );
-  }
-  ```
 
 
 ### Rendering and the Virtual DOM
@@ -448,7 +436,7 @@ React provides built-in event handlers like `onClick`, `onChange`, and `onSubmit
 * Example:
   ```jsx
   function Button() {
-    const [isDisabled, setIsDisabled] = useState(false);
+    const [isDisabled, setIsDisabled] = React.useState(false);
 
     const handleClick = () => {
       alert('Button clicked!');
@@ -462,6 +450,7 @@ React provides built-in event handlers like `onClick`, `onChange`, and `onSubmit
     );
   }
   ```
+  <iframe src="src/event.html"></iframe>
 
 
 ### Hooks: Extending Component Functionality
@@ -476,9 +465,9 @@ Hooks are functions that let you "hook into" React features like state and lifec
 * Example of `useEffect`:
   ```jsx
   function DataFetcher() {
-    const [data, setData] = useState(null);
+    const [data, setData] = React.useState(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
       fetch('https://api.example.com/data')
         .then((response) => response.json())
         .then((data) => setData(data));
@@ -487,6 +476,26 @@ Hooks are functions that let you "hook into" React features like state and lifec
     return <div>{data ? data.message : 'Loading...'}</div>;
   }
   ```
+  <iframe src="src/effect.html"></iframe>
+
+* Example of `useRef`:
+  ```jsx
+  function TextInputWithFocusButton() {
+    const inputRef = React.useRef(null);
+
+    const handleClick = () => {
+      inputRef.current.focus();
+    };
+
+    return (
+      <div>
+        <input ref={inputRef} type="text" />
+        <button onClick={handleClick}>Focus the input</button>
+      </div>
+    );
+  }
+  ```
+  <iframe src="src/ref.html"></iframe>
 
 
 ### Context: Sharing Data Across Components
@@ -497,8 +506,13 @@ Context allows you to pass data through the component tree without manually pass
   ```jsx
   const ThemeContext = React.createContext('light');
 
+  function Toolbar() {
+    const theme = React.useContext(ThemeContext);
+    return <div>Current theme: {theme}</div>;
+  }
+  
   function App() {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = React.useState('light');
 
     const toggleTheme = () => {
       setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
@@ -511,13 +525,8 @@ Context allows you to pass data through the component tree without manually pass
       </ThemeContext.Provider>
     );
   }
-
-  function Toolbar() {
-    const theme = useContext(ThemeContext);
-    return <div>Current theme: {theme}</div>;
-  }
-
   ```
+  <iframe src="src/context.html"></iframe>
 
 ### Portals: Rendering Outside the Component Tree
 
@@ -525,13 +534,11 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
 
 * Let's create a portal that renders a child component outside the parent div:
   ```jsx
-  import { createPortal } from 'react-dom';
-
   function MyComponent() {
     return (
-      <div style="{% raw %}{{ border: '2px solid black' }}{% endraw %}">
+      <div style={% raw %}{{ border: '2px solid black' }}{% endraw %}>
         <p>This child is placed in the parent div.</p>
-        {createPortal(
+        {ReactDOM.createPortal(
           <p>This child is placed in the document body.</p>,
           document.body
         )}
@@ -539,13 +546,12 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
     );
   }
   ```
+  <iframe src="src/portal.html"></iframe>
 
 * This feature is especially useful for creating modals, tooltips, and other UI elements that need to break out of the normal flow of the page:
   ```jsx
-  import { createPortal } from 'react-dom';
-
   function Modal({ children }) {
-    return createPortal(
+    return ReactDOM.createPortal(
       <div style={% raw %}{{ position: 'fixed', top: '20%', left: '50%', transform: 'translateX(-50%)', padding: '20px', background: 'white', border: '1px solid #ccc' }}{% endraw %}>
         {children}
       </div>,
@@ -554,7 +560,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
   }
 
   function App() {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = React.useState(false);
 
     return (
       <div>
@@ -569,6 +575,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
     );
   }
   ```
+  <iframe src="src/modal.html"></iframe>
 
   ## Purity of Function
 
@@ -618,6 +625,8 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
       );
   }  
   ```
+  <iframe src="src/purity.html"></iframe>
+
   When we reuse components, React reuses the compiled version of the component too, it won't compile the component again. So the `count` variable is shared among all the `Counter` components.
 
 
