@@ -345,7 +345,7 @@ Components are the foundation of every React application. They allow you to brea
   }
   ```
   
-* The `export` and `default` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, a error will be thrown:
+* The `export` and `default` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, the page becomes blank. By checking the developer tool's console, a error will be thrown:
   ```
   Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
   ```
