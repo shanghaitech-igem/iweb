@@ -20,7 +20,7 @@ Note that the following requirements are compulsory for the final project. **Any
     * Use [Sass](https://www.gatsbyjs.com/docs/how-to/styling/sass/) for styling
 
 3. **Content Management**
-    * Support [Markdown-based content](https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/) creation
+    * Support [MDX-based content](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/) creation
 
 4. **Project Management**
     * Use [Git](https://git-scm.com/) for version control
@@ -40,7 +40,7 @@ Note that the following requirements are compulsory for the final project. **Any
 1. **Gatsby Framework Implementation**
     * CDN image optimization
     * SEO (Search Engine Optimization)
-    * MDX processing
+    * Page Transition Animation
     * RSS feed generation
 
 2. **Content Management**
