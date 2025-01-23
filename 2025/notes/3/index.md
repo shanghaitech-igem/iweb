@@ -15,7 +15,7 @@ title: Lecture 3
 * To use Node.js, we need to install it following the instructions on its [official website](https://nodejs.org/en/download).
   ```bash
   # Download and install fnm:
-  curl -o- https://fnm.vercel.app/install | bash
+  curl -o* https://fnm.vercel.app/install | bash
 
   # Download and install Node.js:
   fnm install 22
@@ -220,6 +220,300 @@ title: Lecture 3
     }
     ```
 
-
 ## React
+
+React is a popular JavaScript library for building user interfaces, particularly for single-page applications (SPAs). It allows developers to create reusable UI components and manage the state of their applications efficiently. React is maintained by Meta (formerly Facebook) and a community of individual developers and companies.
+
+## Why React?
+
+React simplifies the process of building complex UIs by breaking them down into smaller, reusable components. Here are some key features of React:
+
+1. **Component-Based Architecture**: React applications are built using components, which are self-contained pieces of code that manage their own state and rendering. This makes the code modular and easier to maintain.
+2. **Declarative Syntax**: React uses a declarative approach to define how the UI should look based on the current state. This makes the code more predictable and easier to debug.
+3. **Virtual DOM**: React uses a virtual DOM to optimize rendering performance. Instead of directly manipulating the browser's DOM, React creates a lightweight copy (virtual DOM) and updates it efficiently before applying the changes to the actual DOM.
+4. **Strong Ecosystem**: React has a rich ecosystem of tools, libraries, and community support, making it easier to build modern web applications.
+
+## Setting Up a React Project
+
+To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
+
+1. **Install Node.js and npm**: Ensure you have Node.js and npm installed. You can verify this by running:
+   ```bash
+   node -v
+   npm -v
+   ```
+
+2. **Create a New React Project**: Use the following command to create a new React project:
+   ```bash
+   npx create-react-app my-react-app
+   ```
+   Replace `my-react-app` with the name of your project.
+
+3. **Navigate to the Project Directory**: Move into the newly created project directory:
+   ```bash
+   cd my-react-app
+   ```
+
+4. **Start the Development Server**: Run the development server to see your React app in action:
+   ```bash
+   npm start
+   ```
+   This will open your default web browser and load the React app at `http://localhost:3000`.
+
+
+## Components: The Building Blocks of React
+
+Components are the foundation of every React application. They allow you to break down your UI into reusable, self-contained pieces. Think of them like Lego blocks—you can use them over and over to build complex structures.
+
+* **What is a Component?**  
+  A React component is a JavaScript function that returns **JSX** (JavaScript XML), which looks like HTML but is actually JavaScript in disguise. For example:
+  ```jsx
+  function Greeting() {
+    return <h1>Hello, React!</h1>;
+  }
+  ```
+
+* **JSX vs. HTML**  
+  JSX is optional, but it’s the preferred way to write React components because it’s more readable than using `React.createElement`. However, JSX has some differences from HTML:
+  * Attributes are written in **camelCase** (e.g., `className` instead of `class`).
+  * You can embed dynamic JavaScript values using curly braces `{}`.
+
+  Example:
+  ```jsx
+  function Greeting({ name }) {
+    return <h1 className="greeting">Hello, {name}!</h1>;
+  }
+  ```
+
+* **Returning a Single Parent Element**  
+  React components can only return **one parent element**. If you need to return multiple elements, wrap them in a `div` or use a **React Fragment** (`<>...</>`):
+  ```jsx
+  function App() {
+    return (
+      <>
+        <Greeting name="Alice" />
+        <Greeting name="Bob" />
+      </>
+    );
+  }
+  ```
+
+
+## Key Concepts in React
+
+React has a lots of concepts that you need to understand to build a React application. 
+
+### Props: Passing Data to Components
+
+Props (short for "properties") are how you pass data from one component to another. They are read-only and make components reusable and dynamic.
+
+* **Using Props**  
+  To pass data to a component, you add custom attributes to it. For example:
+  ```jsx
+  function Greeting({ name }) {
+    return <h1>Hello, {name}!</h1>;
+  }
+
+  function App() {
+    return <Greeting name="Alice" />;
+  }
+  ```
+
+* **The `children` Prop**  
+  If you want to pass components or content between the opening and closing tags of a component, you can use the `children` prop:
+  ```jsx
+  function Card({ children }) {
+    return <div className="card">{children}</div>;
+  }
+
+  function App() {
+    return (
+      <Card>
+        <h1>Title</h1>
+        <p>Content goes here.</p>
+      </Card>
+    );
+  }
+  ```
+
+* **The `key` Prop**  
+  When rendering lists, React needs a way to uniquely identify each item. Use the `key` prop to provide a unique identifier:
+  ```jsx
+  function TodoList({ todos }) {
+    return (
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    );
+  }
+  ```
+
+
+### State: Managing Dynamic Data
+
+State is how React manages data that changes over time. Unlike regular variables, state triggers re-renders when it changes.
+
+* **Using `useState`**  
+  The `useState` hook is the most common way to manage state in functional components:
+  ```jsx
+  function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>Click me</button>
+      </div>
+    );
+  }
+  ```
+
+* **Controlled Components**  
+  Controlled components use state to manage form inputs. For example:
+  ```jsx
+  function InputField() {
+    const [value, setValue] = useState('');
+
+    return (
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    );
+  }
+  ```
+
+
+### Rendering and the Virtual DOM
+
+React uses a **Virtual DOM** to optimize rendering performance. Here’s how it works:
+
+1. When state changes, React updates the Virtual DOM (a lightweight copy of the real DOM).
+2. React compares the updated Virtual DOM with the previous version using a process called **Diffing**.
+3. React applies only the necessary changes to the real DOM through **Reconciliation**.
+
+This process ensures that updates are fast and efficient.
+
+
+### Event Handling
+
+React provides built-in event handlers like `onClick`, `onChange`, and `onSubmit` to respond to user interactions.
+
+* Example:
+  ```jsx
+  function Button() {
+    const handleClick = () => {
+      alert('Button clicked!');
+    };
+
+    return <button onClick={handleClick}>Click me</button>;
+  }
+  ```
+
+
+### Hooks: Extending Component Functionality
+
+Hooks are functions that let you "hook into" React features like state and lifecycle methods.
+
+* **Common Hooks**:
+  * `useState`: Manages state.
+  * `useEffect`: Handles side effects (e.g., fetching data).
+  * `useRef`: References DOM elements or persists values across renders.
+
+* Example of `useEffect`:
+  ```jsx
+  function DataFetcher() {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+      fetch('https://api.example.com/data')
+        .then((response) => response.json())
+        .then((data) => setData(data));
+    }, []);
+
+    return <div>{data ? data.message : 'Loading...'}</div>;
+  }
+  ```
+
+
+### Context: Sharing Data Across Components
+
+Context allows you to pass data through the component tree without manually passing props at every level.
+
+* Example:
+  ```jsx
+  const ThemeContext = React.createContext('light');
+
+  function App() {
+    return (
+      <ThemeContext.Provider value="dark">
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+
+  function Toolbar() {
+    const theme = useContext(ThemeContext);
+    return <div>Current theme: {theme}</div>;
+  }
+  ```
+
+
+### Error Boundaries and Suspense
+
+* **Error Boundaries**: Catch errors in components and display fallback UI:
+  ```jsx
+  class ErrorBoundary extends React.Component {
+    state = { hasError: false };
+
+    static getDerivedStateFromError(error) {
+      return { hasError: true };
+    }
+
+    render() {
+      if (this.state.hasError) {
+        return <h1>Something went wrong.</h1>;
+      }
+      return this.props.children;
+    }
+  }
+  ```
+
+* **Suspense**: Handle loading states for lazy-loaded components or data fetching:
+  ```jsx
+  const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+  function App() {
+    return (
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <LazyComponent />
+      </React.Suspense>
+    );
+  }
+  ```
+
+
+### Portals: Rendering Outside the Component Tree
+
+Portals let you render a component outside its parent DOM hierarchy, which is useful for modals, tooltips, and dropdowns.
+
+* Example:
+  ```jsx
+  import { createPortal } from 'react-dom';
+
+  function MyComponent() {
+    return (
+      <div style="{% raw %}{{ border: '2px solid black' }}{% endraw %}">
+        <p>This child is placed in the parent div.</p>
+        {createPortal(
+          <p>This child is placed in the document body.</p>,
+          document.body
+        )}
+      </div>
+    );
+  }
+  ```
 
