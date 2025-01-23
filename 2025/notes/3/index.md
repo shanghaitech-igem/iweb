@@ -256,14 +256,48 @@ title: Lecture 3
 
 React is a popular JavaScript library for building user interfaces, particularly for single-page applications (SPAs). It allows developers to create reusable UI components and manage the state of their applications efficiently. React is maintained by Meta (formerly Facebook) and a community of individual developers and companies.
 
-## Why React?
-
-React simplifies the process of building complex UIs by breaking them down into smaller, reusable components. Here are some key features of React:
+Here are some key features of React:
 
 1. **Component-Based Architecture**: React applications are built using components, which are self-contained pieces of code that manage their own state and rendering. This makes the code modular and easier to maintain.
 2. **Declarative Syntax**: React uses a declarative approach to define how the UI should look based on the current state. This makes the code more predictable and easier to debug.
 3. **Virtual DOM**: React uses a virtual DOM to optimize rendering performance. Instead of directly manipulating the browser's DOM, React creates a lightweight copy (virtual DOM) and updates it efficiently before applying the changes to the actual DOM.
 4. **Strong Ecosystem**: React has a rich ecosystem of tools, libraries, and community support, making it easier to build modern web applications.
+
+
+## Setting Up for React
+
+* Using Node.js to run React is quite complicated, since for a neat start, let's use a older version of React designed to run in the browser first.
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+      <head>
+          <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+          <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+          <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+          <title>Hello</title>
+      </head>
+      <body>
+          <div id="root"></div>
+
+          <script type="text/babel">
+              function App() {
+                  return (
+                      <div>
+                          Hello!
+                      </div>
+                  );
+              }
+
+              ReactDOM.render(<App />, document.querySelector("#root"));
+          </script>
+      </body>
+  </html>
+  ```
+
+* We have imported 3 JavaScript Packages:
+    * React: Defines components and their behavior
+    * ReactDOM: Takes React components and inserts them into the DOM
+    * Babel: Translates from JSX, the language in which we’ll write in React, to plain JavaScript that our browsers can interpret. JSX is very similar to JavaScript, but with some additional features, including the ability to represent HTML inside of our code.
 
 
 ## Components: The Building Blocks of React
