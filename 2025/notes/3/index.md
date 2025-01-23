@@ -615,3 +615,57 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
   }  
   ```
   When we reuse components, React reuses the compiled version of the component too, it won't compile the component again. So the `count` variable is shared among all the `Counter` components.
+
+Certainly! Here's the final section of the React part, focusing on using React with TypeScript:
+
+## React with TypeScript
+
+Finally, let's talk about using TypeScript with React.
+
+### Setting Up a React Project with TypeScript
+
+To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
+
+```bash
+npm install @types/react @types/react-dom
+```
+
+```bash
+npx create-react-app my-react-app --template typescript
+```
+
+This will set up a new React project with TypeScript configured out of the box. The project will include a `tsconfig.json` file, which is used to configure TypeScript settings.
+
+### Typing Props in React Components
+
+* **Functional Components with Props**  
+  Here’s how you can define a functional component with typed props:
+
+  ```tsx
+  import React from 'react';
+
+  interface GreetingProps {
+    name: string;
+    age?: number; // Optional prop
+  }
+
+  const Greeting: React.FC<GreetingProps> = ({ name, age }) => {
+    return (
+      <div>
+        <h1>Hello, {name}!</h1>
+        {age && <p>You are {age} years old.</p>}
+      </div>
+    );
+  };
+
+  // Usage
+  const App = () => <Greeting name="Alice" age={25} />;
+  ```
+  To run the code:
+
+  ```bash
+  npx tsc
+  node dist/index.js
+  ```
+
+* This is just a very beginning of using TypeScript with React. For a deeper dive, you could check out the official [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/).
