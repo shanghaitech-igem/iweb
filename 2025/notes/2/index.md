@@ -583,7 +583,7 @@ Let’s begin by revisiting a diagram from a couple of lectures ago:
 
 ![Client Server Diagram](./images/client_server.webp)
 
-Recall that in most online interactions, we have a client/user that sends an HTTP Request to a server, which sends back an HTTP Response. All of the Python code we’ve written so far using Django has been running on a server. JavaScript will allow us to run code on the client side, meaning no interaction with the server is necessary while it’s running, allowing our websites to become much more interactive.
+Recall that in most online interactions, we have a client/user that sends an HTTP Request to a server, which sends back an HTTP Response. JavaScript will allow us to run code on the client side, meaning no interaction with the server is necessary while it’s running, allowing our websites to become much more interactive.
 
 In order to add some JavaScript to our page, we can add a pair of `<script>` tags somewhere in our HTML page. We use `<script>` tags to signal to the browser that anything we write in between the two tags is JavaScript code we wish to execute when a user visits our site. Our first program might look something like this:
 
