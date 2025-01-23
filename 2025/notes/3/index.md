@@ -223,7 +223,7 @@ title: Lecture 3
   ```
 
   ```bash
-  pnpm exec error.ts
+  pnpm exec tsc error.ts
   node error.js
   ```
 
