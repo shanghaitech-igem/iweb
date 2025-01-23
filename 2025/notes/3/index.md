@@ -671,6 +671,7 @@ To create a new React project with TypeScript, you can use **Create React App** 
 ```bash
 pnpm create vite@latest react-app-ts --template react-ts
 cd react-app-ts
+pnpm install
 ```
 
 
