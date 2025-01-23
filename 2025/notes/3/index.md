@@ -633,12 +633,11 @@ Finally, let's talk about using TypeScript with React.
 To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
 
 ```bash
+npx create-react-app react-app-ts --template typescript
+cd react-app-ts
 npm install @types/react @types/react-dom
 ```
 
-```bash
-npx create-react-app my-react-app --template typescript
-```
 
 This will set up a new React project with TypeScript configured out of the box. The project will include a `tsconfig.json` file, which is used to configure TypeScript settings.
 
