@@ -345,12 +345,34 @@ Components are the foundation of every React application. They allow you to brea
   }
   ```
   
-* The `export` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, a error will be thrown:
-```
-Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
-```
+* The `export` and `default` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, a error will be thrown:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
+  ```
+  which means the `main.jsx` tries to import a function called `default` from `App.jsx`, but it doesn't exist.
+  If we modify the import way in `main.jsx` to:
+  ```jsx
+  import { App } from './App.jsx';
+  ```
+  notice the error will be:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'App'
+  ```
 
-* The `default` keyword is used to specify the default export of the module for the scenario when the module is imported without specifying a name.
+* Simply add back the `export` solves the problem of function `App` not found, but if `main.jsx` import the function `App` as:
+  ```jsx
+  import App from './App.jsx';
+  ```
+  the familiar error will be thrown:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'default'
+  ```
+  which could be solved by adding back the `default` keyword the `export` statement.
+
+* When using a default import, it doesn't matter how we called the imported function:
+  ```jsx
+  import AppCool from './App.jsx';
+  ```
 
 
 
