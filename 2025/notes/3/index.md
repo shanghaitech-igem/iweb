@@ -700,7 +700,7 @@ This will set up a new React project with TypeScript configured out of the box. 
   };
 
   // Usage
-  const App = () => <Greeting name="Alice" age={25} />;
+  export default const App = () => <Greeting name="Alice" age={25} />;
   ```
   To run the code:
 
