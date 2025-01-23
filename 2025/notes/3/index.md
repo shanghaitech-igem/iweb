@@ -251,13 +251,12 @@ To start using React, you need to set up a development environment. The easiest 
 
 2. **Create a New React Project**: Use the following command to create a new React project:
    ```bash
-   npx create-react-app my-react-app
+   npx create-react-app@latest react-app --force
    ```
-   Replace `my-react-app` with the name of your project.
 
 3. **Navigate to the Project Directory**: Move into the newly created project directory:
    ```bash
-   cd my-react-app
+   cd react-app
    ```
 
 4. **Start the Development Server**: Run the development server to see your React app in action:
@@ -633,7 +632,7 @@ Finally, let's talk about using TypeScript with React.
 To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
 
 ```bash
-npx create-react-app react-app-ts --template typescript
+npx create-react-app@latest react-app-ts --template typescript --force
 cd react-app-ts
 npm install @types/react @types/react-dom
 ```
