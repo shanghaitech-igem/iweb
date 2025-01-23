@@ -108,6 +108,12 @@ title: Lecture 3
   node colors.js
   ```
 
+* A common companion tool to NPM is `npx`, which is used to run packages in the `node_modules` directory without installing them globally on the machine. For example:
+  ```bash
+  npm install cowsay
+  npx cowsay "Hello, Node.js!"
+  ```
+
 ## TypeScript (TS)
 
 * Like Python, JavaScript is a dynamically typed language. This means that the type of a variable is determined at runtime. It indeed makes the language more flexible, and more convenient in some cases. But for a large project, dynamic typing prevent the ability to statically check the code, and providing better code completion and refactoring.
