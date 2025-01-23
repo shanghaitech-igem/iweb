@@ -223,7 +223,7 @@ title: Lecture 3
   ```
 
   ```bash
-  npx tsc error.ts
+  pnpm exec error.ts
   node error.js
   ```
 
@@ -265,48 +265,6 @@ React simplifies the process of building complex UIs by breaking them down into 
 3. **Virtual DOM**: React uses a virtual DOM to optimize rendering performance. Instead of directly manipulating the browser's DOM, React creates a lightweight copy (virtual DOM) and updates it efficiently before applying the changes to the actual DOM.
 4. **Strong Ecosystem**: React has a rich ecosystem of tools, libraries, and community support, making it easier to build modern web applications.
 
-## Setting Up a React Project
-
-To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
-
-1. **Create a New React Project**: Use the following command to create a new React project:
-  ```bash
-  pnpm create vite@latest react-app --template react
-  cd react-app
-  pnpm install
-  ```
-
-2. **Start the Development Server**: Run the development server to see your React app in action:
-  ```bash
-  pnpm install
-  pnpm start
-  ```
-
-3. **The Project Structure**:
-  ```bash
-  .
-  ├── README.md
-  ├── eslint.config.js
-  ├── index.html
-  ├── node_modules
-  │   ├── @eslint
-  │   ...
-  │   └── vite
-  ├── package.json
-  ├── pnpm-lock.yaml
-  ├── public
-  │   └── vite.svg
-  ├── src
-  │   ├── App.css
-  │   ├── App.jsx
-  │   ├── assets
-  │   ├── index.css
-  │   └── main.jsx
-  └── vite.config.js
-  ```
-  * `src`: Contains the source code of our React application, we coding in this directory.
-  * `src/main.jsx`: The entry point, import the main component from `App.jsx` and render it to the DOM.
-  * `src/App.jsx`: The main component, the start point of our coding.
 
 ## Components: The Building Blocks of React
 
@@ -335,7 +293,7 @@ Components are the foundation of every React application. They allow you to brea
 * **Returning a Single Parent Element**  
   React components can only return **one parent element**. If you need to return multiple elements, wrap them in a `div` or use a **React Fragment** (`<>...</>`):
   ```jsx
-  export default export default function App() {
+  function App() {
     return (
       <>
         <Greeting name="Alice" />
@@ -344,36 +302,6 @@ Components are the foundation of every React application. They allow you to brea
     );
   }
   ```
-  
-* The `export` and `default` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, the page becomes blank. By checking the developer tool's console, a error will be thrown:
-  ```
-  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
-  ```
-  which means the `main.jsx` tries to import a function called `default` from `App.jsx`, but it doesn't exist.
-  If we modify the import way in `main.jsx` to:
-  ```jsx
-  import { App } from './App.jsx';
-  ```
-  notice the error will be:
-  ```
-  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'App'
-  ```
-
-* Simply add back the `export` solves the problem of function `App` not found, but if `main.jsx` import the function `App` as:
-  ```jsx
-  import App from './App.jsx';
-  ```
-  the familiar error will be thrown:
-  ```
-  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'default'
-  ```
-  which could be solved by adding back the `default` keyword the `export` statement.
-
-* When using a default import, it doesn't matter how we called the imported function:
-  ```jsx
-  import AppCool from './App.jsx';
-  ```
-
 
 
 ## Key Concepts in React
@@ -391,7 +319,7 @@ Props (short for "properties") are how you pass data from one component to anoth
     return <h1>Hello, {name}!</h1>;
   }
 
-  export default function App() {
+  function App() {
     return <Greeting name="Alice" />;
   }
   ```
@@ -403,7 +331,7 @@ Props (short for "properties") are how you pass data from one component to anoth
     return <div className="card">{children}</div>;
   }
 
-  export default function App() {
+  function App() {
     return (
       <Card>
         <h1>Title</h1>
@@ -535,7 +463,7 @@ Context allows you to pass data through the component tree without manually pass
   ```jsx
   const ThemeContext = React.createContext('light');
 
-  export default function App() {
+  function App() {
     const [theme, setTheme] = useState('light');
 
     const toggleTheme = () => {
@@ -591,7 +519,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
     );
   }
 
-  export default function App() {
+  function App() {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -646,7 +574,7 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
       return <div>{count}</div>;
   }
   
-  export default function App() {
+  function App() {
       return (
           <div>
               <Counter />
@@ -658,15 +586,87 @@ Portals let you render a component outside its parent DOM hierarchy, which is us
   ```
   When we reuse components, React reuses the compiled version of the component too, it won't compile the component again. So the `count` variable is shared among all the `Counter` components.
 
-Certainly! Here's the final section of the React part, focusing on using React with TypeScript:
 
-## React with TypeScript
+## Setting Up a React Project
+
+To start using React, you need to set up a development environment. The easiest way to do this is by using **Create React App**, a tool that sets up a new React project with a sensible default configuration.
+
+1. **Create a New React Project**: Use the following command to create a new React project:
+  ```bash
+  pnpm create vite@latest react-app --template react
+  cd react-app
+  pnpm install
+  ```
+
+2. **Start the Development Server**: Run the development server to see your React app in action:
+  ```bash
+  pnpm install
+  pnpm start
+  ```
+
+3. **The Project Structure**:
+  ```bash
+  .
+  ├── README.md
+  ├── eslint.config.js
+  ├── index.html
+  ├── node_modules
+  │   ├── @eslint
+  │   ...
+  │   └── vite
+  ├── package.json
+  ├── pnpm-lock.yaml
+  ├── public
+  │   └── vite.svg
+  ├── src
+  │   ├── App.css
+  │   ├── App.jsx
+  │   ├── assets
+  │   ├── index.css
+  │   └── main.jsx
+  └── vite.config.js
+  ```
+  * `src`: Contains the source code of our React application, we coding in this directory.
+  * `src/main.jsx`: The entry point, import the main component from `App.jsx` and render it to the DOM.
+  * `src/App.jsx`: The main component, the start point of our coding.
+
+  
+* The `export` and `default` keyword is used to export the component so that it can be imported and used in other files, in our project, `main.jsx` uses it. If we remove it, the page becomes blank. By checking the developer tool's console, a error will be thrown:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
+  ```
+  which means the `main.jsx` tries to import a function called `default` from `App.jsx`, but it doesn't exist.
+  If we modify the import way in `main.jsx` to:
+  ```jsx
+  import { App } from './App.jsx';
+  ```
+  notice the error will be:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'App'
+  ```
+
+* Simply add back the `export` solves the problem of function `App` not found, but if `main.jsx` import the function `App` as:
+  ```jsx
+  import App from './App.jsx';
+  ```
+  the familiar error will be thrown:
+  ```
+  Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'default'
+  ```
+  which could be solved by adding back the `default` keyword the `export` statement.
+
+* When using a default import, it doesn't matter how we called the imported function:
+  ```jsx
+  import AppCool from './App.jsx';
+  ```
+
+## React Project with TypeScript
 
 Finally, let's talk about using TypeScript with React.
 
 ### Setting Up a React Project with TypeScript
 
-To create a new React project with TypeScript, you can use **Create React App** with the TypeScript template, and install the type definitions for React and React DOM:
+To create a new React project with TypeScript, we can use `vite` with the TypeScript template, and install the type definitions for React and React DOM:
 
 ```bash
 pnpm create vite@latest react-app-ts --template react-ts
@@ -700,13 +700,13 @@ This will set up a new React project with TypeScript configured out of the box. 
   };
 
   // Usage
-  export default const App = () => <Greeting name="Alice" age={25} />;
+  const App = () => <Greeting name="Alice" age={25} />;
   ```
-  To run the code:
+  To run the code, simply use:
 
   ```bash
-  npx tsc
-  node dist/index.js
+  pnpm run dev
   ```
+  We don't need to manually compile the TypeScript code to JavaScript, because the Vite development server will handle it for us.
 
 * This is just a very beginning of using TypeScript with React. For a deeper dive, you could check out the official [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/).
