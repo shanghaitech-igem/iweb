@@ -18,7 +18,7 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
  
 * [React's Official Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 
-* [Gatsby's Official Tutorial](https://www.gatsbyjs.com/)
+* [Gatsby's Official Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/)
 
 * [TypeScript's Official Docs: Migrating from JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 
