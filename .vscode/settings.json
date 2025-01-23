@@ -16,5 +16,13 @@
         "Zheng",
         "zivmax"
     ],
-    "editor.tabSize": 2
+    "[markdown]": {
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false,
+    },
+    "html.format.indentInnerHtml": true,
+    "[html]": {
+      "editor.tabSize": 4,
+      "editor.detectIndentation": false
+    }
 }
