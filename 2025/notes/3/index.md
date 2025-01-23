@@ -557,41 +557,6 @@ Context allows you to pass data through the component tree without manually pass
 
   ```
 
-
-### Error Boundaries and Suspense
-
-* **Error Boundaries**: Catch errors in components and display fallback UI:
-  ```jsx
-  class ErrorBoundary extends React.Component {
-    state = { hasError: false };
-
-    static getDerivedStateFromError(error) {
-      return { hasError: true };
-    }
-
-    render() {
-      if (this.state.hasError) {
-        return <h1>Something went wrong.</h1>;
-      }
-      return this.props.children;
-    }
-  }
-  ```
-
-* **Suspense**: Handle loading states for lazy-loaded components or data fetching:
-  ```jsx
-  const LazyComponent = React.lazy(() => import('./LazyComponent'));
-
-  export default function App() {
-    return (
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <LazyComponent />
-      </React.Suspense>
-    );
-  }
-  ```
-
-
 ### Portals: Rendering Outside the Component Tree
 
 Portals let you render a component outside its parent DOM hierarchy, which is useful for modals, tooltips, and dropdowns.
