@@ -42,7 +42,7 @@ title: Lecture 4
   ```bash
   gatsby develop
   ```
-  The development server will start at `http://localhost:8000/`. We can open this URL in a web browser to see the site:
+  The development server will start at [`http://localhost:8000/`](http://localhost:8000/). We can open this URL in a web browser to see the site:
   ![The screen shot](./images/localhost-new-site.webp)
 
 
@@ -79,7 +79,7 @@ title: Lecture 4
   * The `README.md` file is a markdown file that contains the documentation of the project.
   * The `gatsby-config.ts` file is a TypeScript file that contains the configuration of the Gatsby project, such as the site metadata, plugins, and other settings.
   * The `src/pages` folder contains the pages of the site. Each file in this folder represents a page of the site.
-    * For example, the `src/pages/hello.tsx` file represents the home page (`localhost:8000/hello`) of the site.
+    * For example, the `src/pages/hello.tsx` file represents the home page ([`localhost:8000/hello`](localhost:8000/hello)) of the site.
   * The `public` folder contains the compiled files of the site, such as the HTML, CSS, and JavaScript files.
   * The `package.json` file contains the dependencies and scripts of the project.
   * The `tsconfig.json` file contains the TypeScript configuration of the project.
@@ -124,7 +124,7 @@ title: Lecture 4
   export default AboutPage;
   ```
 
-* Now we should be able to view the new page at `http://localhost:8000/about`:
+* Now we should be able to view the new page at [`http://localhost:8000/about`](http://localhost:8000/about):
   ![The screen shot](./images/about-page.webp)
 
 * Gatsby will "listen" to all local changes and automatically update the page in the browser. This is called hot reloading.
@@ -344,7 +344,7 @@ title: Lecture 4
 
 ## Style with Sass using Gatsby Plugin
 
-* We init our Gatsby template only with TypeScript, to add Sass support, we need to install the Gatsby plugin for Sass.
+* We init our Gatsby template only with TypeScript, to add Sass support, we need to install the [Gatsby plugin for Sass](https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/).
 * Plugins is the major feature of Gatsby, which allows us to extend the functionality of Gatsby in a modular way.
 * To install the Gatsby plugin for Sass, we first stop the local server by pressing `Ctrl + C` in the terminal, and then run the following command: 
   ```bash
