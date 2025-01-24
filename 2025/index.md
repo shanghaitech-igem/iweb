@@ -17,8 +17,6 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 
 * [CS50 Web: Week 0 HTML and CSS](https://cs50.harvard.edu/web/2020/weeks/0/)
 
-* [CS50 Web: Week 1 Git](https://cs50.harvard.edu/web/2020/weeks/1/)
-
 * [CS50 Web: Week 5 JavaScript](https://cs50.harvard.edu/web/2020/weeks/5/)
  
 * [CS50 Web: Week 6 User Interface](https://cs50.harvard.edu/web/2020/weeks/6/)
@@ -34,3 +32,7 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 * [TypeScript's Official Docs: TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 * [Gatsby's Official Docs: TypeScript and Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
+
+* [CS50 Web: Week 1 Git](https://cs50.harvard.edu/web/2020/weeks/1/)
+
+* [GitLab's Official Docs: GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/)
