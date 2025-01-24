@@ -36,7 +36,7 @@ This course is divided into 6 steps, each building on the previous one. The step
    This step introduces Gatsby, a static site generator that uses React and Node.js to build fast and efficient websites, which is perfect for building up a iGEM wiki website. You will learn how to create a personal blog using Gatsby.
 
 5. **Git and Deployment**:  
-   This step introduces Git, a version control system, and demonstrates how to deploy your website using services like GitLab Pages. 
+   This step introduces Git, a version control system, and demonstrates how to deploy your website using services like GitLab Pages. Also we will learn some small tricks to fit iGEM's wiki deployment requirements.
 
 
 ## Command Line Interface
