@@ -7,6 +7,11 @@ title: Welcome
 It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Introduction to Web Development for new iGEMers. This course is dedicated for those iGEMers who wants to do wiki related works with a little basics of programming. 
 
 # References of this Course
+* [Computer Networks: Crash Course Computer Science #28](https://www.youtube.com/watch?v=3QhU9jd03a0)
+
+* [The Internet: Crash Course Computer Science #29](https://www.youtube.com/watch?v=AEaKrq3SpW8)
+
+* [The World Wide Web: Crash Course Computer Science #30](https://www.youtube.com/watch?v=guvsH5OFizE)
 
 * [CS50x: Week 8 HTML, CSS, JavaScript](https://cs50.harvard.edu/x/2025/weeks/8/)
 
@@ -16,6 +21,10 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 
 * [CS50 Web: Week 5 JavaScript](https://cs50.harvard.edu/web/2020/weeks/5/)
  
+* [CS50 Web: Week 6 User Interface](https://cs50.harvard.edu/web/2020/weeks/6/)
+
+* [Every React Concept Explained in 12 Minutes ](https://www.youtube.com/watch?v=wIyHSOugGGw)
+
 * [React's Official Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 
 * [Gatsby's Official Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/)
