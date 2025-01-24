@@ -2,4 +2,7 @@
 title: Step 5 Git, Deployment
 ---
 
-# Under Construction...
+# Step 5 **Git, Deployment**
+
+- Lecture
+  * [Notes](../../notes/5/)
