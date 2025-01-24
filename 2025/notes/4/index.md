@@ -80,6 +80,11 @@ title: Lecture 4
   * The `gatsby-config.ts` file is a TypeScript file that contains the configuration of the Gatsby project, such as the site metadata, plugins, and other settings.
   * The `src/pages` folder contains the pages of the site. Each file in this folder represents a page of the site.
     * For example, the `src/pages/hello.tsx` file represents the home page ([`localhost:8000/hello`](localhost:8000/hello)) of the site.
+      ```tsx
+      import * as React from 'react'
+
+      export default () => <h1>Hello world!</h1>
+      ```
   * The `public` folder contains the compiled files of the site, such as the HTML, CSS, and JavaScript files.
   * The `package.json` file contains the dependencies and scripts of the project.
   * The `tsconfig.json` file contains the TypeScript configuration of the project.
