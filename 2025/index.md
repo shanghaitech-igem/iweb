@@ -12,7 +12,7 @@ It's iWEB here, [ShanghaiTech University](https://www.shanghaitech.edu.cn)'s Int
 * **Additional Benefits**: The skills you gain here can also be applied to creating personal blogs, portfolio websites, or other static web-based projects.
 * **Broader Understanding**: By the end of this course, you will have a deeper understanding of how the modern internet works and how to navigate its technologies effectively.
 
-## Course Structure
+# Course Structure
 
 This course is divided into 6 steps, each building on the previous one. The steps are as follows:
 
