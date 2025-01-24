@@ -28,14 +28,14 @@ title: Lecture 4
   ```bash
   gatsby new
   ```
-  We will choose Sass, Typescript and MDX as the options.
+  We will choose Sass, Typescript as the initial options.
 
 * After `gatsby-cli` has finished creating the project, we can navigate to the project folder and run the following command to switch to `pnpm`:
   ```bash
   cd gatsby-iweb
   rm -rf node_modules package-lock.json
   pnpm install
-  pnpm update
+  pnpm upgrade
   ```
 
 * To start the development server, we can run the following command:
@@ -83,8 +83,8 @@ title: Lecture 4
   * The `public` folder contains the compiled files of the site, such as the HTML, CSS, and JavaScript files.
   * The `package.json` file contains the dependencies and scripts of the project.
   * The `tsconfig.json` file contains the TypeScript configuration of the project.
-  
-## Creating a About Page
+
+## Creating a Page
 
 * Let's create a new page called `about.tsx` in the `src/pages` folder. The content of the page will be as follows:
   > It's crucial to export a default component, which will be used Gatsby to render the page.
@@ -93,28 +93,251 @@ title: Lecture 4
   import * as React from 'react'
 
   const AboutPage: React.FC = () => (
-    <div>
-      <h1>About</h1>
-      <p>This is the about page.</p>
-    </div>
+    <main>
+      <h1>About Me</h1>
+      <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>
+    </main>
   );
 
   export default AboutPage;
   ```
 
 * Gatsby lets us define a `<title>` and other [document metadata](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head) with the [Gatsby Head API](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/). We have to export a component called Head from our page template to apply the metadata. Adding such metadata helps search engines like Google to better understand our site.
-  > Don't forget to ex1ort the `Head` component so the external system can use it.
+  > Don't forget to export the `Head` component so the external system can use it.
 
   ```tsx
   import * as React from 'react'
 
   const AboutPage: React.FC = () => (
-    <div>
-      <h1>About</h1>
-      <p>This is the about page.</p>
-    </div>
+    <main>
+      <h1>About Me</h1>
+      <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>
+    </main>
   );
 
-  export const Head = () => <title>About Me</title>
+  export const Head = () => (
+    <>
+      <title>About Me</title>
+      <meta name="description" content="Your description" />
+    </>
+  )
+  export default AboutPage;
+  ```
+
+* Now we should be able to view the new page at `http://localhost:8000/about`:
+  ![The screen shot](./images/about-page.webp)
+
+* Gatsby will "listen" to all local changes and automatically update the page in the browser. This is called hot reloading.
+
+
+## Linking the Pages
+
+* Now we've built a new page, it's common that we add new link in the home page to navigate to the new page. 
+* Let's clear the template content in the `index.tsx` and add a link to the new page:
+  ```tsx
+  import * as React from 'react'
+
+  const IndexPage: React.FC = () => {
+    return (
+      <main>
+        <h1>Welcome to my Gatsby site!</h1>
+        <a href="/about">About</a>
+        <p>I'm making this by following the Gatsby Tutorial.</p>
+      </main>
+    )
+  }
+
+  export const Head = () => <title>Home Page</title>
+
+  export default IndexPage
+
+  ```
+  ![The screen shot](./images/index-page-with-link.webp)
+
+* Gatsby actually provides a `<Link />` component for us, which is better than using the `<a>` tag. 
+  ```tsx
+  import * as React from 'react'
+  import { Link } from 'gatsby'
+
+  const IndexPage: React.FC = () => {
+    return (
+      <main>
+        <h1>Welcome to my Gatsby site!</h1>
+        <Link to="/about">About</Link>
+        <p>I'm making this by following the Gatsby Tutorial.</p>
+      </main>
+    )
+  }
+
+  export const Head = () => <title>Home Page</title>
+
+  export default IndexPage
+  ```
+
+* The `<Link />` comes with many benefits:
+  * It's faster than the `<a>` tag because it doesn't reload the whole page, only update the changed part of the webpage.
+  * It preload the linked page when user hover the link, which makes a slight faster performance.
+  * We could config a global prefix in `gatsby-config.ts`, which only applies to the `<Link />` component, a bare `<a>` tag will not be affected.
+
+* Let's also add a link in about page to go back home page.
+  ```tsx
+  import * as React from 'react'
+  import { Link } from 'gatsby'
+
+  const AboutPage: React.FC = () => (
+    <main>
+      <h1>About Me</h1>
+      <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>
+      <Link to="/">Back to Home</Link>
+    </main>
+  );
+
+  export const Head = () => (
+    <>
+      <title>About Me</title>
+      <meta name="description" content="Your description" />
+    </>
+  )
+  export default AboutPage;
+  ```
+  ![The screen shot](./images/about-page-with-link.webp)
+
+
+## Create a Shared Layout
+
+* When more and more pages being added, it's common that we want to share the same layout across all pages. 
+* Let's use React's children prop feature to create a shared layout component.
+* Create a new file called `layout.tsx` in the `src/components` folder:
+  ```tsx
+  import * as React from 'react'
+  import { Link } from 'gatsby'
+
+  const Layout: React.FC = ({ children }) => (
+    <div>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+      </header>
+      <main>{children}</main>
+    </div>
+  )
+
+  export default Layout
+  ```
+
+* Update the `index.tsx` and `about.tsx` to use the `Layout` component:
+  ```tsx
+  import * as React from 'react'
+  import Layout from '../components/layout'
+
+  const IndexPage: React.FC = () => {
+    return (
+      <Layout>
+        <h1>Welcome to my Gatsby site!</h1>
+        <p>I'm making this by following the Gatsby Tutorial.</p>
+      </Layout>
+    )
+  }
+
+  export const Head = () => <title>Home Page</title>
+
+  export default IndexPage
+  ```
+  ![The screen shot](./images/index-page-with-layout.webp)
+
+
+  ```tsx
+  import * as React from 'react'
+  import Layout from '../components/layout'
+  import { Link } from 'gatsby'
+
+  const AboutPage: React.FC = () => (
+    <Layout>
+      <h1>About Me</h1>
+      <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>
+      <Link to="/">Back to Home</Link>
+    </Layout>
+  );
+
+  export const Head = () => (
+    <>
+      <title>About Me</title>
+      <meta name="description" content="Your description" />
+    </>
+  )
+  export default AboutPage;
+  ```
+  ![The screen shot](./images/about-page-with-layout.webp)
+
+* Let's further add props to the `Layout` component to pass in the title of the page:
+  ```tsx
+  import * as React from 'react'
+  import { Link } from 'gatsby'
+
+  interface LayoutProps {
+    title: string;  
+    children: React.ReactNode;
+  }
+
+  const Layout: React.FC<LayoutProps> = ({ title, children }) => (
+    <div>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>{title}</h1>
+        {children}
+      </main>
+    </div>
+  )
+
+
+  export default Layout
+  ```
+
+* Update the `index.tsx` and `about.tsx` to pass in the title of the page:
+  ```tsx
+  import * as React from 'react'
+  import Layout from '../components/layout'
+
+  const IndexPage: React.FC = () => {
+    return (
+      <Layout title="Home Page">
+        <p>I'm making this by following the Gatsby Tutorial.</p>
+      </Layout>
+    )
+  }
+
+  export const Head = () => <title>Home Page</title>
+
+  export default IndexPage
+  ```
+
+  ```tsx
+  import * as React from 'react'
+  import Layout from '../components/layout'
+
+  const AboutPage: React.FC = () => (
+    <Layout title="About Me">
+      <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>
+    </Layout>
+  );
+
+  export const Head = () => (
+    <>
+      <title>About Me</title>
+      <meta name="description" content="Your description" />
+    </>
+  )
+
   export default AboutPage;
   ```
