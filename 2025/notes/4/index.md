@@ -341,3 +341,100 @@ title: Lecture 4
 
   export default AboutPage;
   ```
+
+## Style with Sass using Gatsby Plugin
+
+* We init our Gatsby template only with TypeScript, to add Sass support, we need to install the Gatsby plugin for Sass.
+* Plugins is the major feature of Gatsby, which allows us to extend the functionality of Gatsby in a modular way.
+* To install the Gatsby plugin for Sass, we first stop the local server by pressing `Ctrl + C` in the terminal, and then run the following command: 
+  ```bash
+  pnpm install gatsby-plugin-sass
+  ```
+* After the installation is complete, we need to add the plugin to the `gatsby-config.ts` file:
+  ```ts
+    plugins: [
+    `gatsby-plugin-sass`,
+  ],
+  ```
+* Add a module type declare for TypeScript `src/types/styles.d.ts`:
+  ```ts
+  declare module '*.scss' {
+    const content: { [className: string]: string };
+    export default content;
+  }
+  ``` 
+* Write our first Sass file `src/styles/modules/layout.module.css`:
+  ```scss
+  main {
+    .container {
+      margin: auto;
+      max-width: 500px;
+      font-family: sans-serif;
+    }
+  }
+  ```
+* Import the Sass file in the `layout.tsx`:
+  ```tsx
+  import * as React from 'react'
+  import { Link } from 'gatsby'
+  import styles from '../styles/modules/layout.module.scss'
+
+  interface LayoutProps {
+    title: string;  
+    children: React.ReactNode;
+  }
+
+  const Layout: React.FC<LayoutProps> = ({ title, children }) => (
+    <div className={styles.container}>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>{title}</h1>
+        {children}
+      </main>
+    </div>
+  )
+
+  export default Layout
+  ```
+  ![The screen shot](./images/index-page-container-styled.webp)
+
+* Let's add more styles:
+  ```scss
+  main {
+    .container {
+      margin: auto;
+      max-width: 500px;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      color: rebeccapurple;
+    }
+
+    nav {    
+      ul {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+      }
+
+      li {
+        padding-right: 2rem;
+      }
+
+      a {
+        color: black;
+      }
+    }
+  }
+  ```
+  ![The screen shot](./images/index-page-styled.webp)
+
+
