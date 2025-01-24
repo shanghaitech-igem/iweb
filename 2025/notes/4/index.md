@@ -724,7 +724,7 @@ title: Lecture 4
 
 * A better way is we rendered the `# heading` into `<h2>`. We could use the `MDXProvider` component from `@mdx-js/react` to customize the rendering of the MDX content.
 
-* First we import the `MDXPovider`:
+* First we import the `MDXProvider`:
   ```tsx
   import { MDXProvider } from '@mdx-js/react'
   ```
@@ -762,3 +762,66 @@ title: Lecture 4
 * Now, the `# heading` in the MDX file will be rendered to `<h2>`:
 
   ![The screen Shot](./images/mdx-hello-h2.webp)
+
+## Using Component in MDX
+
+* Recall the reason why we use MDX is being able to use JSX components in the Markdown file. To do this, we just need to write a component and add it to the mapping of the `MDXProvider`.
+
+* Assume we want to add a `Button` component in the MDX file:
+  ```tsx
+  import * as React from 'react'
+
+  interface ButtonProps {
+    children: React.ReactNode
+  }
+
+  const Button: React.FC<ButtonProps> = ({ children }) => (
+    <button>{children}</button>
+  )
+
+  export default Button
+  ```
+
+* Then we add the `Button` component to the mapping of the `MDXProvider`:
+  ```tsx
+  import Button from '../components/mdx/button'
+
+  const components = {
+    h1: (props: any) => <h2 {...props} />,
+    Button
+  }
+  ```
+
+* Now we could use the `Button` component in the MDX file:
+  ```mdx
+  ---
+  title: Hello World
+  date: 2025-09-01
+  slug: hello-world
+  ---
+
+  # Hello World
+
+  <Button>Click Me</Button>
+
+  # Section 1
+
+  <Button>Click This</Button>
+
+  # Section 2
+
+  This is the second section.
+  ```
+
+* The `Button` component will be rendered in the MDX page:
+
+  ![The screen Shot](./images/mdx-hello-button.webp)
+
+## More in Gatsby
+
+* The features of Gatsby is much more than what we've covered in this lecture. 
+* Some specially useful docs are:
+  * [Gatsby Project Structure](https://www.gatsbyjs.com/docs/reference/gatsby-project-structure/)
+  * [Creating a Plugin](https://www.gatsbyjs.com/docs/tutorial/creating-a-source-plugin/)
+  * [Gatsby Script API](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-script/)
+  * [Gatsby Browser API](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/)
