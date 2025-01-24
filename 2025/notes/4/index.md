@@ -717,3 +717,48 @@ title: Lecture 4
 
   export default MDXPage
   ```
+
+## Modify the Rendering of MDX
+
+* Notice we actually has a issue that the headings in the `hello.mdx` being rendered to `<h1>`, which is same as the page's title. But if we change the headings in the MDX file to `## heading`, the experience of writing MDX will be broke, especially when the writer is not the developer.
+
+* A better way is we rendered the `# heading` into `<h2>`. We could use the `MDXProvider` component from `@mdx-js/react` to customize the rendering of the MDX content.
+
+* First we import the `MDXPovider`:
+  ```tsx
+  import { MDXProvider } from '@mdx-js/react'
+  ```
+
+* Then we defines a new mapping for the `h1` tag:
+  ```tsx
+  const components = {
+    h1: (props: any) => <h2 {...props} />
+  }
+  ```
+
+* Finally we use the `MDXProvider` to wrap the children:
+  ```tsx
+  const MDXPage: React.FC<MDXPageProps> = ({ children, data }) => {
+    return (
+      <Layout title="A MDX Page">
+        <nav>
+          <h2>Table of Contents</h2>
+          <ul>
+            {data.mdx.tableOfContents.items.map((item: any) => (
+              <li key={item.url}>
+                <a href={item.url}>{item.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <MDXProvider components={components}>
+          {children}
+        </MDXProvider>
+      </Layout>
+    )
+  }
+  ```
+
+* Now, the `# heading` in the MDX file will be rendered to `<h2>`:
+
+  ![The screen Shot](./images/mdx-hello-h2.webp)
