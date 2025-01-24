@@ -363,10 +363,7 @@ title: Lecture 4
   ```
 * Add a module type declare for TypeScript `src/types/styles.d.ts`:
   ```ts
-  declare module '*.scss' {
-    const content: { [className: string]: string };
-    export default content;
-  }
+  declare module '*.module.scss'
   ``` 
 * Write our first Sass file `src/styles/modules/layout.module.css`:
   ```scss
