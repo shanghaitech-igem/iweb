@@ -51,6 +51,8 @@ title: Lecture 4
 * A Gatsby project has a similar structure to a React project, but with some additional files and folders. The following is the structure of a Gatsby project:
   ```bash
   .
+  ├── .cache
+  ├── .gitignore
   ├── README.md
   ├── gatsby-config.ts
   ├── node_modules
@@ -61,6 +63,10 @@ title: Lecture 4
   │   └── gatsby
   ├── package.json
   ├── pnpm-lock.yaml
+  ├── public
+  │   ├── page-data
+  │   ├── static
+  │   └── ~partytown
   ├── src
   │   ├── images
   │   │   └── icon.png
@@ -72,10 +78,12 @@ title: Lecture 4
 
   * The `README.md` file is a markdown file that contains the documentation of the project.
   * The `gatsby-config.ts` file is a TypeScript file that contains the configuration of the Gatsby project, such as the site metadata, plugins, and other settings.
-  * The `src/pages` folder is a folder that contains the pages of the site. Each file in this folder represents a page of the site.
+  * The `src/pages` folder contains the pages of the site. Each file in this folder represents a page of the site.
     * For example, the `src/pages/hello.tsx` file represents the home page (`localhost:8000/hello`) of the site.
-
-
+  * The `public` folder contains the compiled files of the site, such as the HTML, CSS, and JavaScript files.
+  * The `package.json` file contains the dependencies and scripts of the project.
+  * The `tsconfig.json` file contains the TypeScript configuration of the project.
+  
 ## Creating a About Page
 
 * Let's create a new page called `about.tsx` in the `src/pages` folder. The content of the page will be as follows:
