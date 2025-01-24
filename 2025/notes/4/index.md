@@ -598,4 +598,122 @@ title: Lecture 4
   export default MDXPage
   ```
 
-* Now restart the local server by running the following command, and we should be able to see the new page at [`http://localhost:8000/hello-world`](http://localhost:8000/hello-world).
+* Now restart the local server by running the following command, and we should be able to see the new page at [`http://localhost:8000/hello-world`](http://localhost:8000/hello-world):
+  ![The screen Shot](./images/mdx-hello.webp)
+
+## Adding a TOC using GraphQL
+
+* As you can see in the previous GraphQL test, the MDX plugin provides a `tableOfContents` field in the query result. We can use this field to generate a table of contents (TOC) for the MDX page.
+
+* To make query inside our code, we need to use the `useStaticQuery` hook from Gatsby. 
+  ```tsx
+  import * as React from 'react'
+  import { graphql, useStaticQuery } from 'gatsby'
+  import Layout from '../components/layout'
+
+  interface MDXPageProps {
+    children: React.ReactNode
+  }
+
+  const MDXPage: React.FC<MDXPageProps> = ({ children }) => {
+    const data = useStaticQuery(graphql`
+      query {
+        mdx {
+          tableOfContents
+        }
+      }
+    `)
+
+    return (
+      <Layout title="A MDX Page">
+        <nav>
+          <h2>Table of Contents</h2>
+          <ul>
+            {data.mdx.tableOfContents.items.map((item: any) => (
+              <li key={item.url}>
+                <a href={item.url}>{item.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {children}
+      </Layout>
+    )
+  }
+
+  export default MDXPage
+  ```
+
+* Let's try add more contents in the `hello.mdx`:
+  ```mdx
+  ---
+  title: Hello World
+  date: 2025-09-01
+  slug: hello-world
+  ---
+
+  # Hello World
+
+  This is my first MDX post!
+
+  # Section 1
+
+  This is the first section.
+
+  # Section 2
+
+  This is the second section.
+  ```
+
+* Now we should be able to see the TOC in the MDX page:
+
+  ![The screen Shot](./images/mdx-hello-toc.webp)
+
+* Sometimes the query for GraphQL could be a bit complex, to avoid leaving a large query code inside the component, we could extract the query out, and add new prop `data` to the component:
+  ```tsx
+  import * as React from 'react'
+  import { graphql } from 'gatsby'
+  import Layout from '../components/layout'
+
+  interface MDXPageProps {
+    children: React.ReactNode
+    data: {
+      mdx: {
+        tableOfContents: {
+          items: {
+            url: string;
+            title: string;
+          }[]
+        }
+      }
+    }
+  }
+
+  const MDXPage: React.FC<MDXPageProps> = ({ children, data }) => {
+    return (
+      <Layout title="A MDX Page">
+        <nav>
+          <h2>Table of Contents</h2>
+          <ul>
+            {data.mdx.tableOfContents.items.map((item: any) => (
+              <li key={item.url}>
+                <a href={item.url}>{item.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {children}
+      </Layout>
+    )
+  }
+
+  export const query = graphql`
+    query {
+      mdx {
+        tableOfContents
+      }
+    }
+  `
+
+  export default MDXPage
+  ```
