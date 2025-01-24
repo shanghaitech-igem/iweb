@@ -21,22 +21,22 @@ title: Lecture 0
 This course is divided into 5 steps, each building on the previous one. The steps are as follows:
 
 0. **Command Line Interface, Linux, and Windows Subsystem for Linux**:  
-   This step introduces the command line interface (CLI) and the Linux operating system. You will also learn how to set up the Windows Subsystem for Linux (WSL) on your Windows machine, enabling you to work in a Linux environment while still using Windows.
+   This step introduces the command line interface (CLI) and the Linux operating system. We start with the history of interaction with computers, introducing the source and the importance of CLI. We then move on to the Linux operating system, which is widely used in the server field, learning how to perform basic operations in a Linux environment. Finally, we introduce the Windows Subsystem for Linux (WSL), which allows you to run a Linux distribution on Windows.
 
-1. **Networks and the Internet**:  
-   This step covers the fundamentals of computer networks and the internet. You will learn how data is transmitted over networks, how the internet functions, and how web servers and browsers communicate.
+1. **The Internet, HTTP and DNS**:  
+   This step covers the fundamentals of computer networks and the internet. We start with a naive computer network, till the HTTP protocol, which is used to transfer data over the web, and the Domain Name System (DNS), which translates domain names into IP addresses. HTTP and DNS is the foundation of the web.
 
 2. **HTML, CSS, and JavaScript**:  
-   This step introduces the core technologies of the web: HTML, CSS, and JavaScript. You will learn how to create the structure of a web page using HTML, style it with CSS, and add interactivity using JavaScript.
+   This step introduces the core technologies of the web: HTML, CSS, and JavaScript. The text contains these code is the main content transferring on the web. HTML is used to define the structure of the content, CSS is used to style the content and define the layout, and JavaScript is used to add interactivity to the content.
 
-3. **React and Node.js**:  
-   This step introduces React, a popular JavaScript library for building user interfaces, and Node.js, a JavaScript runtime for server-side applications. You will learn how to create a simple React app and run it without browser but on Node.js.
+3. **Node.js, TypeScript, and React**:  
+   This step introduces the core components of the modern web: Node.js, TypeScript, and React. Node.js is a JavaScript runtime that allows you to run JavaScript outside the browser. TypeScript is a superset of JavaScript that adds static typing to the language, refining the engineering ability of JS. React is a JavaScript library for building user interfaces in a modern component based paradigm.
 
 4. **Gatsby**:  
-   This step introduces Gatsby, a static site generator that uses React and Node.js to build fast and efficient websites. You will learn how to create a personal blog using Gatsby.
+   This step introduces Gatsby, a static site generator that uses React and Node.js to build fast and efficient websites, which is perfect for building up a iGEM wiki website. You will learn how to create a personal blog using Gatsby.
 
 5. **Git and Deployment**:  
-   This step introduces Git, a version control system, and demonstrates how to deploy your website using services like GitHub Pages and Netlify. You will learn how to manage your code and publish your site to the web.
+   This step introduces Git, a version control system, and demonstrates how to deploy your website using services like GitLab Pages. 
 
 
 ## Command Line Interface
