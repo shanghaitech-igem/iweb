@@ -440,3 +440,162 @@ title: Lecture 4
   ![The screen shot](./images/index-page-styled.webp)
 
 
+## Adding MDX Support 
+
+* MDX is a file format that lets us write JSX or JSX components in Markdown files. It's a great way to write content for our Gatsby site.
+
+* Before we add MDX support directly, we need to make Gatsby be able to read local files. We need to install the [Gatsby plugin for file system](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/):
+  * Stop the local server by pressing `Ctrl + C` in the terminal, and then run the following command:
+    ```bash
+    pnpm install gatsby-source-filesystem
+    ```
+  * Add the plugin to the `gatsby-config.ts` file:
+    ```ts
+    plugins: [
+      `gatsby-plugin-sass`,
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `blog`,
+          path: `${__dirname}/blog/`,
+        },
+      },
+    ],
+    ```
+
+* Now, Gatsby can read the local files, and transform them into *GraphQL* nodes in the runtime. 
+  ![Data Layer](./images/data-layer.webp)
+
+* Create the `blog` folder in the root of the project, and add a new file called `hello.mdx`:
+  ```md
+  ---
+  title: Hello World
+  date: 2025-09-01
+  slug: hello-world
+  ---
+
+  # Hello World
+
+  This is my first MDX post!
+  ```
+
+* GraphQL is a query language, which is used to query the data in the Gatsby project. We can use the [`http://localhost:8000/___graphql`](http://localhost:8000/___graphql) to explore the data in the Gatsby project.
+  ![The screen Shot](./images/graphql-panel.webp)
+
+* Now let's try to make a test query in the GraphQL panel:
+  ```graphql
+  query {
+    allFile(sort: {relativePath: ASC}) {
+      edges {
+        node {
+          relativePath
+        }
+      }
+    }
+  }
+  ```
+  ```json
+  {
+    "data": {
+      "allFile": {
+        "edges": [
+          {
+            "node": {
+              "relativePath": "hello.mdx"
+            }
+          }
+        ]
+      }
+    },
+    "extensions": {}
+  }
+  ```
+
+* You may wonder how could we know what query could we make. GraphQL provides a schema explorer, which could be accessed by clicking button like a folder icon in the left top corner of the GraphQL panel page.
+
+  ![The screen Shot](./images/graphql-explorer.webp)
+
+* Now let's add [the MDX plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/) to our project:
+  * Stop the local server by pressing `Ctrl + C` in the terminal, and then run the following command:
+    ```bash
+    pnpm install gatsby-plugin-mdx @mdx-js/react
+    ```
+  * Add the plugin to the `gatsby-config.ts` file:
+    ```ts
+    plugins: [
+      `gatsby-plugin-sass`,
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `blog`,
+          path: `${__dirname}/blog/`,
+        },
+      },
+      `gatsby-plugin-mdx`,
+    ],
+    ```
+
+* Now we could check the new queries in the GraphQL panel:
+  ```graphql
+  query {
+    allMdx {
+      nodes {
+        tableOfContents
+        frontmatter {
+          date
+          title
+        }
+      }
+    }
+  }
+  ```
+  ```json
+  {
+    "data": {
+      "allMdx": {
+        "nodes": [
+          {
+            "tableOfContents": {
+              "items": [
+                {
+                  "url": "#hello-world",
+                  "title": "Hello World"
+                }
+              ]
+            },
+            "frontmatter": {
+              "date": "2025-09-01T00:00:00.000Z",
+              "title": "Hello World"
+            }
+          }
+        ]
+      }
+    },
+    "extensions": {}
+  }
+  ```
+
+* What the MDX plugin does is to transform the file nodes from the source file plugin into MDX nodes:
+  ![Data Layer](./images/data-layer-mdx.webp)
+
+* In the meanwhile, the MDX plugin actually already rendered the MDX content into React components, to actually use the rendered contents to make a webpage, we need to create a special template code file called `src/pages/{mdx.frontmatter__slug}.tsx`
+  ```tsx
+  import * as React from 'react'
+  import Layout from '../components/layout'
+
+  interface MDXPageProps {
+    children: React.ReactNode
+  }
+
+  const MDXPage: React.FC<MDXPageProps> = ({children}) => {
+    return (
+      <Layout title="A MDX Page">
+        {children}
+      </Layout>
+    )
+  }
+
+  export default MDXPage
+  ```
+
+* Now restart the local server by running the following command, and we should be able to see the new page at [`http://localhost:8000/hello-world`](http://localhost:8000/hello-world).
