@@ -18,7 +18,7 @@ title: Lecture 0
 
 ## Course Structure
 
-This course is divided into 5 steps, each building on the previous one. The steps are as follows:
+This course is divided into 6 steps, each building on the previous one. The steps are as follows:
 
 0. **Command Line Interface, Linux, and Windows Subsystem for Linux**:  
    This step introduces the command line interface (CLI) and the Linux operating system. We start with the history of interaction with computers, introducing the source and the importance of CLI. We then move on to the Linux operating system, which is widely used in the server field, learning how to perform basic operations in a Linux environment. Finally, we introduce the Windows Subsystem for Linux (WSL), which allows you to run a Linux distribution on Windows.
