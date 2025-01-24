@@ -75,7 +75,7 @@ This course is divided into 5 steps, each building on the previous one. The step
 
 ## PowerShell's Usage Demo 
 
-Lets perform some real operations on the terminal emulator.
+Lets perform some real operations in PowerShell with Windows Terminal.
 
 1. Let's start by navigating to the Desktop directory using the cd command. The tilde (~) represents our home directory, so this command takes us directly to our Desktop.
 ```sh
