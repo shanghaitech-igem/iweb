@@ -72,16 +72,14 @@ title: Lecture 5
 
 * To start using Git, we need to initialize a folder into a Git repository.
 
-  ![Git Init](./images/vscode-git-init.webp)
+  ![Git Init](./images/gif-init.webp)
 
-## Stage Changes
+## Stage Changes and Commit
 
 * Before committing changes, we need to stage them. Staging allows us to group related changes together, leaving unrelated changes out of the commit.
 
 * Unstaged changes could be dropped easily.
   
-## Commit
-
 * To commit, we first specify which changes (stage changes) needs to be committed, and we **must** leave a commit message explaining what have we done in this commit. The commit message are natural to be compulsory, without it, we can't distinguish between different commits.
 
 * Each commit creates a version we could revert back. 
@@ -92,6 +90,9 @@ title: Lecture 5
       commit id: "changes"
       commit id: "more changes"
   ```
+
+* Demo:
+  ![](./images/gif-commit.webp)
 
 ## Branching
 
@@ -116,6 +117,9 @@ title: Lecture 5
 
 * Also branching is helpful when there are multiple developers working on the same project. Each developer can work on a separate branch for a consistent experience.
 
+* Demo:
+  ![](./images/gif-branching.webp)
+  
 ## Merge
 
 * Merging is the process of combining changes from different branches into a single branch.
@@ -136,7 +140,9 @@ title: Lecture 5
       checkout main
       merge fix-branch
   ```
-
+* Demo:
+  ![](./images/gif-merge.webp)
+  
 ## Conflicts
 
 * Conflicts occur when Git is unable to automatically merge changes. 
@@ -177,6 +183,14 @@ title: Lecture 5
     ```
   2. Then we stage and commit the changes to finish the merge.
 
+  * Demo:
+    ![](./images/gif-conflict-manual.webp)
+  
+* Utilizing the VSCode's built-in conflict resolution tool can help simplify the process.
+  * Demo:
+    ![](./images/gif-conflict-vscode.webp)
+
+
 ## GitLab
 
 * For solo project, we might want a cloud server to store our project. Or even publish the project as a open-source project.
@@ -192,12 +206,23 @@ title: Lecture 5
 * To create a project on GitLab, you need to have an account. If you don't have one, you can create one for free.
 
 * After logging in, you can create a new project by clicking on the **New Project** button.
+  ![](./images/gitlab-new-proj.webp)
+
+* Let's create a new project named `gatsby-iweb` on GitLab.
+  ![](./images/gitlab-create-proj.webp)
+
 
 * To upload (push) our project to GitLab, we need to add a remote repository to our local repository.
+  ![](./images/gif-add-remote.webp)
+
 
 * The remote repository URL can be found on the project's page on GitLab.
 
-* Let's create a new project named `gatsby-iweb` on GitLab.
+* After adding the remote repository, we can upload (push) our project to GitLab:
+  ![](./images/gif-push.webp)
+
+* Now we could view the project on GitLab:
+  ![](./images/gitlab-first-push.webp)
 
 ## Deployment
 
