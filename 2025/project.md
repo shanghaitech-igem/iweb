@@ -8,6 +8,10 @@ Develop a [personal blog website template](https://fuwari.vercel.app/) using [Ga
 
 > The actual topic of the final project could be changed so long as your project could be adapted to fit the requirements of the final project.
 
+## Deadline
+
+The final project is due on **Feb. 7, 2025** at 11:59 PM. Late submissions will not be accepted.
+
 ## Technical Requirements
 Note that the following requirements are compulsory for the final project. **Any project being considered not meeting these requirements will be disqualified.**
 
@@ -88,3 +92,7 @@ Note that the following requirements are compulsory for the final project. **Any
 - Creativity and innovation (10%)
     * Unique features
     * Creative design
+
+## Submit
+
+To submit, fill out the [Final Project Submission Form](https://f.wps.cn/g/rKG6UggE/)
