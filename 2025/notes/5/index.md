@@ -35,18 +35,44 @@ title: Lecture 5
 
   ![Git Sync](./images/git-multi-users-sync.webp)
 
+* Install it through:
+  ```bash
+  sudo apt install git
+  ```
+
 ## VSCode's Integration with Git
 
-Visual Studio Code (VSCode) has built-in Git support, making it easier to manage your repositories.
+* Visual Studio Code (VSCode) has built-in Git support, making it easier to manage your repositories.
+![VSCode Git](./images/vscode-git.webp)
 
 ### Features
 
 * **Add and Commit**: You can stage changes and commit them directly from the Source Control view.
+
+  ![VSCode Git Commit](./images/vscode-git-commit.webp)
+
 * **Branching**: Easily create and switch branches using the Git: Create Branch and Git: Checkout to commands.
+
+  ![VSCode Git Branching](./images/vscode-git-branching.webp)
+
 * **Conflict Resolution**: VSCode provides a user-friendly interface to resolve merge conflicts.
+
+  ![VSCode Git Conflict](./images/vscode-git-conflict.webp)
+
 * **Diff Viewer**: View differences between files directly in the editor.
+
+  ![VSCode Git Diff](./images/vscode-git-diff.webp)
+
 * **Partial Add/Restore**: Stage or discard specific changes within a file.
 
+  ![VSCode Git Partial](./images/vscode-git-partial.webp)
+
+
+## Initialize a Repository
+
+* To start using Git, we need to initialize a folder into a Git repository.
+
+  ![Git Init](./images/vscode-git-init.webp)
 
 ## Stage Changes
 
