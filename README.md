@@ -8,7 +8,7 @@ cd iweb
 
 # Install Ruby and dependencies
 sudo apt install ruby-full
-gem install bundler
+sudo gem install bundler
 bundle config set --local path 'vendor/bundle'
 bundle install
 
