@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Animate</title>
+        <style>
+            @keyframes move {
+                0% {
+                    left: 0%;
+                }
+
+                50% {
+                    left: 50%;
+                }
+
+                100% {
+                    left: 0%;
+                }
+            }
+
+            h1 {
+                position: relative;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="animatedText">Welcome!</h1>
+        <button onclick="startAnimation()">Start Animation</button>
+
+        <script>
+            function startAnimation() {
+                const element = document.getElementById('animatedText');
+                element.style.animationName = 'move';
+                element.style.animationDuration = '2s';
+                element.style.animationFillMode = 'forwards';
+            }
+        </script>
+    </body>
+
+</html>

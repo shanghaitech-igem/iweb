@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS Box Model Demo with Two Boxes</title>
+        <style>
+            /* Reset default margin and padding */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+
+            /* Common styles for both boxes */
+            .box {
+                /* Content width */
+                width: 200px;
+                /* Content height */
+                height: 100px;
+                /* Space between content and border */
+                padding: 20px;
+                /* Border around the padding */
+                border: 10px solid #3498db;
+                /* Space outside the border */
+                margin: 30px;
+                /* Background color of the content area */
+                background-color: #e74c3c;
+                /* Text color */
+                color: white;
+                /* Vertically center text */
+                line-height: 100px;
+                /* For pseudo-elements */
+                position: relative;
+                text-align: center;
+            }
+
+            /* Box 1 specific styles */
+            .box1 {
+                /* Red background */
+                background-color: #e74c3c;
+                /* Border around the padding */
+                border: 5px solid #3498db;
+                /* Margin at the bottom */
+                margin-bottom: 100px;
+
+            }
+
+            /* Box 2 specific styles */
+            .box2 {
+                /* Green background */
+                background-color: #2ecc71;
+                /* Border around the padding */
+                border: 10px solid #3498db;
+
+            }
+
+            /* Optional: Add a visual guide for the box model */
+            .box::before {
+                content: 'Margin Area';
+                position: absolute;
+                top: -30px;
+                left: -30px;
+                width: calc(100% + 60px);
+                height: calc(100% + 60px);
+                border: 2px dashed #000;
+                pointer-events: none;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: calc(100px + 60px);
+                color: #000;
+                font-size: 14px;
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box box1">
+            Box 1
+        </div>
+        <div class="box box2">
+            Box 2
+        </div>
+    </body>
+
+</html>
