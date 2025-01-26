@@ -365,7 +365,7 @@ title: Lecture 4
   ```ts
   declare module '*.module.scss'
   ``` 
-* Write our first Sass file `src/styles/modules/layout.module.css`:
+* Write our first Sass file `src/styles/modules/layout.module.scss`:
   ```scss
   main {
     .container {
@@ -379,7 +379,7 @@ title: Lecture 4
   ```tsx
   import * as React from 'react'
   import { Link } from 'gatsby'
-  import styles from '../styles/modules/layout.module.scss'
+  import * as styles from '../styles/modules/layout.module.scss'
 
   interface LayoutProps {
     title: string;  
