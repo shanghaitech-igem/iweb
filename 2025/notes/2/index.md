@@ -878,7 +878,7 @@ Let’s get started on another example of a page that can be a bit more interact
     </head>
     <body>
         <form>
-            <input id="name" placeholder="Name" type="text">
+            <input autofocus id="name" placeholder="Name" type="text">
             <input type="submit">
         </form>
     </body>
@@ -889,7 +889,7 @@ Let’s get started on another example of a page that can be a bit more interact
 
 Some notes about the page above:
 
-* We use the `autofocus` field in the `name` input to indicate that the cursor should be set inside that input as soon as the page is loaded.
+* We use the `autofocus` field in the `name` input to indicate that the cursor should be set inside that input as soon as the page is loaded. _Notice in the live demo on this page, the autofocus is actually disabled for a better reading experience._
 * We use `#name` inside of `document.querySelector` to find an element with an `id` of `name`. We can use all the same selectors in this function as we could in CSS.
 * We use the `value` attribute of an input field to find what is currently typed in.
 
