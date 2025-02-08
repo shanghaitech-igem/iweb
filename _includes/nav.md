@@ -9,6 +9,7 @@
 ---
 
 * [Final Project](/2025/project)
+* [Project Gallery 🖼️](/2025/gallery) 
 
 ---
 
