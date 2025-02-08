@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="en-us"><head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.">
+
+        <meta property="og:image" content=""><meta property="og:title" content="Lecture 1 - iWEB 2025">
+
+        <link href="../../../favicon.ico?1738990868" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="../../../assets/jquery/dist/jquery.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap/dist/js/bootstrap.bundle.min.js?1738990868"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="../../../assets/bootstrap-table/dist/bootstrap-table.min.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/bootstrap-table/dist/bootstrap-table.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1738990868"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link href="../../../assets/@fortawesome/fontawesome-free/css/all.min.css?1738990868" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="../../../assets/luxon/build/global/luxon.min.js?1738990868"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="../../../assets/mathjax/es5/tex-chtml.js?1738990868"></script>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="../../../assets/intersection-observer/intersection-observer.js?1738990868"></script>
+        <script src="../../../assets/vanilla-lazyload/dist/lazyload.min.js?1738990868"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="../../../assets/iframe-resizer/js/iframeResizer.min.js?1738990868"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="../../../assets/scratchblocks.min.js?1738990868"></script>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="../../../assets/mermaid.min.js?1738990868"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="../../../assets/twemoji/dist/twemoji.min.js?1738990868"></script>
+
+        
+
+        <link href="../../../assets/page.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/jekyll-theme-cs50.js?1738990868"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "zh-CN",
+                tz: "Asia/Shanghai"
+            };
+        </script>
+
+        <title>Lecture 1 - iWEB 2025</title>
+
+
+    </head>
+
+    <body class="invisible">
+
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg">
+ 
+                    <header><h1 data-id="iweb-here"><a href="../../..">iWEB Here</a></h1>
+
+<h2 data-id="interactive-web-engineering-basics">Interactive Web Engineering Basics</h2>
+
+<p>ShanghaiTech University</p>
+
+<p><a href="https://zivmax.top">Lin-Zheng TANG</a><br>
+<a href="mailto:tanglzh2022@shanghaitech.edu.cn">tanglzh2022@&lt;ShanghaiTech&gt;</a></p>
+
+<p><a href="https://www.shanghaitech.edu.cn/eng/2024/1105/c1260a1102357/page.htm">ShanghaiTech’s iGEM Team</a>
+<a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+
+<hr></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside > nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><ul>
+  <li data-marker="*"><a href="../../steps/0/">Step 0</a> CLI, Linux, WSL</li>
+  <li data-marker="*"><a href="../../steps/1/">Step 1</a> Internet, HTTP, DNS</li>
+  <li data-marker="*"><a href="../../steps/2/">Step 2</a> HTML, CSS, JavaScript</li>
+  <li data-marker="*"><a href="../../steps/3/">Step 3</a> Node.js, TypeScript, React</li>
+  <li data-marker="*"><a href="../../steps/4/">Step 4</a> Gatsby</li>
+  <li data-marker="*"><a href="../../steps/5/">Step 5</a> Git, Deployment</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li data-marker="*"><a href="../../project/">Final Project</a></li>
+  <li data-marker="*"><a href="../../gallery/">Project Gallery 🖼️</a></li>
+</ul>
+
+<hr>
+
+<h3 data-id="acknowledgement">Acknowledgement</h3>
+
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
+<p class="small">
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
+</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x/2025/courses/"><strong>Their Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../../license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg">
+
+                    <h1 class="no_toc" id="lecture-1">Lecture 1</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#a-naive-network" id="markdown-toc-a-naive-network">A Naive Network</a></li>
+  <li><a href="#an-addressed-network" id="markdown-toc-an-addressed-network">An Addressed Network</a></li>
+  <li><a href="#internet-protocol-ip" id="markdown-toc-internet-protocol-ip">Internet Protocol (IP)</a></li>
+  <li><a href="#user-datagram-protocol-udp" id="markdown-toc-user-datagram-protocol-udp">User Datagram Protocol (UDP)</a></li>
+  <li><a href="#transmission-control-protocol-tcp" id="markdown-toc-transmission-control-protocol-tcp">Transmission Control Protocol (TCP)</a></li>
+  <li><a href="#the-internet-using-tcpip" id="markdown-toc-the-internet-using-tcpip">The Internet Using TCP/IP</a></li>
+  <li><a href="#http-and-https" id="markdown-toc-http-and-https">HTTP and HTTPS</a></li>
+  <li><a href="#demo-on-web-services-hosting" id="markdown-toc-demo-on-web-services-hosting">Demo on Web Services Hosting</a></li>
+  <li><a href="#inspecting-http-logs-in-cli" id="markdown-toc-inspecting-http-logs-in-cli">Inspecting HTTP Logs in CLI</a></li>
+  <li><a href="#domain-name-system-dns" id="markdown-toc-domain-name-system-dns">Domain Name System (DNS)</a></li>
+  <li><a href="#providing-a-web-page" id="markdown-toc-providing-a-web-page">Providing a Web Page</a></li>
+</ul>
+
+<h2 id="a-naive-network">A Naive Network</h2>
+
+<ul>
+  <li data-marker="*">Assume we have a network of computers fully connected to each other with bare data cables.</li>
+  <li data-marker="*">When a computer sends a message, the signal is broadcasted to all other computers due to physical laws, and all computers receive the message.</li>
+  <li data-marker="*">This is a naive network and is not practical.</li>
+  <li data-marker="*"><img src="images/naive-traffic.webp" alt="A Naive Network"></li>
+</ul>
+
+<h2 id="an-addressed-network">An Addressed Network</h2>
+
+<ul>
+  <li data-marker="*">Assign an address to each computer.</li>
+  <li data-marker="*">The sender embeds the address of the receiver in the message.</li>
+  <li data-marker="*">When a computer receives a message:
+    <ul>
+      <li data-marker="*">It checks the address of the receiver.</li>
+      <li data-marker="*">If the address matches, the computer processes the message.</li>
+      <li data-marker="*">Otherwise, it discards the message.</li>
+    </ul>
+  </li>
+  <li data-marker="*"><img src="images/address-traffic.webp" alt="A Network with Address"></li>
+</ul>
+
+<h2 id="internet-protocol-ip">Internet Protocol (IP)</h2>
+
+<ul>
+  <li data-marker="*">Each computer on the Internet has a unique address called an <strong>IP address</strong>.</li>
+  <li data-marker="*">When a computer sends a message:
+    <ul>
+      <li data-marker="*">It embeds the IP address of the receiver in the message.</li>
+    </ul>
+  </li>
+  <li data-marker="*">When a computer receives a message:
+    <ul>
+      <li data-marker="*">It checks the IP address of the receiver.</li>
+      <li data-marker="*">If the address matches, the computer processes the message.</li>
+      <li data-marker="*">Otherwise, it discards the message.</li>
+    </ul>
+  </li>
+  <li data-marker="*">
+    <p>The structure of a packet of data under IP:<br>
+<img src="images/protocol-ip.webp" alt="Packet of Data under IP"></p>
+
+    <p>In detail <strong>if are interested</strong>:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Version|  IHL  |Type of Service|         Total Length          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|        Identification         |Flags|     Fragment Offset     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Time to Live  |   Protocol    |        Header Checksum        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                        Source Address                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      Destination Address                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Options                    |    Padding    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                             Data                              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="user-datagram-protocol-udp">User Datagram Protocol (UDP)</h2>
+
+<ul>
+  <li data-marker="*"><strong>UDP</strong> addresses the issue of multiple programs running on a single computer.</li>
+  <li data-marker="*">Each program has a unique <strong>port number</strong>.</li>
+  <li data-marker="*">When a computer sends a message:
+    <ul>
+      <li data-marker="*">It embeds the port number of the receiver in the message.</li>
+    </ul>
+  </li>
+  <li data-marker="*">When a computer receives a message:
+    <ul>
+      <li data-marker="*">It checks the port number of the receiver.</li>
+      <li data-marker="*">If the port number matches, the computer processes the message.</li>
+      <li data-marker="*">Otherwise, it discards the message.</li>
+    </ul>
+  </li>
+  <li data-marker="*">
+    <p>The structure of a packet of data under UDP:<br>
+<img src="images/protocol-udp.webp" alt="Packet of Data under UDP"></p>
+
+    <p>In detail <strong>if are interested</strong>:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Source Port          |       Destination Port        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|            Length             |           Checksum            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                             Data                              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="transmission-control-protocol-tcp">Transmission Control Protocol (TCP)</h2>
+
+<ul>
+  <li data-marker="*"><strong>TCP</strong> improves upon UDP by ensuring:
+    <ul>
+      <li data-marker="*">Messages are delivered in order.</li>
+      <li data-marker="*">Messages are delivered without error.</li>
+      <li data-marker="*">Data chunks can arrive in different orders but are reassembled correctly.</li>
+    </ul>
+  </li>
+  <li data-marker="*">
+    <p>The structure of a packet of data under TCP:<br>
+<img src="images/protocol-tcp.webp" alt="Packet of Data under TCP"></p>
+
+    <p>In detail <strong>if are interested</strong>:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Source Port          |       Destination Port        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                        Sequence Number                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     Acknowledgment Number                     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Offset | Res.  |     Flags     |            Window             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |        Urgent Pointer         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Options                    |    Padding    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                             Data                              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="the-internet-using-tcpip">The Internet Using TCP/IP</h2>
+
+<ul>
+  <li data-marker="*">The <strong>Internet</strong> is a giant network of computers connected to each other.</li>
+  <li data-marker="*">The main protocol used is <strong>TCP/IP</strong>, a combination of TCP and IP.</li>
+  <li data-marker="*">In theory:
+    <ul>
+      <li data-marker="*">We can access any computer on the Internet if we know its <strong>IP address</strong>.</li>
+      <li data-marker="*">We can access a specific program on the computer if we know its <strong>port number</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="http-and-https">HTTP and HTTPS</h2>
+
+<ul>
+  <li data-marker="*">
+    <p><em>HTTP</em> or <em>hypertext transfer protocol</em> is an application-level protocol that developers use to build powerful and useful things through the transfer of data from one place to another. <em>HTTPS</em> is a secure version of this protocol.</p>
+  </li>
+  <li data-marker="*">Unlike the protocol mentioned previously (TCP/IP), HTTP is a <em>higher-level</em> protocol that is built on top of TCP/IP, it’s more like the protocol defines how the contents in the data chunks should be structured, instead of how packet contains the data should be structured.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+|                Headers (TCP/IP or UDP/IP Stuffs)              |    &lt;--- Transmission Level
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+|               Data (Organized according to HTTP)              |    &lt;--- Application Level
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>When we see an address such as <code class="language-plaintext highlighter-rouge">http://10.20.229.83:8080</code> we are actually implicitly visiting that address with a <code class="language-plaintext highlighter-rouge">/</code> at the end of it.</p>
+  </li>
+  <li data-marker="*">
+    <p>The <em>path</em> is what exists after that slash. For example, <code class="language-plaintext highlighter-rouge">http://10.20.229.83:8080/folder/file.html</code> visits the software with port <code class="language-plaintext highlighter-rouge">8080</code>, which is on the machine with ip address <code class="language-plaintext highlighter-rouge">10.20.229.83</code> and browses to the <code class="language-plaintext highlighter-rouge">folder</code> directory, and then visits the file named <code class="language-plaintext highlighter-rouge">file.html</code>.</p>
+  </li>
+  <li data-marker="*">
+    <p><code class="language-plaintext highlighter-rouge">http</code> in this address is the protocol that is used to connect to that web address. By protocol, we mean that HTTP utilizes <code class="language-plaintext highlighter-rouge">GET</code> or <code class="language-plaintext highlighter-rouge">POST</code> <em>requests</em> to ask for information from a server. When we open firefox’s <code class="language-plaintext highlighter-rouge">developer tools</code> and visit <code class="language-plaintext highlighter-rouge">Network</code>, selecting any item, we will see <code class="language-plaintext highlighter-rouge">Headers</code>. we’ll see mentions of <code class="language-plaintext highlighter-rouge">GET</code>. This is possible in other browsers as well, using slightly different methods.</p>
+  </li>
+  <li data-marker="*">For example, when issuing a GET request, our computer may send the following data to a server:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET / HTTP/1
+Host: 10.20.229.83:8080
+</code></pre></div>    </div>
+    <p>Notice that this requests via HTTP the content served on www.harvard.edu.</p>
+  </li>
+  <li data-marker="*">Generally, after making a request to a server, we will receive the following data in <code class="language-plaintext highlighter-rouge">Response Headers</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1 200 OK
+Content-type: text/html; charset=utf-8
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="demo-on-web-services-hosting">Demo on Web Services Hosting</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>To demonstrate the how we actually access another computer through the Network using TCP/IP, let’s set up a simple web service on a remote machine and access it from our local machine.</p>
+  </li>
+  <li data-marker="*">First, let’s connect to the machine with the corresponding IP address using SSH to get a terminal on the remote machine.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh username@ip-address
+</code></pre></div>    </div>
+    <blockquote>
+      <p>In the lecture demo, the specific command is <code class="language-plaintext highlighter-rouge">ssh zivmax@10.20.229.83</code></p>
+    </blockquote>
+  </li>
+  <li data-marker="*">Then, let’s create a temporary directory and navigate to it.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>server
+<span class="nb">cd </span>server
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Next, let’s create a simple web server using Python.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> http.server 8080 <span class="nt">--bind</span> 0.0.0.0
+</code></pre></div>    </div>
+    <p>This command will start a simple http server on port <code class="language-plaintext highlighter-rouge">8080</code>, and <code class="language-plaintext highlighter-rouge">--bind 0.0.0.0</code> allows machines with any IP address to access the server.</p>
+  </li>
+  <li data-marker="*">Now, let’s access the server from our local machine. Open a web browser and type in <code class="language-plaintext highlighter-rouge">http://&lt;ip-address&gt;:8080</code> in the URL bar.
+    <blockquote>
+      <p>In the lecture demo, the specific address is <code class="language-plaintext highlighter-rouge">http://10.20.229.83:8080</code>.</p>
+    </blockquote>
+  </li>
+  <li data-marker="*">
+    <p>We can see the content of the <code class="language-plaintext highlighter-rouge">server</code> folder on the remote machine is displayed in the web browser on our local machine, but it’s empty now.</p>
+  </li>
+  <li data-marker="*">Let’s add a file to the <code class="language-plaintext highlighter-rouge">server</code> folder:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Hello, World!"</span> <span class="o">&gt;</span> hello.txt
+</code></pre></div>    </div>
+    <p>and refresh the web page on our local machine. We can see the <code class="language-plaintext highlighter-rouge">Hello, World!</code> is displayed in the web browser.</p>
+  </li>
+  <li data-marker="*">In the very early days of the Internet, users just accessed plain text files like this. But as more and more people read on the Internet, some people think it’s time to bring some more interesting things to the users.
+.</li>
+</ul>
+
+<h2 id="inspecting-http-logs-in-cli">Inspecting HTTP Logs in CLI</h2>
+<ul>
+  <li data-marker="*">We can analyze the work of HTTP protocols at terminal. For example, type the following in our terminal window:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -I http://10.20.229.83:8080
+</code></pre></div>    </div>
+    <p>Notice that the output of this command returns all the header values of the responses of the server.</p>
+  </li>
+  <li data-marker="*">Further, execute the following command in our terminal window:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -I http://10.20.229.83:8080/non-exist
+</code></pre></div>    </div>
+    <p>Notice that we will see a <code class="language-plaintext highlighter-rouge">404</code> response, telling us that the requested URL does not exist.</p>
+  </li>
+  <li data-marker="*">There are numerous other response codes, such as:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>200 OK
+301 Moved Permanently
+302 Found
+304 Not Modified
+304 Temporary Redirect
+401 Unauthorized
+403 Forbidden
+404 Not Found
+418 I'm a Teapot
+500 Internal Server Error
+503 Service Unavailable
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">It’s worth mentioning that <code class="language-plaintext highlighter-rouge">500</code> errors are always server-side errors, while <code class="language-plaintext highlighter-rouge">400</code> errors are client-side errors.</li>
+</ul>
+
+<h2 id="domain-name-system-dns">Domain Name System (DNS)</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>It would be very tedious if we needed to remember an IP address to visit a website, just like we have to remember a phone number to call someone. This is where DNS comes in.</p>
+  </li>
+  <li data-marker="*">
+    <p>DNS, or domain name systems, is a collection of servers on the internet that are used to query the website’s IP addresses like <code class="language-plaintext highlighter-rouge">shanghaitech.edu.cn</code>. Just like the phone book to look up a phone number, DNS is the phone book of the internet.</p>
+  </li>
+  <li data-marker="*">
+    <p>So each time when we visit a website, our computer will first ask the DNS server for the IP address of the website, and then use the IP address to visit the website.<br>
+<img src="images/dns-query.webp" alt="The process of visiting a website with DNS"></p>
+  </li>
+  <li data-marker="*">If we use <code class="language-plaintext highlighter-rouge">ping</code> command in the terminal, we can see the IP address of the website we are visiting:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping www.shanghaitech.edu.cn
+</code></pre></div>    </div>
+    <p>This command will show the actual IP address of the website <code class="language-plaintext highlighter-rouge">www.shanghaitech.edu.cn</code>.</p>
+  </li>
+  <li data-marker="*">For our demo server, we can use a local DNS-like feature to map the IP address to a domain name, which is the local hosts file. Let’s add the following line to the <code class="language-plaintext highlighter-rouge">hosts</code> file on our local machine:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip-address remote-server
+</code></pre></div>    </div>
+    <p>where <code class="language-plaintext highlighter-rouge">ip-address</code> is the IP address of the remote machine.</p>
+    <blockquote>
+      <p>In the lecture demo, the specific line is <code class="language-plaintext highlighter-rouge">10.20.229.83 server</code>.</p>
+    </blockquote>
+  </li>
+  <li data-marker="*">Now, we can access the server using the domain name <code class="language-plaintext highlighter-rouge">http://server:8080</code> in the URL bar of the web browser, instead of the IP address.</li>
+</ul>
+
+<h2 id="providing-a-web-page">Providing a Web Page</h2>
+
+<ul>
+  <li data-marker="*">Let’s go back to the remote machine, and add some interesting content to the <code class="language-plaintext highlighter-rouge">server</code> folder in a new file <code class="language-plaintext highlighter-rouge">file.txt</code>:
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+  
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>css<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"font-size: large; text-align: center;"</span><span class="nt">&gt;</span>
+            Interactive Web Engineering Basics
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"font-size: medium; text-align: center;"</span><span class="nt">&gt;</span>
+            Welcome to home page!
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"font-size: small; text-align: center;"</span><span class="nt">&gt;</span>
+            Copyright <span class="ni">&amp;#169;</span> Lin-Zheng Tang
+        <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>Refresh the web page on our local machine, we can see the content of <code class="language-plaintext highlighter-rouge">file.txt</code> is displayed in the web browser.</p>
+  </li>
+  <li data-marker="*">But notice that the content is displayed without the promised “interesting content”. To fix this, let’s copy the file, but with a different extension name:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>file.txt file.html
+</code></pre></div>    </div>
+    <p>and refresh the web page on our local machine. We can see the content of <code class="language-plaintext highlighter-rouge">file.html</code> is displayed in the web browser is not plain text anymore.</p>
+  </li>
+  <li data-marker="*">
+    <p>What our browser just did, is not only download the file from the remote machine, but also interpret (render) the content of the file, displaying a much more human-readable and fancy content to the user. And this is the start point of the web technologies.</p>
+  </li>
+  <li data-marker="*">We’ll dive deeper into the web technologies in the next lecture.</li>
+</ul>
+
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="../../../assets/page.js?1738990868"></script>
+
+    
+
+
+</body></html>

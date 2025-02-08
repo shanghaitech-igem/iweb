@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="en-us"><head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.">
+
+        <meta property="og:image" content=""><meta property="og:title" content="Lecture 0 - iWEB 2025">
+
+        <link href="../../../favicon.ico?1738990868" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="../../../assets/jquery/dist/jquery.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap/dist/js/bootstrap.bundle.min.js?1738990868"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="../../../assets/bootstrap-table/dist/bootstrap-table.min.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/bootstrap-table/dist/bootstrap-table.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1738990868"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link href="../../../assets/@fortawesome/fontawesome-free/css/all.min.css?1738990868" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="../../../assets/luxon/build/global/luxon.min.js?1738990868"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="../../../assets/mathjax/es5/tex-chtml.js?1738990868"></script>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="../../../assets/intersection-observer/intersection-observer.js?1738990868"></script>
+        <script src="../../../assets/vanilla-lazyload/dist/lazyload.min.js?1738990868"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="../../../assets/iframe-resizer/js/iframeResizer.min.js?1738990868"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="../../../assets/scratchblocks.min.js?1738990868"></script>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="../../../assets/mermaid.min.js?1738990868"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="../../../assets/twemoji/dist/twemoji.min.js?1738990868"></script>
+
+        
+
+        <link href="../../../assets/page.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/jekyll-theme-cs50.js?1738990868"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "zh-CN",
+                tz: "Asia/Shanghai"
+            };
+        </script>
+
+        <title>Lecture 0 - iWEB 2025</title>
+
+
+    </head>
+
+    <body class="invisible">
+
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg">
+ 
+                    <header><h1 data-id="iweb-here"><a href="../../..">iWEB Here</a></h1>
+
+<h2 data-id="interactive-web-engineering-basics">Interactive Web Engineering Basics</h2>
+
+<p>ShanghaiTech University</p>
+
+<p><a href="https://zivmax.top">Lin-Zheng TANG</a><br>
+<a href="mailto:tanglzh2022@shanghaitech.edu.cn">tanglzh2022@&lt;ShanghaiTech&gt;</a></p>
+
+<p><a href="https://www.shanghaitech.edu.cn/eng/2024/1105/c1260a1102357/page.htm">ShanghaiTech’s iGEM Team</a>
+<a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+
+<hr></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside > nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><ul>
+  <li data-marker="*"><a href="../../steps/0/">Step 0</a> CLI, Linux, WSL</li>
+  <li data-marker="*"><a href="../../steps/1/">Step 1</a> Internet, HTTP, DNS</li>
+  <li data-marker="*"><a href="../../steps/2/">Step 2</a> HTML, CSS, JavaScript</li>
+  <li data-marker="*"><a href="../../steps/3/">Step 3</a> Node.js, TypeScript, React</li>
+  <li data-marker="*"><a href="../../steps/4/">Step 4</a> Gatsby</li>
+  <li data-marker="*"><a href="../../steps/5/">Step 5</a> Git, Deployment</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li data-marker="*"><a href="../../project/">Final Project</a></li>
+  <li data-marker="*"><a href="../../gallery/">Project Gallery 🖼️</a></li>
+</ul>
+
+<hr>
+
+<h3 data-id="acknowledgement">Acknowledgement</h3>
+
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
+<p class="small">
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
+</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x/2025/courses/"><strong>Their Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../../license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg">
+
+                    <h1 class="no_toc" id="lecture-0">Lecture 0</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#welcome" id="markdown-toc-welcome">Welcome!</a></li>
+  <li><a href="#course-structure" id="markdown-toc-course-structure">Course Structure</a></li>
+  <li><a href="#command-line-interface" id="markdown-toc-command-line-interface">Command Line Interface</a>    <ul>
+      <li><a href="#where-cli-comes-from" id="markdown-toc-where-cli-comes-from">Where CLI Comes From</a></li>
+      <li><a href="#why-cli" id="markdown-toc-why-cli">Why CLI?</a></li>
+      <li><a href="#using-powershell-on-windows" id="markdown-toc-using-powershell-on-windows">Using PowerShell on Windows</a></li>
+    </ul>
+  </li>
+  <li><a href="#powershells-usage-demo" id="markdown-toc-powershells-usage-demo">PowerShell’s Usage Demo</a></li>
+  <li><a href="#operating-system" id="markdown-toc-operating-system">Operating System</a></li>
+  <li><a href="#linux" id="markdown-toc-linux">Linux</a></li>
+  <li><a href="#linuxs-usage-demo" id="markdown-toc-linuxs-usage-demo">Linux’s Usage Demo</a></li>
+  <li><a href="#windows-subsystem-for-linux-wsl" id="markdown-toc-windows-subsystem-for-linux-wsl">Windows Subsystem for Linux (WSL)</a></li>
+  <li><a href="#wsls-usage-demo" id="markdown-toc-wsls-usage-demo">WSL’s Usage Demo</a></li>
+  <li><a href="#coding-inside-wsl" id="markdown-toc-coding-inside-wsl">Coding Inside WSL</a></li>
+</ul>
+
+<h2 id="welcome">Welcome!</h2>
+
+<ul>
+  <li data-marker="*"><strong>Prerequisites</strong>: A basic understanding of programming in any language is required for this course.</li>
+  <li data-marker="*"><strong>Course Focus</strong>: This course will teach you how to leverage modern web technologies to build an iGEM wiki site.</li>
+  <li data-marker="*"><strong>Additional Benefits</strong>: The skills you gain here can also be applied to creating personal blogs, portfolio websites, or other static web-based projects.</li>
+  <li data-marker="*"><strong>Broader Understanding</strong>: By the end of this course, you will have a deeper understanding of how the modern internet works and how to navigate its technologies effectively.</li>
+</ul>
+
+<h2 id="course-structure">Course Structure</h2>
+
+<p>This course is divided into 6 steps, each building on the previous one. The steps are as follows:</p>
+
+<ol>
+  <li>
+    <p><strong>Command Line Interface, Linux, and Windows Subsystem for Linux</strong>:<br>
+This step introduces the command line interface (CLI) and the Linux operating system. We start with the history of interaction with computers, introducing the source and the importance of CLI. We then move on to the Linux operating system, which is widely used in the server field, learning how to perform basic operations in a Linux environment. Finally, we introduce the Windows Subsystem for Linux (WSL), which allows you to run a Linux distribution on Windows.</p>
+  </li>
+  <li>
+    <p><strong>The Internet, HTTP and DNS</strong>:<br>
+This step covers the fundamentals of computer networks and the internet. We start with a naive computer network, till the HTTP protocol, which is used to transfer data over the web, and the Domain Name System (DNS), which translates domain names into IP addresses. HTTP and DNS is the foundation of the web.</p>
+  </li>
+  <li>
+    <p><strong>HTML, CSS, and JavaScript</strong>:<br>
+This step introduces the core technologies of the web: HTML, CSS, and JavaScript. The text contains these code is the main content transferring on the web. HTML is used to define the structure of the content, CSS is used to style the content and define the layout, and JavaScript is used to add interactivity to the content.</p>
+  </li>
+  <li>
+    <p><strong>Node.js, TypeScript, and React</strong>:<br>
+This step introduces the core components of the modern web: Node.js, TypeScript, and React. Node.js is a JavaScript runtime that allows you to run JavaScript outside the browser. TypeScript is a superset of JavaScript that adds static typing to the language, refining the engineering ability of JS. React is a JavaScript library for building user interfaces in a modern component based paradigm.</p>
+  </li>
+  <li>
+    <p><strong>Gatsby</strong>:<br>
+This step introduces Gatsby, a static site generator that uses React and Node.js to build fast and efficient websites, which is perfect for building up a iGEM wiki website. You will learn how to create a personal blog using Gatsby.</p>
+  </li>
+  <li>
+    <p><strong>Git and Deployment</strong>:<br>
+This step introduces Git, a version control system, and demonstrates how to deploy your website using services like GitLab Pages. Also we will learn some small tricks to fit iGEM’s wiki deployment requirements.</p>
+  </li>
+</ol>
+
+<h2 id="command-line-interface">Command Line Interface</h2>
+
+<h3 id="where-cli-comes-from">Where CLI Comes From</h3>
+<ul>
+  <li data-marker="*">
+    <p><strong>Text-Based Interaction</strong>: In a certain of period, computers were input with typewriters, so every input will be remain on the paper, then the computer will print the output on the paper too.<br>
+    <img src="images/typewirter.webp" alt="A gif of a typewriter usage example"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Use Screen as Paper</strong>: Even after the usage of screens, this way of interaction continued, the engineers just view the screen as a infinite long paper. As the screens is where the initial point of the input and the final point of the output, we call such device as a terminal.<br>
+    <img src="images/terminal.webp" alt="A gif of a terminal usage example"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Today’s CLI</strong>: Nowadays, we often uses Graphical User Interface (GUI) to interact with computers on Windows and MacOS. Under such environment, there’s actually no real terminal CLI exists. However, this way of interaction is still widely used, thus many people uses the terminal emulator to interact with the computer.<br>
+    <img src="images/terminal-emu.webp" alt="A gif of a terminal emulator usage example"></p>
+  </li>
+</ul>
+
+<h3 id="why-cli">Why CLI?</h3>
+
+<ul>
+  <li data-marker="*">
+    <p>There are situations that GUI is not available, like on a server without desktop environment.</p>
+  </li>
+  <li data-marker="*">
+    <p>Software with only CLI support is very common. Not only because it makes the development easier, but also provides a interface more ease to interact accurately in programming way.</p>
+  </li>
+  <li data-marker="*">
+    <p>If as a professional, you will find that a little more cost on learning CLI will bring you a lot of efficiency.</p>
+  </li>
+</ul>
+
+<h3 id="using-powershell-on-windows">Using PowerShell on Windows</h3>
+<ul>
+  <li data-marker="*">
+    <p><a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Windows Terminal</a> is a modern terminal emulator on Windows which is recommended for use in this course.</p>
+  </li>
+  <li data-marker="*">
+    <p>In the terminal window, some common command-line arguments we may use include:</p>
+    <ul>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">cd</code>, for changing our current directory (folder)</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">cp</code>, for copying files and directories</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">ls</code>, for listing files in a directory</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">mkdir</code>, for making a directory</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">mv</code>, for moving (renaming) files and directories</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">rm</code>, for removing (deleting) files</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">rmdir</code>, for removing (deleting) directories</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">cat</code>, for displaying the contents of a file</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="powershells-usage-demo">PowerShell’s Usage Demo</h2>
+
+<p>Lets perform some real operations in PowerShell with Windows Terminal.</p>
+
+<ol>
+  <li>Let’s start by navigating to the Desktop directory using the cd command. The tilde (~) represents our home directory, so this command takes us directly to our Desktop.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Desktop
+</code></pre></div>    </div>
+  </li>
+  <li>Now that we’re in the Desktop directory, let’s see what files and folders are here using the ls command. This lists all the contents of the current directory.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Let’s create a new directory called ‘test’ using the mkdir command. This will make a new folder on our Desktop. After running this command, we can find there is a new folder named ‘test’ on the Desktop.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Now we’ll remove the ‘test’ directory we just created using the rmdir command. This deletes empty directories.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rmdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Let’s create a new text file called hello.txt and write ‘Hello, World!’ into it. We’re using the echo command with the &gt; operator to redirect the output into a file.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Hello, World!"</span> <span class="o">&gt;</span> hello.txt
+</code></pre></div>    </div>
+  </li>
+  <li>Finally, let’s verify the content of our hello.txt file using the cat command. This will display the text we wrote earlier in the terminal.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>hello.txt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="operating-system">Operating System</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>A operating system (OS) is a software that manages computer hardware and software resources and provides common services for computer programs.</p>
+  </li>
+  <li data-marker="*">
+    <p>For example, when your program requests to read a file, the OS will handle whole process instructing the hardware to read the file and then return the content data to your program.</p>
+  </li>
+  <li data-marker="*">
+    <p>Windows is the most popular OS for personal computers, while Linux is the most popular OS for servers.</p>
+  </li>
+  <li data-marker="*">
+    <p>Different OS serves for the same purpose as said before, so there’s no significant difference when we are using them besides the software ecosystem, especially when we are developing our own softwares.</p>
+  </li>
+</ul>
+
+<h2 id="linux">Linux</h2>
+<p><img src="images/linux-logo.webp" alt="Logo of linux"></p>
+
+<ul>
+  <li data-marker="*">
+    <p>Specifically, <a href="https://github.com/torvalds/linux">Linux</a> is a open-source OS under the GNU General Public License (GPL), which means that it is free to use and modify. That’s a important reason why Linux is so popular in the server field.</p>
+  </li>
+  <li data-marker="*">
+    <p>Many open-source projects are developed on Linux, thus in the context of development, Linux actually has a better support than Windows.</p>
+  </li>
+  <li data-marker="*">
+    <p>The CLI control on Linux is also much more convenient than Windows, since running without GUI is a common situation on Linux.</p>
+  </li>
+</ul>
+
+<h2 id="linuxs-usage-demo">Linux’s Usage Demo</h2>
+
+<p>Let’s perform some real operations in a actual Linux machine. The Linux machine used in the lecture is a remote machine, thus the local terminal emulator is the only way to interact with it. Thanks to Powershell supports the many syntax as on Linux, in this demo we just use the exact same commands as in the previous demo.</p>
+
+<ol>
+  <li>Change current directory to Desktop.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Desktop
+</code></pre></div>    </div>
+  </li>
+  <li>Check the files and folders in the current directory.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a new directory called ‘test’.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Check if the ‘test’ directory is created.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove the ‘test’ directory.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rmdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Check if the ‘test’ directory is removed.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a new text file called hello.txt and write ‘Hello, World!’ into it.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Hello, World!"</span> <span class="o">&gt;</span> hello.txt
+</code></pre></div>    </div>
+  </li>
+  <li>Verify the content of the hello.txt file.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>hello.txt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="windows-subsystem-for-linux-wsl">Windows Subsystem for Linux (WSL)</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Not many people could afford a standalone Linux machine, or replace their Windows machine with a Linux one. However, the <a href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a> provides a solution for this problem.</p>
+  </li>
+  <li data-marker="*">
+    <p>WSL could be view as a high-performance virtual machine that runs a Linux on Windows. In most cases, it just performs as a real GUI-less Linux machine.</p>
+  </li>
+  <li data-marker="*">
+    <p>To enable/install it, open PowerShell in administrator mode, enter the <code class="language-plaintext highlighter-rouge">wsl --install</code> command, then restart your machine.</p>
+  </li>
+  <li data-marker="*">
+    <p>Then we could check what Linux distributions are available by entering the <code class="language-plaintext highlighter-rouge">wsl --list --online</code> command.</p>
+  </li>
+  <li data-marker="*">
+    <p>Let’s install the latest Ubuntu LTS distribution by entering the <code class="language-plaintext highlighter-rouge">wsl --install -d Ubuntu-24.04</code> command.</p>
+  </li>
+</ul>
+
+<h2 id="wsls-usage-demo">WSL’s Usage Demo</h2>
+
+<p>Let’s perform some real operations in WSL. WSL has a tight integration with Windows, allowing both systems to access each other’s files. However, accessing files across different operating systems can result in significant performance degradation due to technical limitation. Therefore, the best practice is to keep Linux files within the WSL file system to ensure optimal performance. In this demo, we break this principle to demonstrate the integration between WSL and Windows.</p>
+
+<ol>
+  <li>Change current directory to Windows’ Desktop.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /mnt/c/Users/your-username/Desktop
+</code></pre></div>    </div>
+  </li>
+  <li>Check the files and folders in the current directory.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a new directory called ‘test’.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Remove the ‘test’ directory.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rmdir test</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a new text file called hello.txt and write ‘Hello, World!’ into it.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Hello, World!"</span> <span class="o">&gt;</span> hello.txt
+</code></pre></div>    </div>
+  </li>
+  <li>Verify the content of the hello.txt file.
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>hello.txt
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="coding-inside-wsl">Coding Inside WSL</h2>
+
+<ul>
+  <li data-marker="*"><a href="https://code.visualstudio.com/">VSCode</a> is a popular code editor that has a excellent support for WSL. It can provide a seamless experience for coding in WSL.</li>
+  <li data-marker="*">First we need to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote - WSL extension</a> in VSCode.</li>
+  <li data-marker="*">Then we can open a WSL terminal in VSCode by clicking the green bottom-left corner button.</li>
+  <li data-marker="*">We can both open a WSL VSCode window from a Windows VSCode window, or by type in command <code class="language-plaintext highlighter-rouge">code .</code> in the WSL terminal.</li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="../../../assets/page.js?1738990868"></script>
+
+    
+
+
+</body></html>

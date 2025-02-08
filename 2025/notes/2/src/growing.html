@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Animate</title>
+        <style>
+            @keyframes grow {
+                from {
+                    font-size: 20px;
+                }
+
+                to {
+                    font-size: 100px;
+                }
+            }
+
+            h1 {
+                animation-fill-mode: forwards;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="animatedText">Welcome!</h1>
+        <button onclick="startAnimation()">Animate</button>
+
+        <script>
+            function startAnimation() {
+                document.getElementById('animatedText').style.animationName = 'grow';
+                document.getElementById('animatedText').style.animationDuration = '2s';
+            }
+        </script>
+    </body>
+
+</html>

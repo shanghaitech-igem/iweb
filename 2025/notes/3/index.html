@@ -1,0 +1,962 @@
+<!DOCTYPE html><html lang="en-us"><head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.">
+
+        <meta property="og:image" content=""><meta property="og:title" content="Lecture 3 - iWEB 2025">
+
+        <link href="../../../favicon.ico?1738990868" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="../../../assets/jquery/dist/jquery.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap/dist/js/bootstrap.bundle.min.js?1738990868"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="../../../assets/bootstrap-table/dist/bootstrap-table.min.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/bootstrap-table/dist/bootstrap-table.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1738990868"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link href="../../../assets/@fortawesome/fontawesome-free/css/all.min.css?1738990868" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="../../../assets/luxon/build/global/luxon.min.js?1738990868"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="../../../assets/mathjax/es5/tex-chtml.js?1738990868"></script>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="../../../assets/intersection-observer/intersection-observer.js?1738990868"></script>
+        <script src="../../../assets/vanilla-lazyload/dist/lazyload.min.js?1738990868"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="../../../assets/iframe-resizer/js/iframeResizer.min.js?1738990868"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="../../../assets/scratchblocks.min.js?1738990868"></script>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="../../../assets/mermaid.min.js?1738990868"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="../../../assets/twemoji/dist/twemoji.min.js?1738990868"></script>
+
+        
+
+        <link href="../../../assets/page.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/jekyll-theme-cs50.js?1738990868"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "zh-CN",
+                tz: "Asia/Shanghai"
+            };
+        </script>
+
+        <title>Lecture 3 - iWEB 2025</title>
+
+
+    </head>
+
+    <body class="invisible">
+
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg">
+ 
+                    <header><h1 data-id="iweb-here"><a href="../../..">iWEB Here</a></h1>
+
+<h2 data-id="interactive-web-engineering-basics">Interactive Web Engineering Basics</h2>
+
+<p>ShanghaiTech University</p>
+
+<p><a href="https://zivmax.top">Lin-Zheng TANG</a><br>
+<a href="mailto:tanglzh2022@shanghaitech.edu.cn">tanglzh2022@&lt;ShanghaiTech&gt;</a></p>
+
+<p><a href="https://www.shanghaitech.edu.cn/eng/2024/1105/c1260a1102357/page.htm">ShanghaiTech’s iGEM Team</a>
+<a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+
+<hr></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside > nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><ul>
+  <li data-marker="*"><a href="../../steps/0/">Step 0</a> CLI, Linux, WSL</li>
+  <li data-marker="*"><a href="../../steps/1/">Step 1</a> Internet, HTTP, DNS</li>
+  <li data-marker="*"><a href="../../steps/2/">Step 2</a> HTML, CSS, JavaScript</li>
+  <li data-marker="*"><a href="../../steps/3/">Step 3</a> Node.js, TypeScript, React</li>
+  <li data-marker="*"><a href="../../steps/4/">Step 4</a> Gatsby</li>
+  <li data-marker="*"><a href="../../steps/5/">Step 5</a> Git, Deployment</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li data-marker="*"><a href="../../project/">Final Project</a></li>
+  <li data-marker="*"><a href="../../gallery/">Project Gallery 🖼️</a></li>
+</ul>
+
+<hr>
+
+<h3 data-id="acknowledgement">Acknowledgement</h3>
+
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
+<p class="small">
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
+</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x/2025/courses/"><strong>Their Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../../license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg">
+
+                    <h1 class="no_toc" id="lecture-3">Lecture 3</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#nodejs" id="markdown-toc-nodejs">Node.js</a></li>
+  <li><a href="#node-package-manager-npm" id="markdown-toc-node-package-manager-npm">Node Package Manager (NPM)</a></li>
+  <li><a href="#pnpm" id="markdown-toc-pnpm">PNPM</a></li>
+  <li><a href="#typescript-ts" id="markdown-toc-typescript-ts">TypeScript (TS)</a></li>
+  <li><a href="#structural-typing-system" id="markdown-toc-structural-typing-system">Structural Typing System</a></li>
+  <li><a href="#react" id="markdown-toc-react">React</a></li>
+  <li><a href="#setting-up-for-react" id="markdown-toc-setting-up-for-react">Setting Up for React</a></li>
+  <li><a href="#components-the-building-blocks-of-react" id="markdown-toc-components-the-building-blocks-of-react">Components: The Building Blocks of React</a></li>
+  <li><a href="#key-features-in-react" id="markdown-toc-key-features-in-react">Key Features in React</a>    <ul>
+      <li><a href="#props-passing-data-to-components" id="markdown-toc-props-passing-data-to-components">Props: Passing Data to Components</a></li>
+      <li><a href="#state-managing-dynamic-data" id="markdown-toc-state-managing-dynamic-data">State: Managing Dynamic Data</a></li>
+      <li><a href="#rendering-and-the-virtual-dom" id="markdown-toc-rendering-and-the-virtual-dom">Rendering and the Virtual DOM</a></li>
+      <li><a href="#event-handling" id="markdown-toc-event-handling">Event Handling</a></li>
+      <li><a href="#hooks-extending-component-functionality" id="markdown-toc-hooks-extending-component-functionality">Hooks: Extending Component Functionality</a></li>
+      <li><a href="#context-sharing-data-across-components" id="markdown-toc-context-sharing-data-across-components">Context: Sharing Data Across Components</a></li>
+      <li><a href="#portals-rendering-outside-the-component-tree" id="markdown-toc-portals-rendering-outside-the-component-tree">Portals: Rendering Outside the Component Tree</a></li>
+    </ul>
+  </li>
+  <li><a href="#purity-of-function" id="markdown-toc-purity-of-function">Purity of Function</a>    <ul>
+      <li><a href="#characteristics-of-pure-functions" id="markdown-toc-characteristics-of-pure-functions">Characteristics of Pure Functions</a></li>
+      <li><a href="#an-inpure-function" id="markdown-toc-an-inpure-function">An Inpure Function</a></li>
+      <li><a href="#an-impure-component" id="markdown-toc-an-impure-component">An Impure Component</a></li>
+    </ul>
+  </li>
+  <li><a href="#setting-up-a-react-project" id="markdown-toc-setting-up-a-react-project">Setting Up a React Project</a></li>
+  <li><a href="#react-project-with-typescript" id="markdown-toc-react-project-with-typescript">React Project with TypeScript</a>    <ul>
+      <li><a href="#setting-up-a-react-project-with-typescript" id="markdown-toc-setting-up-a-react-project-with-typescript">Setting Up a React Project with TypeScript</a></li>
+      <li><a href="#typing-props-in-react-components" id="markdown-toc-typing-props-in-react-components">Typing Props in React Components</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="nodejs">Node.js</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Node.js is an open-source and cross-platform JavaScript runtime environment. It allows us to run JS outside of a browser. This provides JS the ability to develop just like other programming languages.</p>
+  </li>
+  <li data-marker="*">To use Node.js, we need to install it following the instructions on its <a href="https://nodejs.org/en/download">official website</a>.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Download and install fnm:</span>
+curl <span class="nt">-o</span><span class="k">*</span> https://fnm.vercel.app/install | bash
+
+<span class="c"># Download and install Node.js:</span>
+fnm <span class="nb">install </span>22
+
+<span class="c"># Verify the Node.js version:</span>
+node <span class="nt">-v</span> <span class="c"># Should print "v22.13.1".</span>
+
+<span class="c"># Verify npm version:</span>
+npm <span class="nt">-v</span> <span class="c"># Should print "10.9.2".</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Let’s create our first JS code outside of a browser:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// hello.js</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, Node.js!</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>    </div>
+    <p>run it using:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node hello.js
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Let’s try some more complicated code, like the number guessing game:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// guessing.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createInterface</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nf">createInterface</span><span class="p">({</span>
+  <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">number</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">tries</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nf">setPrompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">Guess the number: </span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">rl</span><span class="p">.</span><span class="nf">prompt</span><span class="p">();</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">tries</span><span class="o">++</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">guess</span> <span class="o">=</span> <span class="nf">parseInt</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">guess</span> <span class="o">===</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Congratulations! You guessed the number in </span><span class="p">${</span><span class="nx">tries</span><span class="p">}</span><span class="s2"> tries.`</span><span class="p">);</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nf">close</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">guess</span> <span class="o">&lt;</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Too low!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nf">prompt</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Too high!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nf">prompt</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+    <p>run it using:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node guessing.js
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="node-package-manager-npm">Node Package Manager (NPM)</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>NPM is the default package manager for Node.js. If we want to use a formally published package, we can install it using NPM.</p>
+  </li>
+  <li data-marker="*">Let’s install a third-party package called <code class="language-plaintext highlighter-rouge">colors</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>colors
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Let’s use the <code class="language-plaintext highlighter-rouge">colors</code> package in our code:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// colors.js</span>
+<span class="k">import</span> <span class="nx">colors</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">colors</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, Node.js!</span><span class="dl">'</span><span class="p">.</span><span class="nx">green</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, Node.js!</span><span class="dl">'</span><span class="p">.</span><span class="nx">red</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, Node.js!</span><span class="dl">'</span><span class="p">.</span><span class="nx">blue</span><span class="p">);</span>
+</code></pre></div>    </div>
+    <p>run it using:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node colors.js
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>Noticed that, after installing the <code class="language-plaintext highlighter-rouge">colors</code> package, a <code class="language-plaintext highlighter-rouge">node_modules</code> directory is created, and a <code class="language-plaintext highlighter-rouge">package-lock.json</code> file is generated. The <code class="language-plaintext highlighter-rouge">node_modules</code> directory contains all the dependencies of our project, and the <code class="language-plaintext highlighter-rouge">package-lock.json</code> file contains the exact version of each dependency. which is useful for reproducibility.</p>
+  </li>
+  <li data-marker="*">Let’s try to copy <code class="language-plaintext highlighter-rouge">package-lock.json</code> to another folder and run <code class="language-plaintext highlighter-rouge">npm install</code> to install the dependencies:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> ../another
+<span class="nb">cp </span>colors.js ../another
+<span class="nb">cp </span>package-lock.json ../another
+<span class="nb">cd</span> ../another
+npm <span class="nb">install
+</span>node colors.js
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">A common companion tool to NPM is <code class="language-plaintext highlighter-rouge">npx</code>, which is used to run packages in the <code class="language-plaintext highlighter-rouge">node_modules</code> directory without installing them globally on the machine. For example:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>cowsay
+npx cowsay <span class="s2">"Hello, Node.js!"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="pnpm">PNPM</h2>
+
+<ul>
+  <li data-marker="*">
+    <p><a href="https://pnpm.io/">PNPM</a> is an alternative package manager for Node.js that aims to solve some of the issues with NPM. It uses a different approach to package management, which can lead to faster and more efficient installations.</p>
+  </li>
+  <li data-marker="*">To install PNPM, run:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://get.pnpm.io/install.sh | <span class="nb">env </span><span class="nv">PNPM_VERSION</span><span class="o">=</span>10.0.0 sh -
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Most of the NPM command could be directly replaced by PNPM:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install
+</span>pnpm run start
+pnpm run build
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Using <code class="language-plaintext highlighter-rouge">npx</code> to run installed packages could be replaced by PNPM:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>cowsay
+pnpm <span class="nb">exec </span>cowsay <span class="s2">"Hello, Node.js!"</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Using <code class="language-plaintext highlighter-rouge">npx</code> to run not installed packages could be replaced by PNPM:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm dlx cowsay <span class="s2">"Hello, Node.js!"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="typescript-ts">TypeScript (TS)</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Like Python, JavaScript is a dynamically typed language. This means that the type of a variable is determined at runtime. It indeed makes the language more flexible, and more convenient in some cases. But for a large project, dynamic typing prevent the ability to statically check the code, and providing better code completion and refactoring.</p>
+
+    <ul>
+      <li data-marker="*">This JS code has a potential runtime error:
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error.js</span>
+<span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nf">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Intended to add numbers, but one is a string</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// Outputs "510" (unexpected concatenation)</span>
+</code></pre></div>        </div>
+        <p>Using TS, we could catch this error at compile time:</p>
+        <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error.ts</span>
+<span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nf">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Error: Argument of type 'string' is not assignable to parameter of type 'number'.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li data-marker="*">This JS code won’t provide code completion:
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// user.js</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">email</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">age</span><span class="p">?:</span> <span class="nx">number</span><span class="p">;</span> <span class="c1">// Optional property</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">user</span><span class="p">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John Doe</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@example.com</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// Start typing `user.` and see code completion in action</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Code editor suggests `name`, `id`, `email`, and `age`</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// Code editor suggests `age` as an optional property</span>
+</code></pre></div>        </div>
+        <p>Using TS, we could provide code completion:</p>
+        <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// user.ts</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// Optional property</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">user</span><span class="p">:</span> <span class="nx">User</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John Doe</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@example.com</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// Start typing `user.` and see code completion in action</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Code editor suggests `name`, `id`, `email`, and `age`</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">// Code editor suggests `age` as an optional property</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li data-marker="*">But TypeScript could not run directly in Node.js. We need to compile it to JavaScript first. To install the TypeScript compiler, run:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>typescript
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Let’s fix and compile the <code class="language-plaintext highlighter-rouge">error.ts</code> file to <code class="language-plaintext highlighter-rouge">error.js</code>:
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// error.ts</span>
+<span class="kd">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nf">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>    </div>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">exec </span>tsc error.ts
+node error.js
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="structural-typing-system">Structural Typing System</h2>
+
+<ul>
+  <li data-marker="*">TS actually uses the structural typing system, which is different from the nominal typing system used in languages like Java and C#. In a nominal typing system, two objects are considered to have the same type if they are instances of the same class. In a structural typing system, two objects are considered to have the same type if they have the same structure.
+    <ul>
+      <li data-marker="*">In a nominal typing system <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">B</code> are different types because they are instances of different classes:
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li data-marker="*">In a structural typing system <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">B</code> are the same type because they have the same structure:
+        <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">A</span> <span class="p">{</span>
+    <span class="nl">x</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">B</span> <span class="p">{</span>
+    <span class="nl">x</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="react">React</h2>
+
+<p>React is a popular JavaScript library for building user interfaces, particularly for single-page applications (SPAs). It allows developers to create reusable UI components and manage the state of their applications efficiently. React is maintained by Meta (formerly Facebook) and a community of individual developers and companies.</p>
+
+<p>Here are some key features of React:</p>
+
+<ol>
+  <li><strong>Component-Based Architecture</strong>: React applications are built using components, which are self-contained pieces of code that manage their own state and rendering. This makes the code modular and easier to maintain.</li>
+  <li><strong>Declarative Syntax</strong>: React uses a declarative approach to define how the UI should look based on the current state. This makes the code more predictable and easier to debug.</li>
+  <li><strong>Virtual DOM</strong>: React uses a virtual DOM to optimize rendering performance. Instead of directly manipulating the browser’s DOM, React creates a lightweight copy (virtual DOM) and updates it efficiently before applying the changes to the actual DOM.</li>
+  <li><strong>Strong Ecosystem</strong>: React has a rich ecosystem of tools, libraries, and community support, making it easier to build modern web applications.</li>
+</ol>
+
+<h2 id="setting-up-for-react">Setting Up for React</h2>
+
+<ul>
+  <li data-marker="*">Using Node.js to run React is quite complicated, since for a neat start, let’s use a older version of React designed to run in the browser first.
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/react@17/umd/react.production.min.js"</span> <span class="na">crossorigin</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"</span> <span class="na">crossorigin</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/babel-standalone@6/babel.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Hello<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/babel"</span><span class="nt">&gt;</span>
+            <span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                        <span class="nx">Hello</span><span class="o">!</span>
+                    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>                <span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#root</span><span class="dl">"</span><span class="p">));</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+
+    <iframe src="src/basic.html"></iframe>
+  </li>
+  <li data-marker="*">We have imported 3 JavaScript Packages:
+    <ul>
+      <li data-marker="*">React: Defines components and their behavior</li>
+      <li data-marker="*">ReactDOM: Takes React components and inserts them into the DOM</li>
+      <li data-marker="*">Babel: Translates from JSX, the language in which we’ll write in React, to plain JavaScript that our browsers can interpret. JSX is very similar to JavaScript, but with some additional features, including the ability to represent HTML inside of our code.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="components-the-building-blocks-of-react">Components: The Building Blocks of React</h2>
+
+<p>Components are the foundation of every React application. They allow you to break down your UI into reusable, self-contained pieces. Think of them like Lego blocks—you can use them over and over to build complex structures.</p>
+
+<ul>
+  <li data-marker="*"><strong>What is a Component?</strong><br>
+A React component is a JavaScript function that returns <strong>JSX</strong> (JavaScript XML), which looks like HTML but is actually JavaScript in disguise. For example:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Greeting</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, React!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*"><strong>JSX vs. HTML</strong><br>
+JSX is optional, but it’s the preferred way to write React components because it’s more readable than using <code class="language-plaintext highlighter-rouge">React.createElement</code>. However, JSX has some differences from HTML:
+    <ul>
+      <li data-marker="*">Attributes are written in <strong>camelCase</strong> (e.g., <code class="language-plaintext highlighter-rouge">className</code> instead of <code class="language-plaintext highlighter-rouge">class</code>).</li>
+      <li data-marker="*">You can embed dynamic JavaScript values using curly braces <code class="language-plaintext highlighter-rouge">{}</code>.</li>
+    </ul>
+
+    <p>Example:</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Greeting</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Alice</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*"><strong>Returning a Single Parent Element</strong><br>
+React components can only return <strong>one parent element</strong>. If you need to return multiple elements, wrap them in a <code class="language-plaintext highlighter-rouge">div</code> or use a <strong>React Fragment</strong> (<code class="language-plaintext highlighter-rouge">&lt;&gt;...&lt;/&gt;</code>):
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return </span><span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <iframe src="src/comp.html"></iframe>
+  </li>
+</ul>
+
+<h2 id="key-features-in-react">Key Features in React</h2>
+
+<p>React has a lots of features that you need to understand to build a React application.</p>
+
+<h3 id="props-passing-data-to-components">Props: Passing Data to Components</h3>
+
+<p>Props (short for “properties”) are how you pass data from one component to another. They are read-only and make components reusable and dynamic.</p>
+
+<ul>
+  <li data-marker="*"><strong>Using Props</strong><br>
+To pass data to a component, you add custom attributes to it. For example:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Greeting</span><span class="p">({</span> <span class="nx">name</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">name</span><span class="p">=</span><span class="s">"Alice"</span> <span class="p">/&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*"><strong>The <code class="language-plaintext highlighter-rouge">children</code> Prop</strong><br>
+If you want to pass components or content between the opening and closing tags of a component, you can use the <code class="language-plaintext highlighter-rouge">children</code> prop:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Card</span><span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">"card"</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Card</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Content goes here.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Card</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*"><strong>The <code class="language-plaintext highlighter-rouge">key</code> Prop</strong><br>
+When rendering lists, React needs a way to uniquely identify each item. Use the <code class="language-plaintext highlighter-rouge">key</code> prop to provide a unique identifier:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">TodoList</span><span class="p">({</span> <span class="nx">todos</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">todos</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">))</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/props.html"></iframe>
+  </li>
+</ul>
+
+<h3 id="state-managing-dynamic-data">State: Managing Dynamic Data</h3>
+
+<p>State is how React manages data that changes over time. Unlike regular variables, state triggers re-renders when it changes.</p>
+
+<ul>
+  <li data-marker="*"><strong>Using <code class="language-plaintext highlighter-rouge">useState</code></strong><br>
+The <code class="language-plaintext highlighter-rouge">useState</code> hook is the most common way to manage state in functional components:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>You clicked <span class="si">{</span><span class="nx">count</span><span class="si">}</span> times<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/state.html"></iframe>
+  </li>
+</ul>
+
+<h3 id="rendering-and-the-virtual-dom">Rendering and the Virtual DOM</h3>
+
+<p>React uses a <strong>Virtual DOM</strong> to optimize rendering performance. Here’s how it works:</p>
+
+<ol>
+  <li>When state changes, React updates the Virtual DOM (a lightweight copy of the real DOM).</li>
+  <li>React compares the updated Virtual DOM with the previous version using a process called <strong>Diffing</strong>.</li>
+  <li>React applies only the necessary changes to the real DOM through <strong>Reconciliation</strong>.</li>
+</ol>
+
+<p>This process ensures that updates are fast and efficient.</p>
+
+<h3 id="event-handling">Event Handling</h3>
+
+<p>React provides built-in event handlers like <code class="language-plaintext highlighter-rouge">onClick</code>, <code class="language-plaintext highlighter-rouge">onChange</code>, and <code class="language-plaintext highlighter-rouge">onSubmit</code> to respond to user interactions.</p>
+
+<ul>
+  <li data-marker="*">Example:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Button</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isDisabled</span><span class="p">,</span> <span class="nx">setIsDisabled</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Button clicked!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nf">setIsDisabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">handleClick</span><span class="si">}</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="nx">isDisabled</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">isDisabled</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">Clicked</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Click me</span><span class="dl">'</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/event.html"></iframe>
+  </li>
+</ul>
+
+<h3 id="hooks-extending-component-functionality">Hooks: Extending Component Functionality</h3>
+
+<p>Hooks are functions that let you “hook into” React features like state and lifecycle methods. The real meaning of “hook” is that only if the component uses the feature, otherwise the feature is actually disabled under the hood for performance at runtime.</p>
+
+<ul>
+  <li data-marker="*"><strong>Common Hooks</strong>:
+    <ul>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">useState</code>: Manages state.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">useEffect</code>: Handles side effects (e.g., fetching data).</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">useRef</code>: References DOM elements or persists values across renders.</li>
+    </ul>
+  </li>
+  <li data-marker="*">Example of <code class="language-plaintext highlighter-rouge">useEffect</code>:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">DataFetcher</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="nx">React</span><span class="p">.</span><span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.example.com/data</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nf">setData</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">data</span> <span class="p">?</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Loading...</span><span class="dl">'</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/effect.html"></iframe>
+  </li>
+  <li data-marker="*">Example of <code class="language-plaintext highlighter-rouge">useRef</code>:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">TextInputWithFocusButton</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nf">focus</span><span class="p">();</span>
+  <span class="p">};</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">inputRef</span><span class="si">}</span> <span class="na">type</span><span class="p">=</span><span class="s">"text"</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>Focus the input<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/ref.html"></iframe>
+  </li>
+</ul>
+
+<h3 id="context-sharing-data-across-components">Context: Sharing Data Across Components</h3>
+
+<p>Context allows you to pass data through the component tree without manually passing props at every level.</p>
+
+<ul>
+  <li data-marker="*">Let’s create a theme context that provides the current theme to all components:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">ThemeContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">createContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nf">Toolbar</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useContext</span><span class="p">(</span><span class="nx">ThemeContext</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Current theme: <span class="si">{</span><span class="nx">theme</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+  
+<span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">theme</span><span class="p">,</span> <span class="nx">setTheme</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">toggleTheme</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setTheme</span><span class="p">((</span><span class="nx">prevTheme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">prevTheme</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">));</span>
+  <span class="p">};</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">ThemeContext</span><span class="p">.</span><span class="nc">Provider</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">theme</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Toolbar</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">toggleTheme</span><span class="si">}</span><span class="p">&gt;</span>Toggle Theme<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">ThemeContext</span><span class="p">.</span><span class="nc">Provider</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/context.html"></iframe>
+  </li>
+</ul>
+
+<h3 id="portals-rendering-outside-the-component-tree">Portals: Rendering Outside the Component Tree</h3>
+
+<p>Portals let you render a component outside its parent DOM hierarchy, which is useful for modals, tooltips, and dropdowns.</p>
+
+<ul>
+  <li data-marker="*">Let’s create a portal that renders a child component outside the parent div:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">border</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2px solid black</span><span class="dl">'</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This child is placed in the parent div.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createPortal</span><span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This child is placed in the document body.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;,</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span>
+      <span class="p">)</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/portal.html"></iframe>
+  </li>
+  <li data-marker="*">This feature is especially useful for creating modals, tooltips, and other UI elements that need to break out of the normal flow of the page:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">Modal</span><span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createPortal</span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">position</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fixed</span><span class="dl">'</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="dl">'</span><span class="s1">20%</span><span class="dl">'</span><span class="p">,</span> <span class="na">left</span><span class="p">:</span> <span class="dl">'</span><span class="s1">50%</span><span class="dl">'</span><span class="p">,</span> <span class="na">transform</span><span class="p">:</span> <span class="dl">'</span><span class="s1">translateX(-50%)</span><span class="dl">'</span><span class="p">,</span> <span class="na">padding</span><span class="p">:</span> <span class="dl">'</span><span class="s1">20px</span><span class="dl">'</span><span class="p">,</span> <span class="na">background</span><span class="p">:</span> <span class="dl">'</span><span class="s1">white</span><span class="dl">'</span><span class="p">,</span> <span class="na">border</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1px solid #ccc</span><span class="dl">'</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;,</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">showModal</span><span class="p">,</span> <span class="nx">setShowModal</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nf">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">setShowModal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Show Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">showModal</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">Modal</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a modal!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">setShowModal</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Close<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">Modal</span><span class="p">&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <iframe src="src/modal.html"></iframe>
+
+    <h2 id="purity-of-function">Purity of Function</h2>
+
+    <p>In functional programming, a pure function is a function that, given the same input, will always return the same output and does not have any side effects. Pure functions are predictable and easier to test, debug, and reason about.</p>
+
+    <h3 id="characteristics-of-pure-functions">Characteristics of Pure Functions</h3>
+
+    <blockquote>
+      <p>For person who is familiar with any other programming language, pure function could simply being not use any global variable or not modify any global variable.</p>
+    </blockquote>
+
+    <ul>
+      <li data-marker="*"><strong>Deterministic</strong>: A pure function always produces the same output for the same input.</li>
+      <li data-marker="*"><strong>No Side Effects</strong>: A pure function does not modify any external state or interact with the outside world (e.g., no modifying global variables, no I/O operations).</li>
+    </ul>
+
+    <h3 id="an-inpure-function">An Inpure Function</h3>
+    <p>To create a inpure function, this is a good minimal example:</p>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">counter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">increment</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">increment</span><span class="p">());</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">increment</span><span class="p">());</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">increment</span><span class="p">());</span> <span class="c1">// 4</span>
+</code></pre></div>    </div>
+    <p>The output is determined by how many times the function has been called.</p>
+
+    <h3 id="an-impure-component">An Impure Component</h3>
+    <p>A inpure component is just the same:</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">count</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+  
+<span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return </span><span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Counter</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Counter</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Counter</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>  
+</code></pre></div>    </div>
+    <iframe src="src/purity.html"></iframe>
+
+    <p>When we reuse components, React reuses the compiled version of the component too, it won’t compile the component again. So the <code class="language-plaintext highlighter-rouge">count</code> variable is shared among all the <code class="language-plaintext highlighter-rouge">Counter</code> components.</p>
+  </li>
+</ul>
+
+<h2 id="setting-up-a-react-project">Setting Up a React Project</h2>
+
+<p>To start using React, you need to set up a development environment. The easiest way to do this is by using <strong>Create React App</strong>, a tool that sets up a new React project with a sensible default configuration.</p>
+
+<ol>
+  <li><strong>Create a New React Project</strong>: Use the following command to create a new React project:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  pnpm create vite@latest react-app <span class="nt">--template</span> react
+  <span class="nb">cd </span>react-app
+  pnpm <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Start the Development Server</strong>: Run the development server to see your React app in action:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  pnpm <span class="nb">install
+  </span>pnpm start
+</code></pre></div>    </div>
+  </li>
+  <li><strong>The Project Structure</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">.</span>
+  ├── README.md
+  ├── eslint.config.js
+  ├── index.html
+  ├── node_modules
+  │   ├── @eslint
+  │   ...
+  │   └── vite
+  ├── package.json
+  ├── pnpm-lock.yaml
+  ├── public
+  │   └── vite.svg
+  ├── src
+  │   ├── App.css
+  │   ├── App.jsx
+  │   ├── assets
+  │   ├── index.css
+  │   └── main.jsx
+  └── vite.config.js
+</code></pre></div>    </div>
+    <ul>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">src</code>: Contains the source code of our React application, we coding in this directory.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">src/main.jsx</code>: The entry point, import the main component from <code class="language-plaintext highlighter-rouge">App.jsx</code> and render it to the DOM.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">src/App.jsx</code>: The main component, the start point of our coding.</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li data-marker="*">The <code class="language-plaintext highlighter-rouge">export</code> and <code class="language-plaintext highlighter-rouge">default</code> keyword is used to export the component so that it can be imported and used in other files, in our project, <code class="language-plaintext highlighter-rouge">main.jsx</code> uses it. If we remove it, the page becomes blank. By checking the developer tool’s console, a error will be thrown:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' doesn't provide an export named: 'default'
+</code></pre></div>    </div>
+    <p>which means the <code class="language-plaintext highlighter-rouge">main.jsx</code> tries to import a function called <code class="language-plaintext highlighter-rouge">default</code> from <code class="language-plaintext highlighter-rouge">App.jsx</code>, but it doesn’t exist.
+If we modify the import way in <code class="language-plaintext highlighter-rouge">main.jsx</code> to:</p>
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.jsx</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p>notice the error will be:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'App'
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Simply add back the <code class="language-plaintext highlighter-rouge">export</code> solves the problem of function <code class="language-plaintext highlighter-rouge">App</code> not found, but if <code class="language-plaintext highlighter-rouge">main.jsx</code> import the function <code class="language-plaintext highlighter-rouge">App</code> as:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.jsx</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p>the familiar error will be thrown:</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Uncaught SyntaxError: The requested module 'http://localhost:5173/src/App.jsx' does not provide an export named 'default'
+</code></pre></div>    </div>
+    <p>which could be solved by adding back the <code class="language-plaintext highlighter-rouge">default</code> keyword the <code class="language-plaintext highlighter-rouge">export</code> statement.</p>
+  </li>
+  <li data-marker="*">When using a default import, it doesn’t matter how we called the imported function:
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">AppCool</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.jsx</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="react-project-with-typescript">React Project with TypeScript</h2>
+
+<p>Finally, let’s talk about using TypeScript with React.</p>
+
+<h3 id="setting-up-a-react-project-with-typescript">Setting Up a React Project with TypeScript</h3>
+
+<p>To create a new React project with TypeScript, we can use <code class="language-plaintext highlighter-rouge">vite</code> with the TypeScript template, and install the type definitions for React and React DOM:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm create vite@latest react-app-ts <span class="nt">--template</span> react-ts
+<span class="nb">cd </span>react-app-ts
+pnpm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>This will set up a new React project with TypeScript configured out of the box. The project will include a <code class="language-plaintext highlighter-rouge">tsconfig.json</code> file, which is used to configure TypeScript settings.</p>
+
+<h3 id="typing-props-in-react-components">Typing Props in React Components</h3>
+
+<ul>
+  <li data-marker="*">
+    <p><strong>Functional Components with Props</strong><br>
+Here’s how you can define a functional component with typed props:</p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kr">interface</span> <span class="nx">GreetingProps</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// Optional prop</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">Greeting</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">GreetingProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">age</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>You are <span class="si">{</span><span class="nx">age</span><span class="si">}</span> years old.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">name</span><span class="p">=</span><span class="s">"Alice"</span> <span class="na">age</span><span class="p">=</span><span class="si">{</span><span class="mi">25</span><span class="si">}</span> <span class="p">/&gt;;</span>
+</code></pre></div>    </div>
+    <p>To run the code, simply use:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm run dev
+</code></pre></div>    </div>
+    <p>We don’t need to manually compile the TypeScript code to JavaScript, because the Vite development server will handle it for us.</p>
+  </li>
+  <li data-marker="*">
+    <p>This is just a very beginning of using TypeScript with React. For a deeper dive, you could check out the official <a href="https://react-typescript-cheatsheet.netlify.app/">React TypeScript Cheatsheet</a>.</p>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="../../../assets/page.js?1738990868"></script>
+
+    
+
+
+</body></html>

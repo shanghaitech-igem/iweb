@@ -1,0 +1,1032 @@
+<!DOCTYPE html><html lang="en-us"><head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.">
+
+        <meta property="og:image" content=""><meta property="og:title" content="Lecture 4 - iWEB 2025">
+
+        <link href="../../../favicon.ico?1738990868" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="../../../assets/jquery/dist/jquery.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap/dist/js/bootstrap.bundle.min.js?1738990868"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="../../../assets/bootstrap-table/dist/bootstrap-table.min.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/bootstrap-table/dist/bootstrap-table.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1738990868"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link href="../../../assets/@fortawesome/fontawesome-free/css/all.min.css?1738990868" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="../../../assets/luxon/build/global/luxon.min.js?1738990868"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="../../../assets/mathjax/es5/tex-chtml.js?1738990868"></script>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="../../../assets/intersection-observer/intersection-observer.js?1738990868"></script>
+        <script src="../../../assets/vanilla-lazyload/dist/lazyload.min.js?1738990868"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="../../../assets/iframe-resizer/js/iframeResizer.min.js?1738990868"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="../../../assets/scratchblocks.min.js?1738990868"></script>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="../../../assets/mermaid.min.js?1738990868"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="../../../assets/twemoji/dist/twemoji.min.js?1738990868"></script>
+
+        
+
+        <link href="../../../assets/page.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/jekyll-theme-cs50.js?1738990868"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "zh-CN",
+                tz: "Asia/Shanghai"
+            };
+        </script>
+
+        <title>Lecture 4 - iWEB 2025</title>
+
+
+    </head>
+
+    <body class="invisible">
+
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg">
+ 
+                    <header><h1 data-id="iweb-here"><a href="../../..">iWEB Here</a></h1>
+
+<h2 data-id="interactive-web-engineering-basics">Interactive Web Engineering Basics</h2>
+
+<p>ShanghaiTech University</p>
+
+<p><a href="https://zivmax.top">Lin-Zheng TANG</a><br>
+<a href="mailto:tanglzh2022@shanghaitech.edu.cn">tanglzh2022@&lt;ShanghaiTech&gt;</a></p>
+
+<p><a href="https://www.shanghaitech.edu.cn/eng/2024/1105/c1260a1102357/page.htm">ShanghaiTech’s iGEM Team</a>
+<a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+
+<hr></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside > nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><ul>
+  <li data-marker="*"><a href="../../steps/0/">Step 0</a> CLI, Linux, WSL</li>
+  <li data-marker="*"><a href="../../steps/1/">Step 1</a> Internet, HTTP, DNS</li>
+  <li data-marker="*"><a href="../../steps/2/">Step 2</a> HTML, CSS, JavaScript</li>
+  <li data-marker="*"><a href="../../steps/3/">Step 3</a> Node.js, TypeScript, React</li>
+  <li data-marker="*"><a href="../../steps/4/">Step 4</a> Gatsby</li>
+  <li data-marker="*"><a href="../../steps/5/">Step 5</a> Git, Deployment</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li data-marker="*"><a href="../../project/">Final Project</a></li>
+  <li data-marker="*"><a href="../../gallery/">Project Gallery 🖼️</a></li>
+</ul>
+
+<hr>
+
+<h3 data-id="acknowledgement">Acknowledgement</h3>
+
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
+<p class="small">
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
+</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x/2025/courses/"><strong>Their Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../../license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg">
+
+                    <h1 class="no_toc" id="lecture-4">Lecture 4</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#frameworks" id="markdown-toc-frameworks">Frameworks</a></li>
+  <li><a href="#getting-started-with-gatsby" id="markdown-toc-getting-started-with-gatsby">Getting Started with Gatsby</a></li>
+  <li><a href="#structure-of-a-gatsby-project" id="markdown-toc-structure-of-a-gatsby-project">Structure of a Gatsby Project</a></li>
+  <li><a href="#creating-a-page" id="markdown-toc-creating-a-page">Creating a Page</a></li>
+  <li><a href="#linking-the-pages" id="markdown-toc-linking-the-pages">Linking the Pages</a></li>
+  <li><a href="#create-a-shared-layout" id="markdown-toc-create-a-shared-layout">Create a Shared Layout</a></li>
+  <li><a href="#style-with-sass-using-gatsby-plugin" id="markdown-toc-style-with-sass-using-gatsby-plugin">Style with Sass using Gatsby Plugin</a></li>
+  <li><a href="#adding-mdx-support" id="markdown-toc-adding-mdx-support">Adding MDX Support</a></li>
+  <li><a href="#adding-a-toc-using-graphql" id="markdown-toc-adding-a-toc-using-graphql">Adding a TOC using GraphQL</a></li>
+  <li><a href="#modify-the-rendering-of-mdx" id="markdown-toc-modify-the-rendering-of-mdx">Modify the Rendering of MDX</a></li>
+  <li><a href="#using-component-in-mdx" id="markdown-toc-using-component-in-mdx">Using Component in MDX</a></li>
+  <li><a href="#more-in-gatsby" id="markdown-toc-more-in-gatsby">More in Gatsby</a></li>
+</ul>
+
+<h2 id="frameworks">Frameworks</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>In the previous lectures, we’ve seen the evolution of the web technologies, from native HTML to CSS and JavaScript to Node.js, TypeScript, and React. But the evolution is still going on, and new technologies are being developed every day.</p>
+  </li>
+  <li data-marker="*">
+    <p>Besides React, there are many other popular frameworks, such as <a href="https://angular.dev/">Angular</a>, <a href="https://vuejs.org/">Vue.js</a>, and <a href="https://svelte.dev/">Svelte</a>.</p>
+  </li>
+  <li data-marker="*">
+    <p>Based on React, there are also many topper frameworks, such as <a href="https://nextjs.org/">Next.js</a>, <a href="https://www.gatsbyjs.com/">Gatsby</a>. Gatsby is specialized in static site generation, which means it will compile the whole project locally into native HTML, CSS, and JavaScript files, and then deploy (upload) them to a server. This is the reason why we choose Gatsby for this course. It just fits the needs of building a iGEM wiki website.</p>
+  </li>
+</ul>
+
+<h2 id="getting-started-with-gatsby">Getting Started with Gatsby</h2>
+
+<ul>
+  <li data-marker="*">The Gatsby command line interface (CLI) is a tool that lets us quickly create new Gatsby-powered sites and run commands for developing Gatsby sites, we can install it using npm.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install</span> <span class="nt">-g</span> gatsby-cli
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">To create a new Gatsby site, we can run the following command:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gatsby new
+</code></pre></div>    </div>
+    <p>We will choose Sass, Typescript as the initial options.</p>
+  </li>
+  <li data-marker="*">After <code class="language-plaintext highlighter-rouge">gatsby-cli</code> has finished creating the project, we can navigate to the project folder and run the following command to switch to <code class="language-plaintext highlighter-rouge">pnpm</code>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>gatsby-iweb
+<span class="nb">rm</span> <span class="nt">-rf</span> node_modules package-lock.json
+pnpm <span class="nb">install
+</span>pnpm upgrade
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">To start the development server, we can run the following command:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gatsby develop
+</code></pre></div>    </div>
+    <p>The development server will start at <a href="http://localhost:8000/"><code class="language-plaintext highlighter-rouge">http://localhost:8000/</code></a>. We can open this URL in a web browser to see the site:
+<img src="images/localhost-new-site.webp" alt="The screen shot"></p>
+  </li>
+</ul>
+
+<h2 id="structure-of-a-gatsby-project">Structure of a Gatsby Project</h2>
+
+<ul>
+  <li data-marker="*">A Gatsby project has a similar structure to a React project, but with some additional files and folders. The following is the structure of a Gatsby project:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── .cache
+├── .gitignore
+├── README.md
+├── gatsby-config.ts
+├── node_modules
+│   ├── @babel
+│   ├── @types
+│   ├── @typescript-eslint
+|   ...
+│   └── gatsby
+├── package.json
+├── pnpm-lock.yaml
+├── public
+│   ├── page-data
+│   ├── static
+│   └── ~partytown
+├── src
+│   ├── images
+│   │   └── icon.png
+│   └── pages
+│       ├── 404.tsx
+│       └── index.tsx
+└── tsconfig.json
+</code></pre></div>    </div>
+
+    <ul>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">README.md</code> file is a markdown file that contains the documentation of the project.</li>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">gatsby-config.ts</code> file is a TypeScript file that contains the configuration of the Gatsby project, such as the site metadata, plugins, and other settings.</li>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">src/pages</code> folder contains the pages of the site. Each file in this folder represents a page of the site.
+        <ul>
+          <li data-marker="*">For example, the <code class="language-plaintext highlighter-rouge">src/pages/hello.tsx</code> file represents the home page (<a href="localhost:8000/hello"><code class="language-plaintext highlighter-rouge">localhost:8000/hello</code></a>) of the site.
+            <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">public</code> folder contains the compiled files of the site, such as the HTML, CSS, and JavaScript files.</li>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">package.json</code> file contains the dependencies and scripts of the project.</li>
+      <li data-marker="*">The <code class="language-plaintext highlighter-rouge">tsconfig.json</code> file contains the TypeScript configuration of the project.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="creating-a-page">Creating a Page</h2>
+
+<ul>
+  <li data-marker="*">Let’s create a new page called <code class="language-plaintext highlighter-rouge">about.tsx</code> in the <code class="language-plaintext highlighter-rouge">src/pages</code> folder. The content of the page will be as follows:
+    <blockquote>
+      <p>It’s crucial to export a default component, which will be used Gatsby to render the page.</p>
+    </blockquote>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">AboutPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hi there! I'm the proud creator of this site, which I built with Gatsby.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">AboutPage</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Gatsby lets us define a <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> and other <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head">document metadata</a> with the <a href="https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/">Gatsby Head API</a>. We have to export a component called Head from our page template to apply the metadata. Adding such metadata helps search engines like Google to better understand our site.
+    <blockquote>
+      <p>Don’t forget to export the <code class="language-plaintext highlighter-rouge">Head</code> component so the external system can use it.</p>
+    </blockquote>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">AboutPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hi there! I'm the proud creator of this site, which I built with Gatsby.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="p">=</span><span class="s">"description"</span> <span class="na">content</span><span class="p">=</span><span class="s">"Your description"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/&gt;</span>
+<span class="p">)</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">AboutPage</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>Now we should be able to view the new page at <a href="http://localhost:8000/about"><code class="language-plaintext highlighter-rouge">http://localhost:8000/about</code></a>:
+<img src="images/about-page.webp" alt="The screen shot"></p>
+  </li>
+  <li data-marker="*">Gatsby will “listen” to all local changes and automatically update the page in the browser. This is called hot reloading.</li>
+</ul>
+
+<h2 id="linking-the-pages">Linking the Pages</h2>
+
+<ul>
+  <li data-marker="*">Now we’ve built a new page, it’s common that we add new link in the home page to navigate to the new page.</li>
+  <li data-marker="*">Let’s clear the template content in the <code class="language-plaintext highlighter-rouge">index.tsx</code> and add a link to the new page:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">IndexPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to my Gatsby site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="s">"/about"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm making this by following the Gatsby Tutorial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Home Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">IndexPage</span>
+
+</code></pre></div>    </div>
+    <p><img src="images/index-page-with-link.webp" alt="The screen shot"></p>
+  </li>
+  <li data-marker="*">Gatsby actually provides a <code class="language-plaintext highlighter-rouge">&lt;Link /&gt;</code> component for us, which is better than using the <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag.
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">IndexPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to my Gatsby site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/about"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm making this by following the Gatsby Tutorial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Home Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">IndexPage</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">The <code class="language-plaintext highlighter-rouge">&lt;Link /&gt;</code> comes with many benefits:
+    <ul>
+      <li data-marker="*">It’s faster than the <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag because it doesn’t reload the whole page, only update the changed part of the webpage.</li>
+      <li data-marker="*">It preload the linked page when user hover the link, which makes a slight faster performance.</li>
+      <li data-marker="*">We could config a global prefix in <code class="language-plaintext highlighter-rouge">gatsby-config.ts</code>, which only applies to the <code class="language-plaintext highlighter-rouge">&lt;Link /&gt;</code> component, a bare <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag will not be affected.</li>
+    </ul>
+  </li>
+  <li data-marker="*">Let’s also add a link in about page to go back home page.
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">AboutPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hi there! I'm the proud creator of this site, which I built with Gatsby.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/"</span><span class="p">&gt;</span>Back to Home<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="p">=</span><span class="s">"description"</span> <span class="na">content</span><span class="p">=</span><span class="s">"Your description"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/&gt;</span>
+<span class="p">)</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">AboutPage</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><img src="images/about-page-with-link.webp" alt="The screen shot"></p>
+  </li>
+</ul>
+
+<h2 id="create-a-shared-layout">Create a Shared Layout</h2>
+
+<ul>
+  <li data-marker="*">When more and more pages being added, it’s common that we want to share the same layout across all pages.</li>
+  <li data-marker="*">Let’s use React’s children prop feature to create a shared layout component.</li>
+  <li data-marker="*">Create a new file called <code class="language-plaintext highlighter-rouge">layout.tsx</code> in the <code class="language-plaintext highlighter-rouge">src/components</code> folder:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">Layout</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/about"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">)</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Layout</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Update the <code class="language-plaintext highlighter-rouge">index.tsx</code> and <code class="language-plaintext highlighter-rouge">about.tsx</code> to use the <code class="language-plaintext highlighter-rouge">Layout</code> component:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">IndexPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to my Gatsby site!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm making this by following the Gatsby Tutorial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Home Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">IndexPage</span>
+</code></pre></div>    </div>
+    <p><img src="images/index-page-with-layout.webp" alt="The screen shot"></p>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">AboutPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">Layout</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hi there! I'm the proud creator of this site, which I built with Gatsby.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/"</span><span class="p">&gt;</span>Back to Home<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="p">=</span><span class="s">"description"</span> <span class="na">content</span><span class="p">=</span><span class="s">"Your description"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/&gt;</span>
+<span class="p">)</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">AboutPage</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><img src="images/about-page-with-layout.webp" alt="The screen shot"></p>
+  </li>
+  <li data-marker="*">Let’s further add props to the <code class="language-plaintext highlighter-rouge">Layout</code> component to pass in the title of the page:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">LayoutProps</span> <span class="p">{</span>
+  <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>  
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">Layout</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">LayoutProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/about"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">)</span>
+
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Layout</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Update the <code class="language-plaintext highlighter-rouge">index.tsx</code> and <code class="language-plaintext highlighter-rouge">about.tsx</code> to pass in the title of the page:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">IndexPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"Home Page"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I'm making this by following the Gatsby Tutorial.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Home Page<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">IndexPage</span>
+</code></pre></div>    </div>
+
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">AboutPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"About Me"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hi there! I'm the proud creator of this site, which I built with Gatsby.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Head</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>About Me<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="p">=</span><span class="s">"description"</span> <span class="na">content</span><span class="p">=</span><span class="s">"Your description"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/&gt;</span>
+<span class="p">)</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">AboutPage</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="style-with-sass-using-gatsby-plugin">Style with Sass using Gatsby Plugin</h2>
+
+<ul>
+  <li data-marker="*">We init our Gatsby template only with TypeScript, to add Sass support, we need to install the <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/">Gatsby plugin for Sass</a>.</li>
+  <li data-marker="*">Plugins is the major feature of Gatsby, which allows us to extend the functionality of Gatsby in a modular way.</li>
+  <li data-marker="*">To install the Gatsby plugin for Sass, we first stop the local server by pressing <code class="language-plaintext highlighter-rouge">Ctrl + C</code> in the terminal, and then run the following command:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>gatsby-plugin-sass
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">After the installation is complete, we need to add the plugin to the <code class="language-plaintext highlighter-rouge">gatsby-config.ts</code> file:
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">`gatsby-plugin-sass`</span><span class="p">,</span>
+<span class="p">],</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Add a module type declare for TypeScript <code class="language-plaintext highlighter-rouge">src/types/styles.d.ts</code>:
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">declare</span> <span class="kr">module</span> <span class="dl">'</span><span class="s1">*.module.scss</span><span class="dl">'</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Write our first Sass file <code class="language-plaintext highlighter-rouge">src/styles/modules/layout.module.scss</code>:
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="p">{</span>
+  <span class="nc">.container</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Import the Sass file in the <code class="language-plaintext highlighter-rouge">layout.tsx</code>:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+<span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../styles/modules/layout.module.scss</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">LayoutProps</span> <span class="p">{</span>
+  <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>  
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">Layout</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">LayoutProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">title</span><span class="p">,</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/"</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nc">Link</span> <span class="na">to</span><span class="p">=</span><span class="s">"/about"</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">)</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Layout</span>
+</code></pre></div>    </div>
+    <p><img src="images/index-page-container-styled.webp" alt="The screen shot"></p>
+  </li>
+  <li data-marker="*">Let’s add more styles:
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="p">{</span>
+  <span class="nc">.container</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">h1</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">rebeccapurple</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">nav</span> <span class="p">{</span>    
+    <span class="nt">ul</span> <span class="p">{</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+      <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+      <span class="nl">padding-left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">li</span> <span class="p">{</span>
+      <span class="nl">padding-right</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">a</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="images/index-page-styled.webp" alt="The screen shot"></p>
+  </li>
+</ul>
+
+<h2 id="adding-mdx-support">Adding MDX Support</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>MDX is a file format that lets us write JSX or JSX components in Markdown files. It’s a great way to write content for our Gatsby site.</p>
+  </li>
+  <li data-marker="*">Before we add MDX support directly, we need to make Gatsby be able to read local files. We need to install the <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/">Gatsby plugin for file system</a>:
+    <ul>
+      <li data-marker="*">Stop the local server by pressing <code class="language-plaintext highlighter-rouge">Ctrl + C</code> in the terminal, and then run the following command:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>gatsby-source-filesystem
+</code></pre></div>        </div>
+      </li>
+      <li data-marker="*">Add the plugin to the <code class="language-plaintext highlighter-rouge">gatsby-config.ts</code> file:
+        <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">`gatsby-plugin-sass`</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="s2">`gatsby-source-filesystem`</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">`blog`</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">__dirname</span><span class="p">}</span><span class="s2">/blog/`</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">],</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li data-marker="*">
+    <p>Now, Gatsby can read the local files, and transform them into <em>GraphQL</em> nodes in the runtime. 
+<img src="images/data-layer.webp" alt="Data Layer"></p>
+  </li>
+  <li data-marker="*">Create the <code class="language-plaintext highlighter-rouge">blog</code> folder in the root of the project, and add a new file called <code class="language-plaintext highlighter-rouge">hello.mdx</code>:
+    <div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Hello World</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2025-09-01</span>
+<span class="na">slug</span><span class="pi">:</span> <span class="s">hello-world</span>
+<span class="nn">---</span>
+
+<span class="gh"># Hello World</span>
+
+This is my first MDX post!
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>GraphQL is a query language, which is used to query the data in the Gatsby project. We can use the <a href="http://localhost:8000/___graphql"><code class="language-plaintext highlighter-rouge">http://localhost:8000/___graphql</code></a> to explore the data in the Gatsby project.
+<img src="images/graphql-panel.webp" alt="The screen Shot"></p>
+  </li>
+  <li data-marker="*">Now let’s try to make a test query in the GraphQL panel:
+    <div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">allFile</span><span class="p">(</span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">relativePath</span><span class="p">:</span><span class="w"> </span><span class="n">ASC</span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">edges</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">node</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">relativePath</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"allFile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"edges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"relativePath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello.mdx"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>You may wonder how could we know what query could we make. GraphQL provides a schema explorer, which could be accessed by clicking button like a folder icon in the left top corner of the GraphQL panel page.</p>
+
+    <p><img src="images/graphql-explorer.webp" alt="The screen Shot"></p>
+  </li>
+  <li data-marker="*">Now let’s add <a href="https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/">the MDX plugin</a> to our project:
+    <ul>
+      <li data-marker="*">Stop the local server by pressing <code class="language-plaintext highlighter-rouge">Ctrl + C</code> in the terminal, and then run the following command:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>gatsby-plugin-mdx @mdx-js/react
+</code></pre></div>        </div>
+      </li>
+      <li data-marker="*">Add the plugin to the <code class="language-plaintext highlighter-rouge">gatsby-config.ts</code> file:
+        <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">`gatsby-plugin-sass`</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="s2">`gatsby-source-filesystem`</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s2">`blog`</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">__dirname</span><span class="p">}</span><span class="s2">/blog/`</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="s2">`gatsby-plugin-mdx`</span><span class="p">,</span>
+<span class="p">],</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li data-marker="*">Now we could check the new queries in the GraphQL panel:
+    <div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">allMdx</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">nodes</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">tableOfContents</span><span class="w">
+      </span><span class="n">frontmatter</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">date</span><span class="w">
+        </span><span class="n">title</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"allMdx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"tableOfContents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#hello-world"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"frontmatter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>What the MDX plugin does is to transform the file nodes from the source file plugin into MDX nodes:
+<img src="images/data-layer-mdx.webp" alt="Data Layer"></p>
+  </li>
+  <li data-marker="*">In the meanwhile, the MDX plugin actually already rendered the MDX content into React components, to actually use the rendered contents to make a webpage, we need to create a special template code file called <code class="language-plaintext highlighter-rouge">src/pages/{mdx.frontmatter__slug}.tsx</code>
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">MDXPageProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MDXPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">MDXPageProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span><span class="nx">children</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"A MDX Page"</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MDXPage</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Now restart the local server by running the following command, and we should be able to see the new page at <a href="http://localhost:8000/hello-world"><code class="language-plaintext highlighter-rouge">http://localhost:8000/hello-world</code></a>:
+<img src="images/mdx-hello.webp" alt="The screen Shot"></li>
+</ul>
+
+<h2 id="adding-a-toc-using-graphql">Adding a TOC using GraphQL</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>As you can see in the previous GraphQL test, the MDX plugin provides a <code class="language-plaintext highlighter-rouge">tableOfContents</code> field in the query result. We can use this field to generate a table of contents (TOC) for the MDX page.</p>
+  </li>
+  <li data-marker="*">To make query inside our code, we need to use the <code class="language-plaintext highlighter-rouge">useStaticQuery</code> hook from Gatsby.
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">graphql</span><span class="p">,</span> <span class="nx">useStaticQuery</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">MDXPageProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MDXPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">MDXPageProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nf">useStaticQuery</span><span class="p">(</span><span class="nx">graphql</span><span class="s2">`
+    query {
+      mdx {
+        tableOfContents
+      }
+    }
+  `</span><span class="p">)</span>
+
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"A MDX Page"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Table of Contents<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">mdx</span><span class="p">.</span><span class="nx">tableOfContents</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">item</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MDXPage</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Let’s try add more contents in the <code class="language-plaintext highlighter-rouge">hello.mdx</code>:
+    <pre><code class="language-mdx">---
+title: Hello World
+date: 2025-09-01
+slug: hello-world
+---
+
+# Hello World
+
+This is my first MDX post!
+
+# Section 1
+
+This is the first section.
+
+# Section 2
+
+This is the second section.
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>Now we should be able to see the TOC in the MDX page:</p>
+
+    <p><img src="images/mdx-hello-toc.webp" alt="The screen Shot"></p>
+  </li>
+  <li data-marker="*">Sometimes the query for GraphQL could be a bit complex, to avoid leaving a large query code inside the component, we could extract the query out, and add new prop <code class="language-plaintext highlighter-rouge">data</code> to the component:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">graphql</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">gatsby</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Layout</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/layout</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">MDXPageProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span>
+  <span class="nx">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">mdx</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">tableOfContents</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">items</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+          <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+        <span class="p">}[]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MDXPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">MDXPageProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span><span class="p">,</span> <span class="nx">data</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"A MDX Page"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Table of Contents<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">mdx</span><span class="p">.</span><span class="nx">tableOfContents</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">item</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">graphql</span><span class="s2">`
+  query {
+    mdx {
+      tableOfContents
+    }
+  }
+`</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MDXPage</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="modify-the-rendering-of-mdx">Modify the Rendering of MDX</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Notice we actually has a issue that the headings in the <code class="language-plaintext highlighter-rouge">hello.mdx</code> being rendered to <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code>, which is same as the page’s title. But if we change the headings in the MDX file to <code class="language-plaintext highlighter-rouge">## heading</code>, the experience of writing MDX will be broke, especially when the writer is not the developer.</p>
+  </li>
+  <li data-marker="*">
+    <p>A better way is we rendered the <code class="language-plaintext highlighter-rouge"># heading</code> into <code class="language-plaintext highlighter-rouge">&lt;h2&gt;</code>. We could use the <code class="language-plaintext highlighter-rouge">MDXProvider</code> component from <code class="language-plaintext highlighter-rouge">@mdx-js/react</code> to customize the rendering of the MDX content.</p>
+  </li>
+  <li data-marker="*">First we import the <code class="language-plaintext highlighter-rouge">MDXProvider</code>:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MDXProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mdx-js/react</span><span class="dl">'</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Then we defines a new mapping for the <code class="language-plaintext highlighter-rouge">h1</code> tag:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">components</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">h1</span><span class="p">:</span> <span class="p">(</span><span class="na">props</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">h2</span> <span class="si">{</span><span class="p">...</span><span class="nx">props</span><span class="si">}</span> <span class="p">/&gt;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Finally we use the <code class="language-plaintext highlighter-rouge">MDXProvider</code> to wrap the children:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MDXPage</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">MDXPageProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span><span class="p">,</span> <span class="nx">data</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">title</span><span class="p">=</span><span class="s">"A MDX Page"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Table of Contents<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">mdx</span><span class="p">.</span><span class="nx">tableOfContents</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">item</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">MDXProvider</span> <span class="na">components</span><span class="p">=</span><span class="si">{</span><span class="nx">components</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nc">MDXProvider</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">
+    <p>Now, the <code class="language-plaintext highlighter-rouge"># heading</code> in the MDX file will be rendered to <code class="language-plaintext highlighter-rouge">&lt;h2&gt;</code>:</p>
+
+    <p><img src="images/mdx-hello-h2.webp" alt="The screen Shot"></p>
+  </li>
+</ul>
+
+<h2 id="using-component-in-mdx">Using Component in MDX</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Recall the reason why we use MDX is being able to use JSX components in the Markdown file. To do this, we just need to write a component and add it to the mapping of the <code class="language-plaintext highlighter-rouge">MDXProvider</code>.</p>
+  </li>
+  <li data-marker="*">Assume we want to add a <code class="language-plaintext highlighter-rouge">Button</code> component in the MDX file:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="kd">as </span><span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kr">interface</span> <span class="nx">ButtonProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">ReactNode</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">Button</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">ButtonProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">)</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Button</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Then we add the <code class="language-plaintext highlighter-rouge">Button</code> component to the mapping of the <code class="language-plaintext highlighter-rouge">MDXProvider</code>:
+    <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Button</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../components/mdx/button</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">components</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">h1</span><span class="p">:</span> <span class="p">(</span><span class="na">props</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">h2</span> <span class="si">{</span><span class="p">...</span><span class="nx">props</span><span class="si">}</span> <span class="p">/&gt;,</span>
+  <span class="nx">Button</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Now we could use the <code class="language-plaintext highlighter-rouge">Button</code> component in the MDX file:
+    <pre><code class="language-mdx">---
+title: Hello World
+date: 2025-09-01
+slug: hello-world
+---
+
+# Hello World
+
+&lt;Button&gt;Click Me&lt;/Button&gt;
+
+# Section 1
+
+&lt;Button&gt;Click This&lt;/Button&gt;
+
+# Section 2
+
+This is the second section.
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>The <code class="language-plaintext highlighter-rouge">Button</code> component will be rendered in the MDX page:</p>
+
+    <p><img src="images/mdx-hello-button.webp" alt="The screen Shot"></p>
+  </li>
+</ul>
+
+<h2 id="more-in-gatsby">More in Gatsby</h2>
+
+<ul>
+  <li data-marker="*">The features of Gatsby is much more than what we’ve covered in this lecture.</li>
+  <li data-marker="*">Some specially useful docs are:
+    <ul>
+      <li data-marker="*"><a href="https://www.gatsbyjs.com/docs/reference/gatsby-project-structure/">Gatsby Project Structure</a></li>
+      <li data-marker="*"><a href="https://www.gatsbyjs.com/docs/tutorial/creating-a-source-plugin/">Creating a Plugin</a></li>
+      <li data-marker="*"><a href="https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-script/">Gatsby Script API</a></li>
+      <li data-marker="*"><a href="https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/">Gatsby Browser API</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="../../../assets/page.js?1738990868"></script>
+
+    
+
+
+</body></html>

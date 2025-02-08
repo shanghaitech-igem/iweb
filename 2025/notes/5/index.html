@@ -1,0 +1,678 @@
+<!DOCTYPE html><html lang="en-us"><head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width"><meta property="og:description" content="iWEB here, an Interactive Web Engineering Basics course for iGEM rookies from ShanghaiTech.">
+
+        <meta property="og:image" content=""><meta property="og:title" content="Lecture 5 - iWEB 2025">
+
+        <link href="../../../favicon.ico?1738990868" rel="icon">
+
+        <!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+        <!-- https://getbootstrap.com/docs/ -->
+        <script src="../../../assets/jquery/dist/jquery.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap/dist/js/bootstrap.bundle.min.js?1738990868"></script>
+
+        <!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+        <link href="../../../assets/bootstrap-table/dist/bootstrap-table.min.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/bootstrap-table/dist/bootstrap-table.min.js?1738990868"></script>
+        <script src="../../../assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1738990868"></script>
+
+        <!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+        
+        <link href="../../../assets/@fortawesome/fontawesome-free/css/all.min.css?1738990868" rel="stylesheet">
+        
+
+        <!-- https://moment.github.io/luxon/ -->
+        <script src="../../../assets/luxon/build/global/luxon.min.js?1738990868"></script>
+
+        <!-- http://docs.mathjax.org/ -->
+        <!-- http://docs.mathjax.org/en/latest/options/output/chtml.html?highlight=displayAlign#the-configuration-block -->
+        <script>
+            MathJax = {
+               chtml: {
+                    displayAlign: "left"
+                }
+            };
+        </script>
+        <script src="../../../assets/mathjax/es5/tex-chtml.js?1738990868"></script>
+
+        <!-- https://github.com/verlok/vanilla-lazyload -->
+        <script src="../../../assets/intersection-observer/intersection-observer.js?1738990868"></script>
+        <script src="../../../assets/vanilla-lazyload/dist/lazyload.min.js?1738990868"></script>
+
+        <!-- https://github.com/davidjbradshaw/iframe-resizer -->
+        <script src="../../../assets/iframe-resizer/js/iframeResizer.min.js?1738990868"></script>
+
+        <!-- https://github.com/scratchblocks/scratchblocks/releases -->
+        <script src="../../../assets/scratchblocks.min.js?1738990868"></script>
+
+        <!-- https://mermaid-js.github.io/ -->
+        <script src="../../../assets/mermaid.min.js?1738990868"></script>
+
+        <!-- https://github.com/twitter/twemoji -->
+        <script src="../../../assets/twemoji/dist/twemoji.min.js?1738990868"></script>
+
+        
+
+        <link href="../../../assets/page.css?1738990868" rel="stylesheet">
+        <script src="../../../assets/jekyll-theme-cs50.js?1738990868"></script>
+
+        <script>
+            window.CS50 = {
+                local: {"day":"numeric","hour":"numeric","minute":"numeric","month":"long","timeZoneName":"short","weekday":"long","year":"numeric"},
+                locale: "zh-CN",
+                tz: "Asia/Shanghai"
+            };
+        </script>
+
+        <title>Lecture 5 - iWEB 2025</title>
+
+
+    </head>
+
+    <body class="invisible">
+
+        
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <aside class="col-lg">
+ 
+                    <header><h1 data-id="iweb-here"><a href="../../..">iWEB Here</a></h1>
+
+<h2 data-id="interactive-web-engineering-basics">Interactive Web Engineering Basics</h2>
+
+<p>ShanghaiTech University</p>
+
+<p><a href="https://zivmax.top">Lin-Zheng TANG</a><br>
+<a href="mailto:tanglzh2022@shanghaitech.edu.cn">tanglzh2022@&lt;ShanghaiTech&gt;</a></p>
+
+<p><a href="https://www.shanghaitech.edu.cn/eng/2024/1105/c1260a1102357/page.htm">ShanghaiTech’s iGEM Team</a>
+<a href="mailto:igemshanghaitech@163.com">igemshanghaitech@163.com</a></p>
+
+<hr></header>
+
+                    
+
+                    <button aria-controls="nav" aria-expanded="false" class="btn btn-sm collapsed d-lg-none" data-bs-target="aside > nav" data-bs-toggle="collapse">
+                        Menu
+                    </button>
+
+                    <nav class="collapse d-lg-block" id="nav"><ul>
+  <li data-marker="*"><a href="../../steps/0/">Step 0</a> CLI, Linux, WSL</li>
+  <li data-marker="*"><a href="../../steps/1/">Step 1</a> Internet, HTTP, DNS</li>
+  <li data-marker="*"><a href="../../steps/2/">Step 2</a> HTML, CSS, JavaScript</li>
+  <li data-marker="*"><a href="../../steps/3/">Step 3</a> Node.js, TypeScript, React</li>
+  <li data-marker="*"><a href="../../steps/4/">Step 4</a> Gatsby</li>
+  <li data-marker="*"><a href="../../steps/5/">Step 5</a> Git, Deployment</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li data-marker="*"><a href="../../project/">Final Project</a></li>
+  <li data-marker="*"><a href="../../gallery/">Project Gallery 🖼️</a></li>
+</ul>
+
+<hr>
+
+<h3 data-id="acknowledgement">Acknowledgement</h3>
+
+<!-- <p class="small">
+Special thanks to ShanghaiTech University’s <a href="https://slst.shanghaitech.edu.cn/sw_en/main.htm">Prof. Wei SHEN</a> and <a href="https://slst.shanghaitech.edu.cn/yht_en/main.htm">Prof. Hai-Tao YANG</a>, who have been supporting this project.
+</p>
+
+--- -->
+
+<p class="small">
+Special thanks to Harvard University’s CS50 Team and <a href="https://cs.harvard.edu/malan/">Prof. David J. Malan</a>.
+</p>
+
+<ul class="fa-ul">
+  <li data-marker="*"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x/2025/courses/"><strong>Their Courses</strong></a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/x">CS50x</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="https://cs50.harvard.edu/cybersecurity">CS50 Cybersecurity</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/python">CS50 Python</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/r">CS50 R</a></li>
+  <li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="http://cs50.harvard.edu/sql">CS50 SQL</a></li>
+<li data-marker="*" class="small"><span class="fa-li"><i class="fas fa-square"></i></span><a href="#">etc....</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../../license/" class="small"><i class="fab fa-creative-commons me-1"></i>License</a></p></nav>
+
+                    <footer></footer>
+
+                </aside>
+
+                <main class="col-lg">
+
+                    <h1 class="no_toc" id="lecture-5">Lecture 5</h1>
+
+<ul id="markdown-toc">
+  <li><a href="#version-control" id="markdown-toc-version-control">Version Control</a></li>
+  <li><a href="#git" id="markdown-toc-git">Git</a></li>
+  <li><a href="#vscodes-integration-with-git" id="markdown-toc-vscodes-integration-with-git">VSCode’s Integration with Git</a>    <ul>
+      <li><a href="#features" id="markdown-toc-features">Features</a></li>
+    </ul>
+  </li>
+  <li><a href="#initialize-a-repository" id="markdown-toc-initialize-a-repository">Initialize a Repository</a></li>
+  <li><a href="#stage-changes-and-commit" id="markdown-toc-stage-changes-and-commit">Stage Changes and Commit</a></li>
+  <li><a href="#branching" id="markdown-toc-branching">Branching</a></li>
+  <li><a href="#merge" id="markdown-toc-merge">Merge</a></li>
+  <li><a href="#conflicts" id="markdown-toc-conflicts">Conflicts</a></li>
+  <li><a href="#gitlab" id="markdown-toc-gitlab">GitLab</a></li>
+  <li><a href="#create-a-project-on-gitlab" id="markdown-toc-create-a-project-on-gitlab">Create a Project on GitLab</a></li>
+  <li><a href="#deployment" id="markdown-toc-deployment">Deployment</a></li>
+  <li><a href="#gitlab-pages" id="markdown-toc-gitlab-pages">GitLab Pages</a></li>
+  <li><a href="#url-prefix" id="markdown-toc-url-prefix">URL Prefix</a></li>
+  <li><a href="#robust-deployment-strategy-for-igems-gitlab" id="markdown-toc-robust-deployment-strategy-for-igems-gitlab">Robust Deployment Strategy for iGEM’s GitLab</a></li>
+  <li><a href="#deploy-a-compressed-website" id="markdown-toc-deploy-a-compressed-website">Deploy a Compressed Website</a></li>
+  <li><a href="#whats-next" id="markdown-toc-whats-next">What’s Next?</a></li>
+</ul>
+
+<h2 id="version-control">Version Control</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Imagine you’ve implemented a new feature in your project, but you don’t ensure will it breaks the existing code or not. Without version control, we might have to manually keep ton’s of copies of the same project.</p>
+  </li>
+  <li data-marker="*">
+    <p>Imagine you are working on a group project. Each member is responsible for a different part of the project. Without version control, it would be challenging to keep track of who made what changes and when.</p>
+  </li>
+</ul>
+
+<h2 id="git">Git</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Git is a distributed version control system that tracks changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.</p>
+
+    <pre><code class="language-mermaid">graph LR
+  A[first commit] --&gt; B[changes]
+  B --&gt; C[more changes]
+  C --&gt; D[start new feature]
+  D --&gt; E[keep working on new feature]
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>Specifically, Git tracks creating or removal of files, and the adding or removing of lines of text (code) within those files.</p>
+
+    <p><img src="images/git-tracking.webp" alt="Git Tracking"></p>
+  </li>
+  <li data-marker="*">
+    <p>Distributed means each member will keep a full copy of the project, and only sync the changes through the network.</p>
+
+    <p><img src="images/git-multi-users-sync.webp" alt="Git Sync"></p>
+  </li>
+  <li data-marker="*">
+    <p>Install it through:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>git
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="vscodes-integration-with-git">VSCode’s Integration with Git</h2>
+
+<ul>
+  <li data-marker="*">Visual Studio Code (VSCode) has built-in Git support, making it easier to manage your repositories.
+<img src="images/vscode-git.webp" alt="VSCode Git"></li>
+</ul>
+
+<h3 id="features">Features</h3>
+
+<ul>
+  <li data-marker="*">
+    <p><strong>Add and Commit</strong>: You can stage changes and commit them directly from the Source Control view.</p>
+
+    <p><img src="images/vscode-git-commit.webp" alt="VSCode Git Commit"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Branching</strong>: Easily create and switch branches using the Git: Create Branch and Git: Checkout to commands.</p>
+
+    <p><img src="images/vscode-git-branching.webp" alt="VSCode Git Branching"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Conflict Resolution</strong>: VSCode provides a user-friendly interface to resolve merge conflicts.</p>
+
+    <p><img src="images/vscode-git-conflict.webp" alt="VSCode Git Conflict"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Diff Viewer</strong>: View differences between files directly in the editor.</p>
+
+    <p><img src="images/vscode-git-diff.webp" alt="VSCode Git Diff"></p>
+  </li>
+  <li data-marker="*">
+    <p><strong>Partial Add/Restore</strong>: Stage or discard specific changes within a file.</p>
+
+    <p><img src="images/vscode-git-partial.webp" alt="VSCode Git Partial"></p>
+  </li>
+</ul>
+
+<h2 id="initialize-a-repository">Initialize a Repository</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>To start using Git, we need to initialize a folder into a Git repository.</p>
+
+    <p><img src="images/gif-init.webp" alt="Git Init"></p>
+  </li>
+</ul>
+
+<h2 id="stage-changes-and-commit">Stage Changes and Commit</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Before committing changes, we need to stage them. Staging allows us to group related changes together, leaving unrelated changes out of the commit.</p>
+  </li>
+  <li data-marker="*">
+    <p>Unstaged changes could be dropped easily.</p>
+  </li>
+  <li data-marker="*">
+    <p>To commit, we first specify which changes (stage changes) needs to be committed, and we <strong>must</strong> leave a commit message explaining what have we done in this commit. The commit message are natural to be compulsory, without it, we can’t distinguish between different commits.</p>
+  </li>
+  <li data-marker="*">
+    <p>Each commit creates a version we could revert back.</p>
+
+    <pre><code class="language-mermaid">gitGraph
+    commit id: "first commit"
+    commit id: "changes"
+    commit id: "more changes"
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>Demo:
+<img src="images/gif-commit.webp" alt=""></p>
+  </li>
+</ul>
+
+<h2 id="branching">Branching</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Branching is basically keep multiple track of the project. Each branch is a separate line of development, and each branch can have its own commits.</p>
+
+    <pre><code class="language-mermaid">gitGraph
+    commit id: "first commit"
+    commit id: "changes"
+    commit id: "more changes"
+    branch fix-branch
+    checkout fix-branch
+    commit id: "fix bug"
+    checkout main
+    branch feat-branch
+    checkout feat-branch
+    commit id: "start new feature"
+    commit id: "keep working on new feature"
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>Branching allows us to add a new feature, while ensuring there’s stable and workable version of the project being accessible.</p>
+  </li>
+  <li data-marker="*">
+    <p>Also branching is helpful when there are multiple developers working on the same project. Each developer can work on a separate branch for a consistent experience.</p>
+  </li>
+  <li data-marker="*">
+    <p>Demo:
+<img src="images/gif-branching.webp" alt=""></p>
+  </li>
+</ul>
+
+<h2 id="merge">Merge</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Merging is the process of combining changes from different branches into a single branch.</p>
+
+    <pre><code class="language-mermaid">gitGraph
+    commit id: "first commit"
+    commit id: "changes"
+    commit id: "more changes"
+    branch fix-branch
+    checkout fix-branch
+    commit id: "fix bug"
+    checkout main
+    branch feat-branch
+    checkout feat-branch
+    commit id: "start new feature"
+    commit id: "keep working on new feature"
+    checkout main
+    merge fix-branch
+</code></pre>
+  </li>
+  <li data-marker="*">
+    <p>Demo:
+<img src="images/gif-merge.webp" alt=""></p>
+  </li>
+</ul>
+
+<h2 id="conflicts">Conflicts</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Conflicts occur when Git is unable to automatically merge changes.</p>
+  </li>
+  <li data-marker="*">This usually happens when two branches have made changes to the same part of the same file.
+    <ol>
+      <li>Assuming this line of code:
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Main</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>It diverges into a new branch, and the code becomes:
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// New</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>After the branch is diverged, the main branch changes the code without (and can’t) telling the new branch:
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Main</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>When merging the new branch back to the main branch, Git will have a conflict:
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Main Merging New</span>
+  <span class="p">&lt;&lt;</span><span class="o">&lt;&lt;</span><span class="p">&lt;</span> <span class="na">HEAD</span>
+  <span class="na">const</span> <span class="na">a</span> <span class="p">=</span> <span class="na">3</span><span class="err">;</span>
+  <span class="p">=====</span>
+  <span class="p">&gt;</span>&gt;&gt;&gt;&gt; New
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li data-marker="*">Resolving conflicts involves manually editing the conflicting files to resolve the differences.
+    <ol>
+      <li>Continuing the example above, we could resolve the conflict by manually changing the code to:
+        <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Main Merging New</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Then we stage and commit the changes to finish the merge.</li>
+    </ol>
+
+    <ul>
+      <li data-marker="*">Demo:
+<img src="images/gif-conflict-manual.webp" alt=""></li>
+    </ul>
+  </li>
+  <li data-marker="*">Utilizing the VSCode’s built-in conflict resolution tool can help simplify the process.
+    <ul>
+      <li data-marker="*">Demo:
+<img src="images/gif-conflict-vscode.webp" alt=""></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="gitlab">GitLab</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>For solo project, we might want a cloud server to store our project. Or even publish the project as a open-source project.</p>
+  </li>
+  <li data-marker="*">
+    <p>For group project, we might want a cloud server where every member could access to sync the changes.</p>
+  </li>
+  <li data-marker="*">
+    <p>There are companies providing such service for free, like <a href="https://github.com/">GitHub</a>, <a href="https://about.gitlab.com/">GitLab</a>, <a href="https://bitbucket.org/product/">Bitbucket</a>, etc.</p>
+  </li>
+  <li data-marker="*">
+    <p>We will pick up GitLab as iGEM uses a community version of GitLab.</p>
+  </li>
+</ul>
+
+<h2 id="create-a-project-on-gitlab">Create a Project on GitLab</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>To create a project on GitLab, you need to have an account. If you don’t have one, you can create one for free.</p>
+  </li>
+  <li data-marker="*">
+    <p>After logging in, you can create a new project by clicking on the <strong>New Project</strong> button.
+<img src="images/gitlab-new-proj.webp" alt=""></p>
+  </li>
+  <li data-marker="*">
+    <p>Let’s create a new project named <code class="language-plaintext highlighter-rouge">gatsby-iweb</code> on GitLab.
+<img src="images/gitlab-create-proj.webp" alt=""></p>
+  </li>
+  <li data-marker="*">
+    <p>To upload (push) our project to GitLab, we need to add a remote repository to our local repository.
+<img src="images/gif-add-remote.webp" alt=""></p>
+  </li>
+  <li data-marker="*">
+    <p>The remote repository URL can be found on the project’s page on GitLab.</p>
+  </li>
+  <li data-marker="*">
+    <p>After adding the remote repository, we can upload (push) our project to GitLab:
+<img src="images/gif-push.webp" alt=""></p>
+  </li>
+  <li data-marker="*">
+    <p>Now we could view the project on GitLab:
+<img src="images/gitlab-first-push.webp" alt=""></p>
+  </li>
+</ul>
+
+<h2 id="deployment">Deployment</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Deployment is the process of making your website live and accessible to the public.</p>
+  </li>
+  <li data-marker="*">
+    <p>As we mentioned in the previous lecture, for a static website, the key is to put our files on a server running a http server.</p>
+  </li>
+  <li data-marker="*">
+    <p>Gatsby keeps the compiled files in the <code class="language-plaintext highlighter-rouge">public</code> directory, so we just need to manage to put those files on a server.</p>
+  </li>
+  <li data-marker="*">
+    <p>We can try a local deployment first:</p>
+    <ul>
+      <li data-marker="*">Open a terminal and navigate to the project directory.</li>
+      <li data-marker="*">Run the following command to start a local server:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> http.server <span class="nt">-d</span> public
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="gitlab-pages">GitLab Pages</h2>
+
+<ul>
+  <li data-marker="*">
+    <p><a href="https://docs.gitlab.com/ee/user/project/pages/">GitLab Pages</a> allows us to host static websites directly on GitLab.</p>
+  </li>
+  <li data-marker="*">
+    <p>To deploy a Gatsby site to GitLab Pages, we need to create a <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code> file in the root of our project.</p>
+  </li>
+  <li data-marker="*">
+    <p>The <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code> file basically is a terminal script telling GitLab to run which commands to deploy the project.</p>
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">image</span><span class="pi">:</span> <span class="s">node:lts-slim</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">deploy</span>
+
+<span class="na">pages</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">deploy</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">corepack enable</span>
+    <span class="pi">-</span> <span class="s">corepack prepare pnpm@latest-9 --activate</span>
+    <span class="pi">-</span> <span class="s">pnpm install --frozen-lockfile --prod</span>
+    <span class="pi">-</span> <span class="s">pnpm run build --prefix-paths</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">public</span>
+  <span class="na">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">image</code>: The OS image to use for the build.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">stages</code>: The stages of the pipeline.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">pages</code>: The job to deploy the site.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">script</code>: The commands to run to deploy the site.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">artifacts</code>: The files to be deployed.</li>
+      <li data-marker="*"><code class="language-plaintext highlighter-rouge">only</code>: The branch which triggers the deployment when pushed.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="url-prefix">URL Prefix</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Once we deployed the website, we’ll quickly notice that something is wrong. The website is not working as expected.</p>
+  </li>
+  <li data-marker="*">
+    <p>This is because Gatsby assumes the website is hosted at the root of the domain, recall that when we run the deployment locally, we use the root of the domain <code class="language-plaintext highlighter-rouge">http://localhost:8000/</code>. But now the deployment is at <code class="language-plaintext highlighter-rouge">https://&lt;user-name&gt;.gitlab.io/gatsby-iweb/</code>.</p>
+  </li>
+  <li data-marker="*">
+    <p>This will cause all the internal links and files’ path to be wrong. For example, the path to the <code class="language-plaintext highlighter-rouge">about</code> page will be <code class="language-plaintext highlighter-rouge">/about</code>, but the correct path should be <code class="language-plaintext highlighter-rouge">/gatsby-iweb/about</code>.</p>
+  </li>
+  <li data-marker="*">This is what’s URL prefix for. We can set a URL prefix in Gatsby to tell Gatsby that the website is hosted at a subdirectory.
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">// gatsby-config.ts</span>
+ <span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">GatsbyConfig</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="na">pathPrefix</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/gatsby-iweb</span><span class="dl">"</span><span class="p">,</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Now, the rebuilt website should works fine.</li>
+</ul>
+
+<h2 id="robust-deployment-strategy-for-igems-gitlab">Robust Deployment Strategy for iGEM’s GitLab</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>iGEM actually uses a community version of GitLab hosted on their own server.</p>
+  </li>
+  <li data-marker="*">
+    <p>But their server has a poor performance, so the build time will be very long.</p>
+  </li>
+  <li data-marker="*">
+    <p>Even worse, a 10 mins build time limit is set, so if the build time exceeds 10 mins, the build will be terminated.</p>
+  </li>
+  <li data-marker="*">To prevent this, a better and more robust deployment strategy is we build the website locally, and only push the compiled files to GitLab. Then in the <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code>, we only need to download the compiled files from the branch and deploy them directly.
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">image</span><span class="pi">:</span> <span class="s">alpine:latest</span>
+
+<span class="na">variables</span><span class="pi">:</span>
+  <span class="na">DEPLOY_BRANCH</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pages"</span>  <span class="c1"># The branch name is fixed as 'pages'</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">deploy</span>
+
+<span class="na">pages</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">deploy</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">apk update &amp;&amp; apk add curl bash</span>
+    <span class="pi">-</span> <span class="s">echo "Downloading ZIP file..."</span>
+    <span class="pi">-</span> <span class="s">curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.com/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"</span>
+    <span class="pi">-</span> <span class="s">unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip</span>
+    <span class="pi">-</span> <span class="s">rm ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip</span>
+    <span class="pi">-</span> <span class="s">mkdir public/</span>
+    <span class="pi">-</span> <span class="s">mv ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}/* public/</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">public</span>
+  <span class="na">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">For automatic build and push, we could use the <code class="language-plaintext highlighter-rouge">gh-page</code> package to deploy the website to the <code class="language-plaintext highlighter-rouge">pages</code> branch.
+    <ul>
+      <li data-marker="*">First, install the package:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pnpm <span class="nb">install </span>gh-pages <span class="nt">--save-dev</span>
+</code></pre></div>        </div>
+      </li>
+      <li data-marker="*">Then, add the following scripts to the <code class="language-plaintext highlighter-rouge">package.json</code>:
+        <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"deploy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gatsby build --prefix-paths &amp;&amp; gh-pages -d public -b pages -f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="deploy-a-compressed-website">Deploy a Compressed Website</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>The modern browsers support to automatically decompress the compressed website, so we could compress the website to reduce the size of the website. So user could use less network traffic to load the website.</p>
+  </li>
+  <li data-marker="*">Let’s use the <code class="language-plaintext highlighter-rouge">brotli</code> to compress the website:
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">image</span><span class="pi">:</span> <span class="s">alpine:latest</span>
+
+<span class="na">variables</span><span class="pi">:</span>
+  <span class="na">DEPLOY_BRANCH</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pages"</span>  <span class="c1"># The branch name is fixed as 'pages'</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">deploy</span>
+
+<span class="na">pages</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">deploy</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">apk update &amp;&amp; apk add zip curl brotli bash</span>
+    <span class="pi">-</span> <span class="s">echo "Downloading ZIP file..."</span>
+    <span class="pi">-</span> <span class="s">curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.com/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"</span>
+    <span class="pi">-</span> <span class="s">unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip</span>
+    <span class="pi">-</span> <span class="s">rm ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip</span>
+    <span class="pi">-</span> <span class="s">mkdir public/</span>
+    <span class="pi">-</span> <span class="s">mv ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}/* public/</span>
+    <span class="pi">-</span> <span class="s">find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)' -exec brotli -f -k {} \;</span>
+  <span class="na">artifacts</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">public</span>
+  <span class="na">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div>    </div>
+  </li>
+  <li data-marker="*">Through the developer tools in the browser, we could see the website is transferred in a compressed format, and the transfer size is reduced.</li>
+</ul>
+
+<h2 id="whats-next">What’s Next?</h2>
+
+<ul>
+  <li data-marker="*">
+    <p>Throughout this course, we’ve embarked on an exciting journey into web programming, specifically tailored for building an iGEM wiki website. We’ve explored the history, explored essential technologies, and familiarized ourselves with the tools that make modern web development possible.</p>
+  </li>
+  <li data-marker="*">
+    <p>We began with the fundamentals of Computer Networks, laying the groundwork for understanding how the Internet operates, particularly through the HTTP protocol. From there, we dived into the core technologies of the web: HTML, CSS, and JavaScript, which form the backbone of any website.</p>
+  </li>
+  <li data-marker="*">
+    <p>As we progressed, we quickly transitioned to modern web development tools and frameworks, which are Node.js, TypeScript, and React. These technologies have revolutionized the way we build web applications, offering greater flexibility, scalability, and efficiency.</p>
+  </li>
+  <li data-marker="*">
+    <p>We then introduced Gatsby, a powerful static site generator built on React. Gatsby enables us to create highly optimized, static websites with ease, making it an ideal choice for developing an iGEM wiki.</p>
+  </li>
+  <li data-marker="*">
+    <p>To ensure our work is well-organized and collaborative, we explored Git, a version control system that allows us to track changes, collaborate seamlessly, and maintain a history of our project. We also walked through the process of deploying our website using services like GitLab Pages, ensuring our wiki is accessible to the world. Additionally, we covered some handy tips and tricks to specifically meet iGEM’s wiki deployment requirements.</p>
+  </li>
+  <li data-marker="*">
+    <p>So far, you should feel fully empowered to build your team’s wiki website, not just in a functional way, but in a modern, efficient, and professional manner.</p>
+  </li>
+  <li data-marker="*">
+    <p>As you move forward, remember that web development is a constantly evolving field. Stay curious, keep experimenting, and don’t hesitate to explore new tools and techniques. The skills you’ve gained here are just the beginning of what you can achieve.</p>
+  </li>
+  <li data-marker="*">
+    <p>Thank you for joining this journey, and best of luck as you build your iGEM wiki and beyond!</p>
+  </li>
+</ul>
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+        
+ 
+        <script src="../../../assets/page.js?1738990868"></script>
+
+    
+
+
+</body></html>
