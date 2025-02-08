@@ -360,7 +360,7 @@ title: Lecture 5
     script:
       - apk update && apk add zip curl brotli bash
       - echo "Downloading ZIP file..."
-      - curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.igem.org/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"
+      - curl -L -o ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip "https://gitlab.com/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/-/archive/${DEPLOY_BRANCH}/${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip"
       - unzip ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
       - rm ${CI_PROJECT_NAME}-${DEPLOY_BRANCH}.zip
       - mkdir public/
