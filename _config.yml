@@ -5,7 +5,5 @@ cs50:
   locale: zh-CN
   tz: Asia/Shanghai
   
-baseurl: ""
-
 exclude:
   - utils
